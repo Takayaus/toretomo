@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
-  get 'gyms/index'
-  get 'gyms/show'
+  resources :gyms, only:[:index, :show]
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   root 'static_pages#home'
