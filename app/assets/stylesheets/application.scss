@@ -14,6 +14,13 @@
 
 @import "bootstrap";
 
+.container {
+  width: 100%;
+  max-width: 960px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
 .container-login {
   @extend .container-fluid;
   max-width: 576px;
@@ -26,4 +33,17 @@
 
 .alert-alert {
   @extend .alert-danger;
+}
+
+.gyms-items {
+  margin: 20px 0;
+}
+
+.gyms-item {
+  border: 0.5px solid;
+  border-color: black;
+  margin-top: 20px;
+  width: 650px;
+  height: 180px;
+  padding: 15px;
 }

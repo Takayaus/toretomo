@@ -1,11 +1,8 @@
-# CSVファイルを扱うために必要
 require 'csv'
 
 namespace :import_csv do
 
   desc "gym_data.csvをインポートするタスク"
-
-  # タスク名 => users
   task gyms: :environment do
     path = File.join Rails.root, "db/csv_data/gym_data.csv"
 
