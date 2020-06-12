@@ -1,2 +1,18 @@
-<h1>Gyms#show</h1>
-<p>Find me in app/views/gyms/show.html.erb</p>
+<div class="container">
+    <div class="gyms-title">
+        <h3><%= @gym.name %></h3>
+        <p><%= @gym.title %></p>
+    </div>
+    <nav class="gyms-nav">
+        <ul>
+            <li class=”current”><%= link_to 'トップ', gym_path(@gym), remote: true %></li>
+            <li><%= link_to '写真', gym_path(@gym), remote: true %></li>
+            <li><%= link_to '口コミ', gym_path(@gym), remote: true %></li>
+            <li><%= link_to 'アクセス', gym_path(@gym), remote: true %></li>
+        </ul>
+    </nav>
+    <div class="gyms-content">
+        <%= @gym.content %>
+    </div>
+
+</div>

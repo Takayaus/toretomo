@@ -35,6 +35,8 @@
   @extend .alert-danger;
 }
 
+//gyms
+
 .gyms-items {
   margin: 20px 0;
 }
@@ -42,8 +44,44 @@
 .gyms-item {
   border: 0.5px solid;
   border-color: black;
+  border-radius: 3px;
   margin-top: 20px;
   width: 650px;
   height: 180px;
   padding: 15px;
+}
+
+.gyms-nav {
+  text-align: center;
+  margin: 20px 0;
+}
+.gyms-nav ul {
+  margin: 0;
+  padding: 0;
+}
+.gyms-nav ul li {
+  list-style: none;
+  display: inline-block;
+  width: 18%;
+  min-width: 90px;
+}
+.gyms-nav ul li a {
+  text-decoration: none;
+  color: #333;
+}
+.gyms-nav ul li.current a {
+  color: #f33135;
+}
+.gyms-nav ul li a:hover {
+  color: #e7da66;
+}
+
+.gyms-title {
+  margin: 30px 0;
+  padding: 20px;
+}
+
+.gyms-content {
+  padding: 25px;
+  width: 650px;
 }
