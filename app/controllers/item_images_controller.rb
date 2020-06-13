@@ -1,5 +1,7 @@
 class ItemImagesController < ApplicationController
-  def show
-    @item_image = find(params[:id])
+
+  def index
+    @gym = Gym.find(params[:gym_id])
+    @item_images = @gym.item_images.all
   end
 end

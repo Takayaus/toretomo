@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   ActiveAdmin.routes(self)
 
   resources :gyms, only:[:show, :index] do
-    resources :item_images, only:[:show]
+    resources :item_images, only:[:index]
   end
 
   devise_for :users
