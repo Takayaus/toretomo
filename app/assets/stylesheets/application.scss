@@ -87,3 +87,28 @@
   padding: 25px;
   width: 650px;
 }
+
+//item_image
+
+.item-content {
+  width: 100%;
+  padding: 0 40px;
+}
+
+.item-item {
+  display: inline-block;
+}
+
+.item-item img {
+  object-fit: cover;
+  width: 250px;
+  height: 250px;
+  background-color: #ccc;
+  border: 1px solid #ccc;
+
+  margin: 0 15px 30px;
+}
+
+.item-item li {
+  list-style: none;
+}
