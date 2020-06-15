@@ -2,7 +2,9 @@
     <div class="gyms-items">
         <% @gyms.each do |gym|%>
             <div class="gyms-item">
+            <%= gym.image %>
             <%= link_to gym.name, gym_path(gym) %>
+            <%= gym.address %>
             <p><%= gym.title %></p>
             </div>
         <% end %>

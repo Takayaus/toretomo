@@ -5,13 +5,13 @@
         <p><%= @gym.number %></p>
     </div>
     <%= render 'gyms/gyms-nav' %>
-    <div class="item-content">
+    <div class="items-content">
         <% @item_images.each do |item_image| %>
-            <div class="item-item">
+            <ul class="items-item">
                 <%= link_to item_image.image.url, 'data-lightbox': item_image.image do %>
                 <li><%= image_tag item_image.image.url  if item_image.image? %></li>
                 <%end%>
-            </div>
+            </ul>
         <%end%>
     </div>
 </div>

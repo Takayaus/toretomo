@@ -5,7 +5,7 @@ ActiveAdmin.register Gym do
   #
   # Uncomment all parameters which should be permitted for assignment
   #
-    permit_params :name, :title, :content, :number, :address
+    permit_params :name, :title, :content, :number, :address, :image
   #
   # or
   #
@@ -15,4 +15,16 @@ ActiveAdmin.register Gym do
   #   permitted
   # end
   
+      form do |f|
+      f.inputs "Gyms" do
+        f.input :name
+        f.input :title
+        f.input :content
+        f.input :number
+        f.input :address
+        f.input :image, :as => :file
+      end
+      f.actions
+    end
+    
 end
