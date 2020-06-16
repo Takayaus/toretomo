@@ -37,18 +37,56 @@
 
 //gyms
 
+//index
 .gyms-items {
-  margin: 20px 0;
+  float: left;
 }
 
 .gyms-item {
   border: 0.5px solid;
   border-color: black;
   border-radius: 3px;
-  margin-top: 20px;
   width: 650px;
-  height: 180px;
-  padding: 15px;
+  height: 280px;
+  margin-bottom: 50px;
+}
+
+.gyms-title {
+  background-color: rgb(235, 235, 235);
+  border-bottom: 1px solid black;
+}
+
+.gyms-title a {
+  text-decoration: none;
+  margin: 5px;
+  font-size: 16px;
+  color: black;
+  cursor: pointer;
+}
+
+.gyms-item a:hover {
+  opacity: 0.5;
+}
+
+.gyms-box {
+  padding: 20px 20px 20px 20px;
+  height: 245px;
+  overflow: hidden;
+}
+
+.gyms-left {
+  float: left;
+}
+
+.gyms-left img {
+  width: 230px;
+  height: 160px;
+}
+
+.gyms-right {
+  width: 350px;
+  height: 200px;
+  float: right;
 }
 
 .gyms-nav {
@@ -78,12 +116,13 @@
   color: #e7da66;
 }
 
-.gyms-title {
+//show
+.gym-title {
   margin: 30px 0;
   padding: 20px;
 }
 
-.gyms-content {
+.gym-content {
   padding: 25px;
   width: 650px;
 }

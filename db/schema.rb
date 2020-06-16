@@ -57,9 +57,9 @@ ActiveRecord::Schema.define(version: 2020_06_15_032134) do
     t.string "name"
     t.string "title"
     t.text "content"
-    t.integer "number"
+    t.string "number"
     t.string "address"
-    t.json "image"
+    t.string "image"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
