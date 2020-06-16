@@ -14,7 +14,7 @@
                         <p><%= gym.title %></p>
                         <p><%= gym.number %></p>
                         <% gym.gym_categories.each do |g| %>
-                            <p><%= link_to g.category.name,  %></p>
+                            <p><%= link_to g.category.name, category_path(g.category)  %></p>
                         <%end%>
                     </div>
                 </div>

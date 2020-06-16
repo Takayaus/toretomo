@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'categories/show'
   root 'static_pages#home'
 
   devise_for :admin_users, ActiveAdmin::Devise.config
@@ -8,6 +9,7 @@ Rails.application.routes.draw do
     resources :item_images, only:[:index]
   end
 
+  resources :categories, only:[:show]
   devise_for :users
 
   devise_scope :user do

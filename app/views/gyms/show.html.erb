@@ -8,9 +8,7 @@
     <div class="gym-content">
         <%= @gym.content %>
     </div>
-    
-    <% @gym.gym_categories.each do |gym| %>
-    <%= gym.category.name %>
-    <%end%>
-
+    <% @gym.item_images.each do |item_image| %>
+        <%= image_tag item_image.image.url %>
+    <% end %>
 </div>
