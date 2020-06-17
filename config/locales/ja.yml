@@ -6,6 +6,7 @@ ja:
       comment: "コメント"
       item_image: "画像"
       category: "カテゴリー"
+      trainer: "パーソナルトレーナー"
     attributes:
       user:
         name: "名前"
@@ -18,4 +19,13 @@ ja:
         content: "紹介文"
         number: "電話番号"
         address: "住所"
+        image: "画像"
+      trainer:
+        name: "名前"
+        age: "年齢"
+        number: "電話番号"
+        email: "Eメール"
+        title: "見出し"
+        content: "内容"
+        profile: "経歴"
         image: "画像"
