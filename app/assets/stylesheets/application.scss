@@ -14,6 +14,12 @@
 
 @import "bootstrap";
 
+body {
+  padding: 0;
+  margin: 0;
+  background: #fff;
+}
+
 .container {
   width: 100%;
   max-width: 960px;
@@ -124,7 +130,7 @@
 
 .gym-content {
   padding: 25px;
-  width: 650px;
+  width: 100%;
 }
 
 //item_image
@@ -145,4 +151,73 @@
 
 .items-item li {
   list-style: none;
+}
+
+//gyms
+.tabs {
+  width: 100%;
+  margin: 10px auto;
+  position: relative;
+}
+.tab-buttons span {
+  font: 400 14px "open sans", sans-serif;
+  color: #333;
+  background: #eee;
+  cursor: pointer;
+  border-bottom: 2px solid #ddd;
+  display: block;
+  width: 25%;
+  float: left;
+  text-align: center;
+  height: 40px;
+  line-height: 40px;
+}
+.tab-content {
+  border-bottom: 3px solid #ddd;
+  padding: 15px;
+  background: #eee;
+  display: inline-block;
+  font: 400 13px "open sans", sans-serif;
+  color: #333;
+  width: 100%;
+}
+#lamp {
+  width: 25%;
+  height: 2px;
+  background: rgb(255, 0, 0);
+  display: block;
+  position: absolute;
+  top: 40px;
+  transition: all 0.3s ease-in;
+  -o-transition: all 0.3s ease-in;
+  -webkit-transition: all 0.3s ease-in;
+  -moz-transition: all 0.3s ease-in;
+}
+#lamp.content4 {
+  left: 75%;
+  transition: all 0.3s ease-in;
+  -o-transition: all 0.3s ease-in;
+  -webkit-transition: all 0.3s ease-in;
+  -moz-transition: all 0.3s ease-in;
+}
+#lamp.content2 {
+  left: 25%;
+  transition: all 0.3s ease-in;
+  -o-transition: all 0.3s ease-in;
+  -webkit-transition: all 0.3s ease-in;
+  -moz-transition: all 0.3s ease-in;
+}
+#lamp.content3 {
+  left: 50%;
+  transition: all 0.3s ease-in;
+  -o-transition: all 0.3s ease-in;
+  -webkit-transition: all 0.3s ease-in;
+  -moz-transition: all 0.3s ease-in;
+}
+#lamp.content1 {
+  left: 0;
+  transition: all 0.3s ease-in;
+  -o-transition: all 0.3s ease-in;
+  -webkit-transition: all 0.3s ease-in;
+  -moz-transition: all 0.3s ease-in;
 }

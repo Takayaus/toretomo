@@ -3,12 +3,67 @@
         <h3><%= @gym.name %></h3>
         <p><%= @gym.title %></p>
         <p><%= @gym.number %></p>
+        <% @gym.gym_categories.each do |gym|%>
+        <p><%= link_to gym.category.name, category_path(gym.category) %></p>
+        <% end %>
     </div>
-    <%= render 'gyms/gyms-nav' %>
-    <div class="gym-content">
-        <%= @gym.content %>
+
+
+
+<h1>Lava lamp multiple tabs</h1>
+<div class='tabs'>
+  <div class='tab-buttons'>
+    <span class='content1'>ホーム</span>
+    <span class='content2'>写真</span>
+    <span class='content3'>口コミ</span>
+    <span class='content4'>地図</span>
+    <div id='lamp' class='content1'></div>
+  </div>
+  <div class='tab-content'>
+    
+    <div class='content1'>
+        <div class="gym-content">
+            <%= @gym.content %>
+        </div>
     </div>
-    <% @gym.item_images.each do |item_image| %>
-        <%= image_tag item_image.image.url %>
-    <% end %>
+    
+    <div class='content2'>
+        <% @gym.item_images.each do |item_image| %>
+            <ul class="items-item">
+                <%= link_to item_image.image.url, 'data-lightbox': item_image.image do %>
+                <li><%= image_tag item_image.image.url  if item_image.image? %></li>
+                <%end%>
+            </ul>
+        <%end%>
+    </div>
+    
+    <div class='content3'></div>
+    
+  </div>
+
+    <div class='content4'></div>
+    
+  </div>
 </div>
+<div class='credit'>
+  
+</div>
+
+</div>
+
+<script type="text/javascript">
+$('.tab-content>div').hide();
+$('.tab-content>div').first().slideDown();
+  $('.tab-buttons span').click(function(){
+    var thisclass=$(this).attr('class');
+    $('#lamp').removeClass().addClass('#lamp').addClass(thisclass);
+    $('.tab-content>div').each(function(){
+      if($(this).hasClass(thisclass)){
+        $(this).fadeIn(800);
+      }
+      else{
+        $(this).hide();
+      }
+    });
+  });
+</script>
