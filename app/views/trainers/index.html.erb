@@ -1,2 +1,22 @@
-<h1>Trainers#index</h1>
-<p>Find me in app/views/trainers/index.html.erb</p>
+<div class="container">
+    <div class="tras-items">
+        <% @trainers.each do |trainer|%>
+            <div class="tras-item">
+                <div class="tras-box">
+                    <div class="tras-top">
+                        <div class="tras-left">
+                            <a href="/trainers/<%= trainer.id %>"><%= image_tag (trainer.image.url) %></a>
+                        </div>
+                        <div class="tras-right">
+                            <h5><%= link_to trainer.name, trainer_path(trainer) %><h5>
+                        </div>
+                    </div>
+                    <div class="tras-middle">
+                    </div>
+                    <div class="tras-bottom">
+                   </div>
+                </div>
+            </div>
+        <% end %>
+    </div>
+</div>

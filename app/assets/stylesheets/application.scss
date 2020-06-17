@@ -22,7 +22,7 @@ body {
 
 .container {
   width: 100%;
-  max-width: 960px;
+  max-width: 1090px;
   margin-right: auto;
   margin-left: auto;
 }
@@ -220,4 +220,67 @@ body {
   -o-transition: all 0.3s ease-in;
   -webkit-transition: all 0.3s ease-in;
   -moz-transition: all 0.3s ease-in;
+}
+
+//trainers
+
+.tras-items {
+  width: 100%;
+}
+
+.tras-item {
+  display: inline-block;
+  height: 400px;
+  width: 310px;
+  border: 1px solid;
+  border-color: rgb(0, 0, 0);
+  margin: 15px 0 0 20px;
+}
+
+.tras-box {
+  padding: 15px;
+  width: 100%;
+  height: 100%;
+}
+
+.tras-top {
+  height: 90px;
+  border-bottom: 1px solid red;
+}
+
+.tras-left {
+  float: left;
+  background-color: cadetblue;
+}
+.tras-left img {
+  object-fit: cover;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+}
+
+.tras-right {
+  float: right;
+  height: 70px;
+  width: 190px;
+  background-color: burlywood;
+}
+
+.tras-right a {
+  text-decoration: none;
+  cursor: pointer;
+  color: black;
+}
+
+.tras-right a:hover {
+  opacity: 0.5;
+}
+
+.tras-middle {
+  height: 130px;
+  border-bottom: 1px solid red;
+}
+
+.tras-bottom {
+  height: 130px;
 }
