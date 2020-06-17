@@ -1,2 +1,28 @@
-<h1>Trainers#show</h1>
-<p>Find me in app/views/trainers/show.html.erb</p>
+<div class="container">
+    <div class=tra-wrapper>
+        <div class="tra-profile">
+            <div class="tra-top">
+                <div class="tra-left">
+                    <%= image_tag(@trainer.image.url) %>
+                </div>
+                <div class="tra-right">
+                    <h3><%= @trainer.name %></h3>
+                    <p>年齢：<%= @trainer.age %></p>
+                    <p><%= @trainer.number %></p>
+                </div> 
+            </div>
+            <div class="tra-middle">
+                <h3>Profile<h3>
+                <h5><%= @trainer.title %><h5>
+                <div class="tra-content">
+                    <h4>自己紹介・活動内容</h4>
+                    <p><%= @trainer.content %></p>
+                    <h4>経歴</h4>
+                    <p><%= @trainer.profile %></p>
+                    <h4>料金システム</h4>
+                    <p><%= @trainer.fee %></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -284,3 +284,42 @@ body {
 .tras-bottom {
   height: 130px;
 }
+
+.tra-wrapper {
+  width: 100%;
+}
+
+.tra-profile {
+  width: 800px;
+  height: 100%;
+}
+
+.tra-top {
+  margin: 15px 0 0 15px;
+  height: 200px;
+  width: 100%;
+  border-bottom: 1px solid red;
+}
+
+.tra-left {
+  float: left;
+}
+.tra-left img {
+  height: 120px;
+  width: 120px;
+  border-radius: 50%;
+}
+
+.tra-right {
+  float: right;
+  height: 200px;
+  width: 650px;
+}
+
+.tra-middle {
+  width: 100%;
+  margin: 15px;
+}
+
+.tra-content {
+}
