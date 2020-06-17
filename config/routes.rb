@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'trainers/index'
+  get 'trainers/show'
   get 'categories/show'
   root 'static_pages#home'
 
