@@ -1,0 +1,17 @@
+<div class="container">
+    <div class="gym-title">
+        <h3><%= @gym.name %></h3>
+        <p><%= @gym.title %></p>
+        <p><%= @gym.number %></p>
+    </div>
+    <%= render 'gyms/gyms-nav' %>
+    <div class="items-content">
+        <% @item_images.each do |item_image| %>
+            <ul class="items-item">
+                <%= link_to item_image.image.url, 'data-lightbox': item_image.image do %>
+                <li><%= image_tag item_image.image.url  if item_image.image? %></li>
+                <%end%>
+            </ul>
+        <%end%>
+    </div>
+</div>

@@ -1,0 +1,24 @@
+<div class="container">
+    <div class="gyms-items">
+        <% @gyms.each do |gym|%>
+            <div class="gyms-item">
+                <div class="gyms-title">
+                    <h5><%= link_to gym.name, gym_path(gym) %> </h5>
+                </div>
+                <div class=gyms-box>
+                    <div class="gyms-left">
+                        <a href="/gyms/<%= gym.id %>"><%= image_tag (gym.image.url) %></a>
+                    </div>
+                    <div class="gyms-right">
+                        <p><%= gym.address %></p>
+                        <p><%= gym.title %></p>
+                        <p><%= gym.number %></p>
+                        <% gym.gym_categories.each do |g| %>
+                            <p><%= link_to g.category.name, category_path(g.category)  %></p>
+                        <%end%>
+                    </div>
+                </div>
+            </div>
+        <% end %>
+    </div>
+</div>

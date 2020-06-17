@@ -4,9 +4,18 @@ ja:
       user: "ユーザー"
       admin_user: "管理者"
       comment: "コメント"
+      item_image: "画像"
+      category: "カテゴリー"
     attributes:
       user:
         name: "名前"
         age: "年齢"
         email: "Eメール"
         image_name: "画像"
+      gym:
+        name: "ジム名"
+        title: "見出し"
+        content: "紹介文"
+        number: "電話番号"
+        address: "住所"
+        image: "画像"

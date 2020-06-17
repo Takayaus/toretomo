@@ -14,6 +14,19 @@
 
 @import "bootstrap";
 
+body {
+  padding: 0;
+  margin: 0;
+  background: #fff;
+}
+
+.container {
+  width: 100%;
+  max-width: 960px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
 .container-login {
   @extend .container-fluid;
   max-width: 576px;
@@ -26,4 +39,185 @@
 
 .alert-alert {
   @extend .alert-danger;
+}
+
+//gyms
+
+//index
+.gyms-items {
+  float: left;
+}
+
+.gyms-item {
+  border: 0.5px solid;
+  border-color: black;
+  border-radius: 3px;
+  width: 650px;
+  height: 280px;
+  margin-bottom: 50px;
+}
+
+.gyms-title {
+  background-color: rgb(235, 235, 235);
+  border-bottom: 1px solid black;
+}
+
+.gyms-title a {
+  text-decoration: none;
+  margin: 5px;
+  font-size: 16px;
+  color: black;
+  cursor: pointer;
+}
+
+.gyms-item a:hover {
+  opacity: 0.5;
+}
+
+.gyms-box {
+  padding: 20px 20px 0 20px;
+  height: 250px;
+  overflow: hidden;
+}
+
+.gyms-left {
+  float: left;
+}
+
+.gyms-left img {
+  width: 230px;
+  height: 160px;
+}
+
+.gyms-right {
+  width: 350px;
+  height: 200px;
+  float: right;
+}
+
+.gyms-nav {
+  text-align: center;
+  margin: 20px 0;
+  border-top: 1px solid;
+  padding-top: 5px;
+}
+.gyms-nav ul {
+  margin: 0;
+  padding: 0;
+}
+.gyms-nav ul li {
+  list-style: none;
+  display: inline-block;
+  width: 18%;
+  min-width: 90px;
+}
+.gyms-nav ul li a {
+  text-decoration: none;
+  color: #333;
+}
+.gyms-nav ul li.current a {
+  color: #f33135;
+}
+.gyms-nav ul li a:hover {
+  color: #e7da66;
+}
+
+//show
+.gym-title {
+  margin: 30px 0;
+  padding: 20px;
+}
+
+.gym-content {
+  padding: 25px;
+  width: 100%;
+}
+
+//item_image
+
+.items-content {
+  width: 100%;
+}
+
+.items-item {
+  display: inline-block;
+}
+
+.items-item img {
+  object-fit: cover;
+  width: 250px;
+  height: 250px;
+}
+
+.items-item li {
+  list-style: none;
+}
+
+//gyms
+.tabs {
+  width: 100%;
+  margin: 10px auto;
+  position: relative;
+}
+.tab-buttons span {
+  font: 400 14px "open sans", sans-serif;
+  color: #333;
+  background: #eee;
+  cursor: pointer;
+  border-bottom: 2px solid #ddd;
+  display: block;
+  width: 25%;
+  float: left;
+  text-align: center;
+  height: 40px;
+  line-height: 40px;
+}
+.tab-content {
+  border-bottom: 3px solid #ddd;
+  padding: 15px;
+  background: #eee;
+  display: inline-block;
+  font: 400 13px "open sans", sans-serif;
+  color: #333;
+  width: 100%;
+}
+#lamp {
+  width: 25%;
+  height: 2px;
+  background: rgb(255, 0, 0);
+  display: block;
+  position: absolute;
+  top: 40px;
+  transition: all 0.3s ease-in;
+  -o-transition: all 0.3s ease-in;
+  -webkit-transition: all 0.3s ease-in;
+  -moz-transition: all 0.3s ease-in;
+}
+#lamp.content4 {
+  left: 75%;
+  transition: all 0.3s ease-in;
+  -o-transition: all 0.3s ease-in;
+  -webkit-transition: all 0.3s ease-in;
+  -moz-transition: all 0.3s ease-in;
+}
+#lamp.content2 {
+  left: 25%;
+  transition: all 0.3s ease-in;
+  -o-transition: all 0.3s ease-in;
+  -webkit-transition: all 0.3s ease-in;
+  -moz-transition: all 0.3s ease-in;
+}
+#lamp.content3 {
+  left: 50%;
+  transition: all 0.3s ease-in;
+  -o-transition: all 0.3s ease-in;
+  -webkit-transition: all 0.3s ease-in;
+  -moz-transition: all 0.3s ease-in;
+}
+#lamp.content1 {
+  left: 0;
+  transition: all 0.3s ease-in;
+  -o-transition: all 0.3s ease-in;
+  -webkit-transition: all 0.3s ease-in;
+  -moz-transition: all 0.3s ease-in;
 }
