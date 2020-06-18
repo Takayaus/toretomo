@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_18_031831) do
+ActiveRecord::Schema.define(version: 2020_06_18_112222) do
 
   create_table "active_admin_comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "namespace"
@@ -51,6 +51,15 @@ ActiveRecord::Schema.define(version: 2020_06_18_031831) do
     t.datetime "updated_at", null: false
     t.index ["category_id"], name: "index_gym_categories_on_category_id"
     t.index ["gym_id"], name: "index_gym_categories_on_gym_id"
+  end
+
+  create_table "gym_trainers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "gym_id"
+    t.bigint "trainer_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["gym_id"], name: "index_gym_trainers_on_gym_id"
+    t.index ["trainer_id"], name: "index_gym_trainers_on_trainer_id"
   end
 
   create_table "gyms", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -110,6 +119,8 @@ ActiveRecord::Schema.define(version: 2020_06_18_031831) do
   end
 
   add_foreign_key "gym_categories", "categories"
+  add_foreign_key "gym_trainers", "gyms"
+  add_foreign_key "gym_trainers", "trainers"
   add_foreign_key "trainer_categories", "categories"
   add_foreign_key "trainer_categories", "trainers"
 end
