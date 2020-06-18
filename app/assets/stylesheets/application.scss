@@ -14,12 +14,19 @@
 
 @import "bootstrap";
 
+:root {
+  --font-family-sans-serif: "Helvetica Neue", Helvetica, Arial, "游ゴシック体",
+    "Yu Gothic", YuGothic, "Hiragino Kaku Gothic ProN", Meiryo, sans-serif;
+  --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas,
+    "Liberation Mono", "Courier New", monospace;
+}
+
 body {
   padding: 0;
   margin: 0;
   background: #fff;
-  font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN",
-    "Hiragino Sans", Meiryo, sans-serif;
+  font-family: "Helvetica Neue", Helvetica, Arial, "游ゴシック体", "Yu Gothic",
+    YuGothic, "Hiragino Kaku Gothic ProN", Meiryo, "Open Sans", sans-serif;
 }
 
 .container {
@@ -228,15 +235,17 @@ body {
 
 .tras-items {
   width: 100%;
+  height: auto;
+  overflow: hidden;
 }
 
 .tras-item {
-  display: inline-block;
   height: 400px;
   width: 310px;
   border: 1px solid;
   border-color: rgb(0, 0, 0);
   margin: 15px 0 0 20px;
+  float: left;
 }
 
 .tras-box {
@@ -274,11 +283,17 @@ body {
   color: black;
 }
 
+.tras-right p {
+  display: inline-block;
+  font-size: 5px;
+}
+
 .tras-right a:hover {
   opacity: 0.5;
 }
 
 .tras-middle {
+  padding: 5px 0;
   height: 130px;
   border-bottom: 1px solid red;
 }
@@ -321,4 +336,26 @@ body {
 .tra-middle {
   width: 100%;
   margin: 15px;
+}
+
+.nav-tabs {
+  border-bottom: none;
+}
+
+.nav-tabs .nav-link.active {
+  background-color: #e2e2e2;
+  border-bottom: #e2e2e2;
+  font-weight: bold;
+}
+
+.tab-pane.active .tab-pane-header {
+  padding: 2rem;
+  background-color: #e2e2e2;
+  border-top-right-radius: 0.5rem;
+  border-top-left-radius: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.tab-pane:first-child .tab-pane-header {
+  border-top-left-radius: 0;
 }

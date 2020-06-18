@@ -5,7 +5,7 @@ ActiveAdmin.register Trainer do
   #
   # Uncomment all parameters which should be permitted for assignment
   #
-   permit_params :name, :age, :number, :email, :title, :content, :profile, :image
+   permit_params :name, :age, :number, :email, :title, :content, :profile, :image, :fee, trainer_categories_attributes: [:category_id, :_destroy, :id] 
   #
   # or
   #
@@ -14,5 +14,23 @@ ActiveAdmin.register Trainer do
   #   permitted << :other if params[:action] == 'create' && current_user.admin?
   #   permitted
   # end
-  
+    form do |f|
+    f.inputs "Trainers" do
+      f.input :name
+      f.input :age
+      f.input :number
+      f.input :email
+      f.input :title
+      f.input :content
+      f.input :profile
+      f.input :image, :as => :file
+      f.input :fee
+      f.has_many :trainer_categories, allow_destroy: true, heading: false,
+                                  new_record: true do |k|
+        k.input :category_id,
+                label: 'カテゴリー', as: :select, collection: Category.all.map{|a| [a.name, a.id]}
+      end
+      f.actions
+    end
+  end
 end

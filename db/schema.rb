@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_17_125657) do
+ActiveRecord::Schema.define(version: 2020_06_18_031831) do
 
   create_table "active_admin_comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "namespace"
@@ -71,6 +71,15 @@ ActiveRecord::Schema.define(version: 2020_06_17_125657) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "trainer_categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "trainer_id"
+    t.bigint "category_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["category_id"], name: "index_trainer_categories_on_category_id"
+    t.index ["trainer_id"], name: "index_trainer_categories_on_trainer_id"
+  end
+
   create_table "trainers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
     t.integer "age"
@@ -101,4 +110,6 @@ ActiveRecord::Schema.define(version: 2020_06_17_125657) do
   end
 
   add_foreign_key "gym_categories", "categories"
+  add_foreign_key "trainer_categories", "categories"
+  add_foreign_key "trainer_categories", "trainers"
 end
