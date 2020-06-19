@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_18_112222) do
+ActiveRecord::Schema.define(version: 2020_06_19_015535) do
 
   create_table "active_admin_comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "namespace"
@@ -44,6 +44,12 @@ ActiveRecord::Schema.define(version: 2020_06_18_112222) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "districts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "gym_categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "gym_id"
     t.bigint "category_id"
@@ -69,6 +75,7 @@ ActiveRecord::Schema.define(version: 2020_06_18_112222) do
     t.string "number"
     t.string "address"
     t.string "image"
+    t.integer "district_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
