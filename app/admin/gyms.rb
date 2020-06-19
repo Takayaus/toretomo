@@ -28,6 +28,11 @@ ActiveAdmin.register Gym do
         k.input :category_id,
                 label: 'カテゴリー', as: :select, collection: Category.all.map{|a| [a.name, a.id]}
       end
+      f.has_many :gym_trainers, allow_destroy: true, heading: false,
+                                  new_record: true do |t|
+        t.input :trainer_id,
+                label: 'カテゴリー', as: :select, collection: Trainer.all.map{|a| [a.name, a.id]}
+      end
       f.actions
     end
   end
