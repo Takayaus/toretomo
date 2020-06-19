@@ -14,15 +14,24 @@
 
 @import "bootstrap";
 
+:root {
+  --font-family-sans-serif: "Helvetica Neue", Helvetica, Arial, "游ゴシック体",
+    "Yu Gothic", YuGothic, "Hiragino Kaku Gothic ProN", Meiryo, sans-serif;
+  --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas,
+    "Liberation Mono", "Courier New", monospace;
+}
+
 body {
   padding: 0;
   margin: 0;
   background: #fff;
+  font-family: "Helvetica Neue", Helvetica, Arial, "游ゴシック体", "Yu Gothic",
+    YuGothic, "Hiragino Kaku Gothic ProN", Meiryo, "Open Sans", sans-serif;
 }
 
 .container {
   width: 100%;
-  max-width: 960px;
+  max-width: 1090px;
   margin-right: auto;
   margin-left: auto;
 }
@@ -220,4 +229,133 @@ body {
   -o-transition: all 0.3s ease-in;
   -webkit-transition: all 0.3s ease-in;
   -moz-transition: all 0.3s ease-in;
+}
+
+//trainers
+
+.tras-items {
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+}
+
+.tras-item {
+  height: 400px;
+  width: 310px;
+  border: 1px solid;
+  border-color: rgb(0, 0, 0);
+  margin: 15px 20px 0 0;
+  float: left;
+}
+
+.tras-box {
+  padding: 15px;
+  width: 100%;
+  height: 100%;
+}
+
+.tras-top {
+  height: 90px;
+  border-bottom: 1px solid red;
+}
+
+.tras-left {
+  float: left;
+  background-color: cadetblue;
+}
+.tras-left img {
+  object-fit: cover;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+}
+
+.tras-right {
+  float: right;
+  height: 70px;
+  width: 190px;
+  background-color: burlywood;
+}
+
+.tras-right a {
+  text-decoration: none;
+  cursor: pointer;
+  color: black;
+}
+
+.tras-right p {
+  display: inline-block;
+  font-size: 5px;
+}
+
+.tras-right a:hover {
+  opacity: 0.5;
+}
+
+.tras-middle {
+  padding: 5px 0;
+  height: 130px;
+  border-bottom: 1px solid red;
+}
+
+.tras-bottom {
+  height: 130px;
+}
+
+.tra-wrapper {
+  width: 100%;
+}
+
+.tra-profile {
+  width: 800px;
+  height: 100%;
+}
+
+.tra-top {
+  margin: 15px 0 0 15px;
+  height: 200px;
+  width: 100%;
+  border-bottom: 1px solid red;
+}
+
+.tra-left {
+  float: left;
+}
+.tra-left img {
+  height: 120px;
+  width: 120px;
+  border-radius: 50%;
+}
+
+.tra-right {
+  float: right;
+  height: 200px;
+  width: 650px;
+}
+
+.tra-middle {
+  width: 100%;
+  margin: 15px;
+}
+
+.nav-tabs {
+  border-bottom: none;
+}
+
+.nav-tabs .nav-link.active {
+  background-color: #e2e2e2;
+  border-bottom: #e2e2e2;
+  font-weight: bold;
+}
+
+.tab-pane.active .tab-pane-header {
+  padding: 2rem;
+  background-color: #e2e2e2;
+  border-top-right-radius: 0.5rem;
+  border-top-left-radius: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.tab-pane:first-child .tab-pane-header {
+  border-top-left-radius: 0;
 }

@@ -1,0 +1,26 @@
+<div class="container">
+    <div class="tras-items">
+        <% @trainers.each do |trainer|%>
+            <div class="tras-item">
+                <div class="tras-box">
+                    <div class="tras-top">
+                        <div class="tras-left">
+                            <a href="/trainers/<%= trainer.id %>"><%= image_tag (trainer.image.url) %></a>
+                        </div>
+                        <div class="tras-right">
+                            <h6><%= link_to trainer.name, trainer_path(trainer) %></h6>
+                            <% trainer.trainer_categories.each do |tra| %>
+                            <p><%= link_to tra.category.name, category_path(tra.category) %></p>
+                            <% end %>
+                        </div>
+                    </div>
+                    <div class="tras-middle">
+                        <p><%= trainer.title %></p>
+                    </div>
+                    <div class="tras-bottom">
+                   </div>
+                </div>
+            </div>
+        <% end %>
+    </div>
+</div>

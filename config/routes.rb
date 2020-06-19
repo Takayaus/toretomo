@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  get 'categories/show'
   root 'static_pages#home'
 
   devise_for :admin_users, ActiveAdmin::Devise.config
@@ -10,6 +9,9 @@ Rails.application.routes.draw do
   end
 
   resources :categories, only:[:show]
+
+  resources :trainers, only:[:index, :show]
+
   devise_for :users
 
   devise_scope :user do
