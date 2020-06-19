@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'district/show'
   root 'static_pages#home'
 
   devise_for :admin_users, ActiveAdmin::Devise.config
@@ -8,7 +9,9 @@ Rails.application.routes.draw do
     resources :item_images, only:[:index]
   end
 
-  resources :categories, only:[:show]
+  resources :categories, only:[:show] do
+    resources :districts, only:[:show]
+  end
 
   resources :trainers, only:[:index, :show]
 
