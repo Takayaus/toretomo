@@ -8,4 +8,8 @@ class Trainer < ApplicationRecord
     has_many :gym_trainers
     has_many :gyms, through: :gym_trainers
     accepts_nested_attributes_for :gym_trainers, allow_destroy: true
+
+    has_many :trainer_districts
+    has_many :districts, through: :trainer_districts
+    accepts_nested_attributes_for :trainer_districts, allow_destroy: true
 end
