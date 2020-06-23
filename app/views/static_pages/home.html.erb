@@ -33,26 +33,35 @@
 
 
 <!-- Swiper START -->
-<div class="swiper-container">
-  <h2 class="heading">評価の高いトレーナー</h2>
-	<div class="swiper-wrapper">
-		<!-- 各スライド -->
-		<div class="swiper-slide">Slide 1</div>
-		<div class="swiper-slide">Slide 2</div>
-		<div class="swiper-slide">Slide 3</div>
-		<div class="swiper-slide">Slide 4</div>
-    	<div class="swiper-slide">Slide 5</div>
-      	<div class="swiper-slide">Slide 6</div>
-        		<div class="swiper-slide">Slide 7</div>
-		<div class="swiper-slide">Slide 8</div>
-		<div class="swiper-slide">Slide 9</div>
-		<div class="swiper-slide">Slide 10</div>
+  <div class="swiper-container">
+    <h2 class="heading">評価の高いトレーナー</h2>
+    <div class="swiper-wrapper">
+      <!-- 各スライド -->
+      <% @trainers.each do |trainer| %>
+        <div class="swiper-slide">
+          <div class="slide-item">
+            <div class="slide-top">
+                <div class="slide-left">
+                  <a href="/trainers/<%= trainer.id %>"><%= image_tag (trainer.image.url) %></a>>
+                </div>
+                <div class="slide-right">
+                  <h6><%= link_to trainer.name, trainer_path(trainer) %></h6>
+                    <% trainer.trainer_categories.each do |tra| %>
+                    <p><%= link_to tra.category.name, category_path(tra.category) %></p>
+                    <% end %>
+                </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
 	</div>
 </div>
 <!-- Swiper END -->
 <script>
 var mySwiper = new Swiper('.swiper-container', {
 	slidesPerView: 5,
+  spaceBetween: 10,
   loop: true,
 	navigation: {
 		nextEl: '.swiper-button-next',
