@@ -9,7 +9,7 @@ Rails.application.routes.draw do
     resources :item_images, only:[:index]
   end
 
-  resources :categories, only:[:show] do
+  resources :categories, only:[:show, :index] do
     resources :districts, only:[:show]
   end
 
