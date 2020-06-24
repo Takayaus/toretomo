@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   ActiveAdmin.routes(self)
 
   resources :gyms, only:[:show, :index] do
-    resources :item_images, only:[:index]
+    resources :comments, only:[:create]
   end
 
   resources :categories, only:[:show, :index] do
@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   resources :trainers, only:[:index, :show]
 
   devise_for :users
+  resources :users
 
   devise_scope :user do
   get '/users/sign_out' => 'devise/sessions#destroy'

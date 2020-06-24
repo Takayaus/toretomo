@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_19_073148) do
+ActiveRecord::Schema.define(version: 2020_06_24_075022) do
 
   create_table "active_admin_comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "namespace"
@@ -42,6 +42,17 @@ ActiveRecord::Schema.define(version: 2020_06_19_073148) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "title"
+    t.text "content"
+    t.bigint "user_id"
+    t.bigint "gym_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["gym_id"], name: "index_comments_on_gym_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
   create_table "districts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -134,6 +145,8 @@ ActiveRecord::Schema.define(version: 2020_06_19_073148) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "comments", "gyms"
+  add_foreign_key "comments", "users"
   add_foreign_key "gym_categories", "categories"
   add_foreign_key "gym_trainers", "gyms"
   add_foreign_key "gym_trainers", "trainers"
