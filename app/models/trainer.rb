@@ -12,4 +12,6 @@ class Trainer < ApplicationRecord
     has_many :trainer_districts
     has_many :districts, through: :trainer_districts
     accepts_nested_attributes_for :trainer_districts, allow_destroy: true
+
+    has_many :comments
 end

@@ -13,7 +13,9 @@ Rails.application.routes.draw do
     resources :districts, only:[:show]
   end
 
-  resources :trainers, only:[:index, :show]
+  resources :trainers, only:[:index, :show] do
+    resources :comments, only:[:create]
+  end
 
   devise_for :users
   resources :users
