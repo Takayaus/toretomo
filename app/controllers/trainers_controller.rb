@@ -5,5 +5,7 @@ class TrainersController < ApplicationController
 
   def show
     @trainer = Trainer.find(params[:id])
+    @comments = @trainer.comments
+    @comment = @trainer.comments.build
   end
 end
