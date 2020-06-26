@@ -1,5 +1,5 @@
 class Gym < ApplicationRecord
-    has_many :item_images
+    has_many :item_images, dependent: :destroy
     mount_uploader :image, ImageUploader
     
     has_many :gym_categories
@@ -12,5 +12,5 @@ class Gym < ApplicationRecord
 
     belongs_to :district
 
-    has_many :comments
+    has_many :comments, dependent: :destroy
 end

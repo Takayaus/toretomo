@@ -1,6 +1,6 @@
 class CommentsController < ApplicationController
-  prepend_before_action :set_commentable, only: %i[create edit update destroy]  
-  before_action :set_comment, only: %i[edit update destroy]  
+  prepend_before_action :set_commentable, only: %i[create edit update]  
+  # before_action :set_comment, only: %i[edit update destroy]  
   def create
 
     @comment = @commentable.comments.build(comment_params)
@@ -15,6 +15,15 @@ class CommentsController < ApplicationController
 
   end
 
+  
+
+  def destroy
+    @comment = Comment.find(params[:id])
+    @comment.destroy
+    flash[:success] = '投稿へのコメントを削除しました。'
+    redirect_back(fallback_location: root_path)
+
+end 
   private
 
     def comment_params

@@ -1,12 +1,24 @@
 <div class="container">
-    <div class="gym-title">
-        <h3><%= @gym.name %></h3>
-        <p><%= @gym.title %></p>
-        <p><%= @gym.number %></p>
-        <% @gym.gym_categories.each do |gym|%>
-        <p><%= link_to gym.category.name, category_path(gym.category) %></p>
-        <% end %>
-    </div>
+  <div class="gym-title">
+    <h3><%= @gym.name %></h3>
+    <p><%= @gym.title %></p>
+    <p><%= @gym.number %></p>
+    <p id="starr">評価</p> 
+    <script>
+    $('#starr').raty({
+    size: 36,
+    starOff:  '<%= asset_path('star-off.png') %>',
+    starOn : '<%= asset_path('star-on.png') %>',
+    starHalf: '<%= asset_path('star-half.png') %>',
+    half: true,
+    readOnly: true,
+    score: <%= @gym.comments.average(:rate).to_f.round(1) %>,
+      });
+    </script>
+    <% @gym.gym_categories.each do |gym|%>
+      <p><%= link_to gym.category.name, category_path(gym.category) %></p>
+    <% end %>
+  </div>
 
 
 
@@ -22,53 +34,88 @@
   <div class='tab-content'>
     
     <div class='content1'>
-        <div class="gym-content">
-            <%= @gym.content %>
-        </div>
+      <div class="gym-content">
+          <%= @gym.content %>
+      </div>
     </div>
     
     <div class='content2'>
-        <% @gym.item_images.each do |item_image| %>
-            <ul class="items-item">
-                <%= link_to item_image.image.url, 'data-lightbox': item_image.image do %>
+      <% @gym.item_images.each do |item_image| %>
+          <ul class="items-item">
+              <%= link_to item_image.image.url, 'data-lightbox': item_image.image do %>
                 <li><%= image_tag item_image.image.url  if item_image.image? %></li>
-                <%end%>
-            </ul>
-        <%end%>
+              <%end%>
+          </ul>
+      <%end%>
     </div>
     
     <div class='content3'>
-    <div class="comment-wrapper border-top　mb-10">
-  <p class="mt-5">コメント一覧</p>
-  <% @comments.each do |c| %>
-    <div>
-      <% unless c.user.blank? %>
-        <a href="<%= user_path(c.user_id) %>"></a>
-        <% end %>
-      <%= c.user.name unless c.user.blank? %>
-      <br />
-      <%= c.content %>
-    </div>
-    <br />
-  <% end %>
-  <% if user_signed_in? %>
-    <%= form_with(model: [@gym, @comment], local: true) do |f| %>
-      <%= f.text_area :content, class: "form-control", rows: 5 %>
-      <%= button_tag type: "submit", class: "btn btn-success float-right mt-1" do %>
-        <i class="far fa-comments"></i> コメントする
-      <% end %>
-    <% end %>
-  <% end %>
+      <div class="comment-wrapper border-top mb-10">
+        <p class="mt-5">コメント一覧</p>
+        <% if @comments.present? %>
+          <% @comments.each do |c| %>
+          <div>
+            <div>
+              <%= c.user.name unless c.user.blank? %>
+              <br />
+              <%= c.content %>
+              <% if user_signed_in? && c.user == current_user %>
+                <p><%= link_to '削除', gym_comment_path(@gym, c), method: :delete %></p>
+                <p><%= link_to '編集', edit_gym_comment_path(@gym, c) %></p>
+              <% end %>
+                                                          <div id="star-rate-<%= c.id %>"></div>
+                                                                <script>
+                                                                $('#star-rate-<%= c.id %>').raty({
+                                                                  size: 36,
+                                                                  starOff:  '<%= asset_path('star-off.png') %>',
+                                                                  starOn : '<%= asset_path('star-on.png') %>',
+                                                                  starHalf: '<%= asset_path('star-half.png') %>',
+                                                                  half: true,
+                                                                  readOnly: true,
+                                                                  score: <%= c.rate %>,
+                                                                });
+                                                                </script>
+            </div>                                                    
+          </div>
+          <br />
+          <% end %>
+        <%end%>
+ 
+          <% if user_signed_in? %>
+            <%= form_with(model: [@gym, @comment], local: true, remote: true) do |f| %>
+            <%= f.text_area :content, class: "form-control", rows: 5 %>
+            <div class="form-group" id="star">
+              <%= f.label :rate,'評価' %>
+              <%= f.hidden_field :rate, id: :comment_star %>
+            </div>
+
+                          <!-- 評価javascript -->
+                          <script>
+                          $('#star').raty({
+                            size     : 36,
+                            starOff:  '<%= asset_path('star-off.png') %>',
+                            starOn : '<%= asset_path('star-on.png') %>',
+                            starHalf: '<%= asset_path('star-half.png') %>',
+                            scoreName: 'comment[rate]',
+                            half: true,
+                          });
+                          </script>
+
+              <%= button_tag type: "submit", class: "btn btn-success float-right mt-1" do %>
+              <i class="far fa-comments"></i> コメントする
+              <% end %>
+            <% end %>
+          <% end %>
   
-  </div>
+      </div>
 
     <div class='content4'></div>
-    
+      
+    </div>
   </div>
-</div>
-<div class='credit'>
-  
-</div>
+    <div class='credit'>
+      
+    </div>
 
 </div>
 

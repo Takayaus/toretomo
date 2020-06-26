@@ -7,5 +7,5 @@ class User < ApplicationRecord
   validates :age, presence: true
   mount_uploader :image_name, ImageUploader
 
-  has_many :comments
+  has_many :comments, dependent: :destroy
 end
