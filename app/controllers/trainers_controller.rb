@@ -7,5 +7,6 @@ class TrainersController < ApplicationController
     @trainer = Trainer.find(params[:id])
     @comments = @trainer.comments
     @comment = @trainer.comments.build
+    @like = Like.new
   end
 end
