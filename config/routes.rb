@@ -15,6 +15,7 @@ Rails.application.routes.draw do
 
   resources :trainers, only:[:index, :show] do
     resources :comments, only: %i[create edit update destroy], module: :trainers
+    resources :likes, only: [:create, :destroy]
   end
 
   devise_for :users

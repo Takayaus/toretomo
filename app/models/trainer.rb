@@ -14,4 +14,7 @@ class Trainer < ApplicationRecord
     accepts_nested_attributes_for :trainer_districts, allow_destroy: true
 
     has_many :comments, dependent: :destroy
+
+    has_many :likes
+    has_many :liked_users, through: :likes, source: :user
 end
