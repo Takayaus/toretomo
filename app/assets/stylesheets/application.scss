@@ -519,3 +519,64 @@ body {
 .star-ave p {
   float: left;
 }
+
+//user
+
+.user-profile {
+}
+
+.user-img {
+  text-align: center;
+  margin: 30px 0;
+}
+.user-img img {
+  border-radius: 50%;
+  object-fit: cover;
+  height: 250px;
+  width: 250px;
+}
+
+.user-profile {
+  text-align: center;
+}
+
+.user-tab-buttons span {
+  font: 400 14px "open sans", sans-serif;
+  color: #333;
+  background: #eee;
+  cursor: pointer;
+  border-bottom: 2px solid #ddd;
+  display: block;
+  width: 50%;
+  float: left;
+  text-align: center;
+  height: 40px;
+  line-height: 40px;
+}
+#user-lamp {
+  width: 50%;
+  height: 2px;
+  background: rgb(255, 0, 0);
+  display: block;
+  position: absolute;
+  top: 40px;
+  transition: all 0.3s ease-in;
+  -o-transition: all 0.3s ease-in;
+  -webkit-transition: all 0.3s ease-in;
+  -moz-transition: all 0.3s ease-in;
+}
+#user-lamp.content2 {
+  left: 50%;
+  transition: all 0.3s ease-in;
+  -o-transition: all 0.3s ease-in;
+  -webkit-transition: all 0.3s ease-in;
+  -moz-transition: all 0.3s ease-in;
+}
+
+#user-lamp.content1 {
+  left: 0;
+  transition: all 0.3s ease-in;
+  -o-transition: all 0.3s ease-in;
+  -webkit-transition: all 0.3s ease-in;
+  -moz-transition: all 0.3s ease-in;
+}
