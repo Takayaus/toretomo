@@ -2,43 +2,69 @@
   <img src="https://picsum.photos/900/400">
 </div>
 <div class="container">
-  <div class="categories">
     <h2 class="heading">人気のカテゴリー</h2>
-      <ul>
-        <li><a href="/categories/1"><%= image_tag "spots_gym.jpeg" %></a><p>スポーツジム</p></li>
-        <li><a href="/categories/2"><%= image_tag "yoga.jpg" %></a><p>ヨガ</p></li>
-        <li><a href="/categories/3"><%= image_tag "swimming.jpg" %></a><p>スイミング</p></li>
-        <li><a href="/categories/4"><%= image_tag "golf.jpeg" %></a><p>ゴルフ</p></li>
-        <li><a href="/categories/5"><%= image_tag "kakutougi.jpg" %></a><p>格闘技</p></li>
-      </ul>
-      <a href="/categories" class="cate-tag">カテゴリー一覧へ</a>
+  <div class="row justify-content-center">
+      <div class="cate">
+        <div class="col-lg-2 col-md-4 col-sm-12">
+          <div class="category text-center">
+            <%= image_tag "spots_gym.jpeg" %>
+          </div>
+        </div>
+      </div>
+      <div class="cate">
+        <div class="col-lg-2 col-md-4 col-sm-12">
+          <div class="category text-center">
+            <%= image_tag "yoga.jpg" %>
+          </div>
+        </div>
+      </div>
+      <div class="cate">
+        <div class="col-lg-2 col-md-4 col-sm-12">
+          <div class="category text-center">
+            <%= image_tag "swimming.jpg" %>
+          </div>
+        </div>
+      </div>
+      <div class="cate">
+        <div class="col-lg-2 col-md-4 col-sm-12">
+          <div class="category text-center">
+            <%= image_tag "golf.jpeg" %>
+          </div>
+        </div>
+      </div>
+      <div class="cate">
+        <div class="col-lg-2 col-md-4 col-sm-12">
+          <div class="category text-center">
+            <%= image_tag "kakutougi.jpg" %>
+          </div>
+        </div>
+      </div>
   </div>
-  <div class="new-gyms">
     <h2 class="heading">新しくできたジム</h2>
-    <div class="new-gyms-wrapper">
+    <div class="row justify-content-center">
       <% @gyms.each do |gym| %>
-          <a href="/gyms/<%= gym.id %>" class="new-gyms-item"> 
-            <div class="new-gyms-left">
-                <%= image_tag(gym.image.url) %>
-            </div>
-            <h5 class="new-gyms-title"><%= gym.name %></h5>
-            <div class="new-gyms-time">
-              <p><%= time_ago_in_words(gym.created_at) %>前に掲載</p>
+        <div class="gym">
+          <div class="col-md-6 col-sm-12">
+            <a href="/gyms/<%= gym.id %>" class="new-gyms-item"> 
+              <div class="new-gyms-left">
+                  <%= image_tag(gym.image.url) %>
               </div>
-          </a>
+              <h5 class="new-gyms-title"><%= gym.name %></h5>
+              <div class="new-gyms-time">
+                <p><%= time_ago_in_words(gym.created_at) %>前に掲載</p>
+                </div>
+            </a>
+          </div>
+        </div>
       <% end %>
-      <a href="/gyms" class="cate-tag">ジム一覧へ</a>
     </div>
-</div>
+  <a href="/gyms" class="cate-tag">ジム一覧へ</a>
 
-
-<!-- Swiper START -->
   <div class="swiper-container">
     <h2 class="heading">評価の高いトレーナー</h2>
     <div class="swiper-wrapper">
-      <!-- 各スライド -->
       <% @trainers.each do |trainer| %>
-        <div class="swiper-slide">
+        <div class="swiper-slide ">
           <div class="slide-item">
             <div class="slide-top">
                 <div class="slide-left">
@@ -56,11 +82,30 @@
       <% end %>
     </div>
 	</div>
+  
 </div>
 <!-- Swiper END -->
 <script>
 var mySwiper = new Swiper('.swiper-container', {
-	slidesPerView: 5,
+  slidesPerView: 1.5,
+    breakpoints: {
+    // 768px以上の場合
+    400: {
+      slidesPerView: 2.5,
+    },
+    768: {
+      slidesPerView: 3.5,
+    },
+    // 980px以上の場合
+    980: {
+      slidesPerView: 4.5,
+    },
+    // 1200px以上の場合
+    1200: {
+      slidesPerView: 5.5,
+    }
+  },
+  centeredSlides : true,
   spaceBetween: 10,
   loop: true,
 	navigation: {

@@ -36,6 +36,28 @@ body {
   margin-left: auto;
 }
 
+.text-center {
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  .container {
+    width: 750px;
+  }
+}
+
+@media (min-width: 992px) {
+  .container {
+    width: 970px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .container {
+    width: 1170px;
+  }
+}
+
 .container-login {
   @extend .container-fluid;
   max-width: 576px;
@@ -48,6 +70,10 @@ body {
 
 .alert-alert {
   @extend .alert-danger;
+}
+
+.text-center {
+  text-align: center;
 }
 
 //gyms
@@ -368,39 +394,34 @@ body {
   height: 500px;
 }
 
-.categories {
-  width: 100%;
-  height: 340px;
-}
-.categories ul {
-  display: flex;
-}
-.categories li {
-  list-style: none;
-  position: relative;
-}
+// .categories ul {
+//   display: flex;
+// }
+// .categories li {
+//   list-style: none;
+//   position: relative;
+// }
 
-.categories p {
-  color: white;
-  font-size: 18px;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  -ms-transform: translate(-50%, -50%);
-  -webkit-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
-  margin: 0;
-  padding: 0;
-}
+// .categories p {
+//   color: white;
+//   font-size: 18px;
+//   position: absolute;
+//   top: 50%;
+//   left: 50%;
+//   -ms-transform: translate(-50%, -50%);
+//   -webkit-transform: translate(-50%, -50%);
+//   transform: translate(-50%, -50%);
+//   margin: 0;
+//   padding: 0;
+// }
 
-.categories li img {
-  width: 200px;
-  height: 200px;
+.category img {
+  width: 190px;
+  height: 190px;
   object-fit: cover;
-  position: relative;
 }
 
-.categories li img:hover {
+.category img:hover {
   opacity: 0.5;
 }
 
@@ -414,22 +435,12 @@ body {
   float: right;
 }
 
-.new-gyms {
-  width: 100%;
-  height: 420px;
-}
-
-.new-gyms-wrapper {
-  width: 100%;
-  height: auto;
-}
-
 .new-gyms-item {
   display: inline-block;
   width: 480px;
   height: 120px;
   background-color: yellow;
-  margin: 0 0 20px 40px;
+  margin: 0 0 20px 0;
   position: relative;
   color: black;
 }
@@ -461,6 +472,11 @@ body {
   margin: 0;
 }
 
+.swiper-container {
+  width: 100%;
+  margin-right: auto;
+  margin-left: auto;
+}
 /* 全体のスタイル */
 .swiper-wrapper {
   width: 100%;
@@ -470,7 +486,7 @@ body {
 /* 全スライド共通スタイル */
 .swiper-slide {
   color: #ffffff;
-  width: 100%;
+  width: 200px;
   height: 240px;
   // text-align: center;
   border: 1px solid black;
@@ -579,4 +595,9 @@ body {
   -o-transition: all 0.3s ease-in;
   -webkit-transition: all 0.3s ease-in;
   -moz-transition: all 0.3s ease-in;
+}
+
+.row {
+  margin-right: -15px;
+  margin-left: -15px;
 }
