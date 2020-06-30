@@ -19,8 +19,33 @@
     
     <div class='content1'>
 
-    
-
+        <% @user.comments.each do |comment| %>
+        <div>
+            <div id="star-rate-<%= comment.id %>"></div>
+                <script>
+                    $('#star-rate-<%= comment.id %>').raty({
+                        size: 36,
+                        starOff: '<%= asset_path('star-off.png') %>',
+                        starOn : '<%= asset_path('star-on.png') %>',
+                        starHalf: '<%= asset_path('star-half.png') %>',
+                        half: true,
+                        readOnly: true,
+                        score: <%= comment.rate %>,
+                });
+                </script>  
+            <%= comment.content %>
+            </div>
+            <% if comment.gym_id.nil? %>
+                <%= link_to trainer_path(comment.trainer) do%>
+                    <%= comment.trainer.name %>
+                <%end%>
+            <%else%>
+                <%= link_to gym_path(comment.gym) do %>
+                    <%= comment.gym.name %>
+                <%end%>
+            <%end%>
+        <% end %>
+        <p><%= @user.comments.count %>件の口コミが表示されています。</p>
     </div>
     
     <div class='content2'>
