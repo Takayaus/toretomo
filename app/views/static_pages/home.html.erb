@@ -4,51 +4,7 @@
 <div class="container">
     <h2 class="heading">人気のカテゴリー</h2>
   <div class="row justify-content-center">
-      <div class="cate">
-        <div class="col-lg-2 col-md-4 col-sm-12">
-          <div class="category text-center">
-            <a href="/categories/1">
-              <%= image_tag "spots_gym.jpeg" %>
-            </a>
-          </div>
-        </div>
-      </div>
-      <div class="cate">
-        <div class="col-lg-2 col-md-4 col-sm-12">
-          <div class="category text-center">
-            <a href="/categories/2">
-              <%= image_tag "yoga.jpg" %>
-            </a>
-          </div>
-        </div>
-      </div>
-      <div class="cate">
-        <div class="col-lg-2 col-md-4 col-sm-12">
-          <div class="category text-center">
-            <a href="/categories/3">
-              <%= image_tag "swimming.jpg" %>
-            </a>
-          </div>
-        </div>
-      </div>
-      <div class="cate">
-        <div class="col-lg-2 col-md-4 col-sm-12">
-          <div class="category text-center">
-            <a href="/categories/4">
-              <%= image_tag "golf.jpeg" %>
-            </a>
-          </div>
-        </div>
-      </div>
-      <div class="cate">
-        <div class="col-lg-2 col-md-4 col-sm-12">
-          <div class="category text-center">
-            <a href="/categories/5">
-              <%= image_tag "kakutougi.jpg" %>
-            </a>
-          </div>
-        </div>
-      </div>
+    <%= render 'static_pages/cate' %>
   </div>
     <h2 class="heading">新しくできたジム</h2>
     <div class="row justify-content-center">
@@ -57,12 +13,12 @@
           <div class="col-md-6 col-sm-12">
             <a href="/gyms/<%= gym.id %>" class="new-gyms-item"> 
               <div class="new-gyms-left">
-                  <%= image_tag(gym.image.url) %>
+                <%= image_tag(gym.image.url) %>
               </div>
               <h5 class="new-gyms-title"><%= gym.name %></h5>
               <div class="new-gyms-time">
                 <p><%= time_ago_in_words(gym.created_at) %>前に掲載</p>
-                </div>
+              </div>
             </a>
           </div>
         </div>
@@ -78,10 +34,23 @@
           <div class="slide-item">
             <div class="slide-top">
                 <div class="slide-left">
-                  <a href="/trainers/<%= trainer.id %>"><%= image_tag (trainer.image.url) %></a>>
+                  <a href="/trainers/<%= trainer.id %>"><%= image_tag (trainer.image.url) %></a>
                 </div>
                 <div class="slide-right">
                   <h6><%= link_to trainer.name, trainer_path(trainer) %></h6>
+                     <p id="star-ave<%= trainer.id %>"></p>
+                        <script>
+                        $('#star-ave<%= trainer.id %>').raty({
+                        size: 36,
+                        starOff:  '<%= asset_path('star-off.png') %>',
+                        starOn : '<%= asset_path('star-on.png') %>',
+                        starHalf: '<%= asset_path('star-half.png') %>',
+                        half: true,
+                        readOnly: true,
+                        score: <%= trainer.comments.average(:rate).to_f.round(1) %>,
+                          });
+                        </script>
+                    <p>(<%= trainer.comments.count %>)</p>
                     <% trainer.trainer_categories.each do |tra| %>
                     <p><%= link_to tra.category.name, category_path(tra.category) %></p>
                     <% end %>
@@ -101,18 +70,18 @@ var mySwiper = new Swiper('.swiper-container', {
     breakpoints: {
     // 768px以上の場合
     400: {
-      slidesPerView: 2.5,
+      slidesPerView: 1.5,
     },
     768: {
-      slidesPerView: 3.5,
+      slidesPerView: 2.5,
     },
     // 980px以上の場合
     980: {
-      slidesPerView: 4.5,
+      slidesPerView: 3.5,
     },
     // 1200px以上の場合
     1200: {
-      slidesPerView: 5.5,
+      slidesPerView: 4.5,
     }
   },
   centeredSlides : true,

@@ -36,8 +36,17 @@ body {
   margin-left: auto;
 }
 
+.row {
+  margin-right: -15px;
+  margin-left: -15px;
+}
+
 .text-center {
   text-align: center;
+}
+
+.tra-heart {
+  float: left;
 }
 
 @media (min-width: 768px) {
@@ -259,29 +268,17 @@ body {
 
 //trainers
 
-.tras-items {
-  width: 100%;
-  height: auto;
-  overflow: hidden;
-}
-
 .tras-item {
-  height: 400px;
-  width: 310px;
+  height: 410px;
+  width: 280px;
   border: 1px solid;
   border-color: rgb(0, 0, 0);
-  margin: 15px 10px 0;
-  float: left;
-}
-
-.tras-box {
-  padding: 15px;
-  width: 100%;
-  height: 100%;
+  margin: 0 15px 15px;
+  padding: 10px;
 }
 
 .tras-top {
-  height: 90px;
+  height: 110px;
   border-bottom: 1px solid red;
 }
 
@@ -291,15 +288,16 @@ body {
 }
 .tras-left img {
   object-fit: cover;
-  width: 60px;
-  height: 60px;
+  width: 70px;
+  height: 70px;
   border-radius: 50%;
+  float: left;
 }
 
 .tras-right {
   float: right;
-  height: 70px;
-  width: 190px;
+  height: 100px;
+  width: 180px;
   background-color: burlywood;
 }
 
@@ -311,7 +309,7 @@ body {
 
 .tras-right p {
   display: inline-block;
-  font-size: 5px;
+  font-size: 3px;
   margin: 0;
 }
 
@@ -363,6 +361,10 @@ body {
 .tra-middle {
   width: 100%;
   margin: 15px;
+}
+
+.tras-like {
+  float: right;
 }
 
 .nav-tabs {
@@ -480,50 +482,56 @@ body {
 /* 全体のスタイル */
 .swiper-wrapper {
   width: 100%;
-  height: 250px;
+  height: 100%;
   margin-bottom: 80px;
 }
 /* 全スライド共通スタイル */
 .swiper-slide {
   color: #ffffff;
-  width: 200px;
-  height: 240px;
-  // text-align: center;
-  border: 1px solid black;
-  // line-height: 250px;
+  width: 100%;
+  height: 100%;
 }
 
 .slide-item {
-  width: 100%;
-  height: 240px;
+  width: 230px;
+  height: 330px;
+  border: 1px solid black;
+  padding: 10px;
 }
 
 .slide-top {
   height: 110px;
+  width: 100%;
   border-bottom: 1px solid grey;
 }
 .slide-left {
   float: left;
-  margin: 10px;
 }
 
 .slide-left img {
-  height: 70px;
-  width: 70px;
+  height: 60px;
+  width: 60px;
   border-radius: 50%;
 }
 
 .slide-right {
   float: right;
-  text-decoration: none;
   background-color: greenyellow;
-  width: 100px;
-  margin-top: 8px;
+  width: 120px;
+}
+
+.slide-right a {
+  text-decoration: none;
+  cursor: pointer;
+  color: black;
+}
+
+.slide-right a:hover {
+  opacity: 0.5;
 }
 
 .slide-right p {
-  font-size: 7px;
-  text-decoration: none;
+  font-size: 3px;
   display: inline-block;
   margin: 0;
 }
@@ -595,9 +603,4 @@ body {
   -o-transition: all 0.3s ease-in;
   -webkit-transition: all 0.3s ease-in;
   -moz-transition: all 0.3s ease-in;
-}
-
-.row {
-  margin-right: -15px;
-  margin-left: -15px;
 }
