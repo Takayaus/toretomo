@@ -1,6 +1,6 @@
 class TrainersController < ApplicationController
   def index
-    @trainers = Trainer.all
+    @trainers = Trainer.all.page(params[:page]).per(12)
   end
 
   def show

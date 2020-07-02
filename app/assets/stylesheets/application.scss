@@ -85,6 +85,28 @@ body {
   text-align: center;
 }
 
+.pagination {
+  justify-content: center;
+}
+
+/*ページネーション自体のデザイン*/
+.pagination > li > a {
+  border: none; /*枠線をなくす*/
+  color: #696969; /*文字の色を変える*/
+  margin: 0 7px;
+}
+
+/* 表示しているページ番号のデザイン */
+.pagination > .active > a {
+  background: #93c9ff; /*背景の色を変える*/
+  border-radius: 50%; /*角を丸くする*/
+}
+
+/*ホバー時のデザイン*/
+.pagination > li > a:hover {
+  border-radius: 50%; /*角を丸くする*/
+}
+
 //gyms
 
 //index
@@ -294,7 +316,7 @@ body {
   width: 280px;
   border: 1px solid;
   border-color: rgb(0, 0, 0);
-  margin: 0 15px 15px;
+  margin: 0 10px 40px;
   padding: 10px;
 }
 

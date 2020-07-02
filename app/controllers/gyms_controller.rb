@@ -1,6 +1,6 @@
 class GymsController < ApplicationController
   def index
-    @gyms = Gym.all.order(created_at: :desc)
+    @gyms = Gym.all.page(params[:page]).per(6)
     
   end
 
