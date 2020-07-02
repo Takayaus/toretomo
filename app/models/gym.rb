@@ -3,7 +3,7 @@ class Gym < ApplicationRecord
     mount_uploader :image, ImageUploader
     
     has_many :gym_categories
-    has_many :categories, through: :gym_categories, dependent: :destroy
+    has_many :categories, through: :gym_categories, source: :category
     accepts_nested_attributes_for :gym_categories, allow_destroy: true
 
     has_many :gym_trainers

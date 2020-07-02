@@ -88,8 +88,29 @@ body {
 //gyms
 
 //index
+.gyms-contents {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 40px;
+}
+
+.gyms-side {
+  width: 20%;
+  border: 1px solid black;
+  padding: 10px;
+}
+
+.side-cate {
+  border-bottom: 1px solid black;
+}
+
+.side-cate a {
+  text-decoration: none;
+  list-style: none;
+}
+
 .gyms-items {
-  float: left;
+  width: 75%;
 }
 
 .gyms-item {
