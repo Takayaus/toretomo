@@ -13,7 +13,8 @@ namespace :import_csv do
          title: row["title"],
          content: row["content"],
          number: row["number"],
-         address: row["address"]
+         address: row["address"],
+         price: row["price"]
       }
     end
     puts "インポート処理を開始"

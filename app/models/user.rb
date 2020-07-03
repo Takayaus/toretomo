@@ -11,6 +11,8 @@ class User < ApplicationRecord
 
   has_many :likes, dependent: :destroy
   has_many :liked_trainers, through: :likes, source: :trainer
+  
+  enum sex: { man: 0, woman: 1}
 
   def already_liked?(trainer)
     self.likes.exists?(trainer_id: trainer.id)

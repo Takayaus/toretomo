@@ -5,7 +5,7 @@ ActiveAdmin.register Trainer do
   #
   # Uncomment all parameters which should be permitted for assignment
   #
-   permit_params :name, :age, :number, :email, :title, :content, :profile, :image, :fee, trainer_categories_attributes: [:category_id, :_destroy, :id],
+   permit_params :name, :age, :number, :email, :title, :content, :profile, :image, :fee, :sex, trainer_categories_attributes: [:category_id, :_destroy, :id],
                   gym_trainers_attributes: [:gym_id, :_destroy, :id], trainer_districts_attributes: [:district_id, :_destroy, :id]
   #
   # or
@@ -26,6 +26,7 @@ ActiveAdmin.register Trainer do
       f.input :profile
       f.input :image, :as => :file
       f.input :fee
+      f.input :sex
       f.has_many :trainer_categories, allow_destroy: true, heading: false,
                                   new_record: true do |k|
         k.input :category_id,

@@ -5,7 +5,7 @@ ActiveAdmin.register User do
   #
   # Uncomment all parameters which should be permitted for assignment
   #
-  permit_params :name, :age, :email, :encrypted_password, :image_name, :reset_password_token, :reset_password_sent_at, :remember_created_at
+  permit_params :name, :age, :email, :encrypted_password, :image_name, :sex, :reset_password_token, :reset_password_sent_at, :remember_created_at
   #
   # or
   #
