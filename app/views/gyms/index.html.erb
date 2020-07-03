@@ -2,18 +2,15 @@
 <div class="gyms-contents">
     <aside class="gyms-side">
         <div class="side-ransack">
-        </div>
-        <div class="side-cate">
-            <h5>カテゴリーから選ぶ</h5>    
-                <ul>
-                    <% @gyms.each do |gym|%>
-                        <% gym.gym_categories.each do |g| %>
-                            <a href="/categories/<%= g.category.id %>"><li><%= g.category.name %></li></a>
-                        <% end %>
-                    <% end %>
-                </ul>
-        </div>
-        <div class="side-district">
+            <%= search_form_for @q do |f| %>
+                <%= f.label :name, "キーワード" %>
+                <%= f.search_field :name_or_title_or_content_or_address_cont %>
+                <%= f.label :district_id_eq, "エリア" %>
+                <%= f.collection_select :district_id_eq, @districts, :id, :name, include_blank: true %>
+                <%= f.label :categories_id_in, "カテゴリー" %>
+                <%= f.collection_check_boxes :categories_id_in, @categories, :id, :name %>
+                <%= f.submit "検索" %>
+            <% end %>
         </div>
     </aside>
 

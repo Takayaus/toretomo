@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'search', to: 'gyms#search'
   get 'users/show'
   get 'district/show'
   root 'static_pages#home'
