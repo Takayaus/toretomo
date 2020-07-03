@@ -17,4 +17,5 @@ class Trainer < ApplicationRecord
 
     has_many :likes
     has_many :liked_users, through: :likes, source: :user
+    enum sex: { 男性: 0, 女性: 1}
 end

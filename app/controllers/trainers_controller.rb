@@ -1,6 +1,14 @@
 class TrainersController < ApplicationController
   def index
-    @trainers = Trainer.all.page(params[:page]).per(12)
+    @q = Trainer.ransack(params[:q])
+    @trainers = @q.result(distinct: true).includes(:districts, :categories).page(params[:page]).per(12)
+    @districts = District.all
+    @categories = Category.all
+  end
+
+  def search
+    @q = Trainer.search(search_params)
+    @trainer = @q.result(distinct: true).includes(:districts, :categories)
   end
 
   def show
@@ -8,5 +16,10 @@ class TrainersController < ApplicationController
     @comments = @trainer.comments
     @comment = @trainer.comments.build
     @like = Like.new
+  end
+
+    private
+  def search_params
+    params.require(:q).permit!
   end
 end

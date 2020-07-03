@@ -4,6 +4,7 @@
             <div class="tra-top">
                 <div class="tra-left">
                     <%= image_tag(@trainer.image.url) %>
+                    <%= @trainer.sex %>
                 </div>
                 <% if current_user.already_liked?(@trainer) %>
                   <%= link_to trainer_like_path(@trainer), method: :delete, remote: :true do %>
