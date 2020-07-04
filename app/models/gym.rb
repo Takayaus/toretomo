@@ -13,4 +13,9 @@ class Gym < ApplicationRecord
     belongs_to :district
 
     has_many :comments, dependent: :destroy
+
+    ransacker :comments_count do
+        query = '(SELECT COUNT(comments.gym_id) FROM comments where comments.gym_id = gyms.id GROUP BY comments.gym_id)'
+        Arel.sql(query)
+    end
 end

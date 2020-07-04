@@ -8,7 +8,7 @@ class TrainersController < ApplicationController
 
   def search
     @q = Trainer.search(search_params)
-    @trainer = @q.result(distinct: true).includes(:districts, :categories)
+    @trainers = @q.result(distinct: true).includes(:districts, :categories)
   end
 
   def show

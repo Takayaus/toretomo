@@ -18,4 +18,14 @@ class Trainer < ApplicationRecord
     has_many :likes
     has_many :liked_users, through: :likes, source: :user
     enum sex: { 男性: 0, 女性: 1}
+
+
+      def self.sort(selection)
+    case selection
+    when 'new'
+      return all.order(created_at: :DESC)
+    when 'old'
+      return all.order(created_at: :ASC)
+  end
+end
 end

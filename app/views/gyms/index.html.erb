@@ -4,7 +4,7 @@
         <div class="gyms-ransack">
             <%= search_form_for @q do |f| %>
                 <%= f.label :name, "キーワード" %>
-                <%= f.search_field :name_or_title_or_content_or_address_cont %>
+                <%= f.search_field :name_or_title_or_content_or_address_or_categories_name_cont %>
                 <%= f.label :district_id_eq, "エリア" %>
                 <%= f.collection_select :district_id_eq, @districts, :id, :name, include_blank: true %>
                 <%= f.label :categories_id_in, "カテゴリー" %>
@@ -12,11 +12,11 @@
                 <%= f.label :price %>
                 <%= f.number_field :price_gteq %>円以上〜
                 <%= f.number_field :price_lt %>円未満
+                <%= f.select( :sorts, { '並び替え': 'id desc', '料金の安い順': 'price asc', '料金の高い順': 'price desc', '古い順': 'updated_at asc', '新しい順': 'updated_at desc', '口コミの多い順': 'comments_count desc'}, include_blank: true) %>
                 <%= f.submit "検索" %>
             <% end %>
         </div>
     </aside>
-
 
     <div class="gyms-items">
         <% @gyms.each do |gym|%>
@@ -28,7 +28,7 @@
                     <div class="gyms-left">
                         <a href="/gyms/<%= gym.id %>"><%= image_tag (gym.image.url) %></a>
                     </div>
-                        <p id="star-ave<%= gym.id %>">評価</p> 
+                        <p id="star-ave<%= gym.id %>">評価</p>(口コミ<%= gym.comments.count %>)<p></p>
                         <script>
                         $('#star-ave<%= gym.id %>').raty({
                         size: 36,
@@ -41,6 +41,7 @@
                         });
                         </script>
                     <div class="gyms-right">
+                        <p><%= gym.price %></p>
                         <p><%= gym.address %></p>
                         <p><%= gym.title %></p>
                         <p><%= gym.number %></p>
