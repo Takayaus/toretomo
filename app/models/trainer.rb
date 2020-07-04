@@ -28,4 +28,14 @@ class Trainer < ApplicationRecord
       return all.order(created_at: :ASC)
   end
 end
+
+    ransacker :comment_count do
+        query = '(SELECT COUNT(comments.trainer_id) FROM comments where comments.trainer_id = trainers.id GROUP BY comments.trainer_id)'
+        Arel.sql(query)
+end
+
+    ransacker :likes_count do
+        query = '(SELECT COUNT(likes.trainer_id) FROM likes where likes.trainer_id = trainers.id GROUP BY likes.trainer_id)'
+        Arel.sql(query)
+end
 end

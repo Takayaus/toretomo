@@ -6,10 +6,6 @@ class TrainersController < ApplicationController
     @categories = Category.all
   end
 
-  def search
-    @q = Trainer.search(search_params)
-    @trainers = @q.result(distinct: true).includes(:districts, :categories)
-  end
 
   def show
     @trainer = Trainer.find(params[:id])
@@ -18,8 +14,4 @@ class TrainersController < ApplicationController
     @like = Like.new
   end
 
-    private
-  def search_params
-    params.require(:q).permit!
-  end
 end
