@@ -58,7 +58,7 @@
                         </script>
                     <p>(<%= trainer.comments.count %>)</p>
                     <% trainer.trainer_categories.each do |tra| %>
-                    <p><%= link_to tra.category.name, category_path(tra.category) %></p>
+                    <p><%= tra.category.name %></p>
                     <% end %>
                 </div>
             </div>

@@ -9,13 +9,13 @@
                 <%= f.radio_button :sex_eq, 0 %>男性
                 <%= f.radio_button :sex_eq, 1 %>女性
                 <%= f.label :districts_id_eq, "エリア" %>
-                <%= f.collection_select :districts_id_eq, @districts, :id, :name, include_blank: true %>
+                <%= f.collection_select :districts_id_eq, @districts, :id, :name, include_blank: true %></br>
                 <%= f.label :categories_id_in, "カテゴリー" %>
-                <%= f.collection_check_boxes :categories_id_in, @categories, :id, :name %>
-                <%= f.label :price %>
+                <%= f.collection_check_boxes :categories_id_in, @categories, :id, :name %></br>
+                <%= f.label :price, '月会費' %>
                 <%= f.number_field :price_gteq %>円以上〜
                 <%= f.number_field :price_lt %>円未満
-                <%= f.select( :sorts, { '並び替え': 'id desc', '料金の安い順': 'price asc', '料金の高い順': 'price desc', '古い順': 'updated_at asc', '新しい順': 'updated_at desc', '口コミの多い順': 'comment_count desc', 'いいね の多い順': 'likes_count desc'}, include_blank: true) %>
+                <%= f.select( :sorts, { '並び替え': 'id desc', '料金の安い順': 'price asc', '料金の高い順': 'price desc', '古い順': 'updated_at asc', '新しい順': 'updated_at desc', '口コミの多い順': 'comment_count desc', 'いいね の多い順': 'likes_count desc'}) %>
                 <%= f.submit "検索" %>
             <% end %>
         </div>
@@ -46,7 +46,7 @@
                                         </script>
                                     <p>(口コミ<%= trainer.comments.count %>件)</p>
                                     <% trainer.trainer_categories.each do |tra| %>
-                                        <p><%= link_to tra.category.name, category_path(tra.category) %></p>
+                                        <p><%= tra.category.name %></p>
                                     <% end %>
                                 </div>
                             </div>
@@ -74,6 +74,6 @@
                     </div>
                 </div>
             <% end %>
-            <%= paginate @trainers %>
         </div>
+        <%= paginate @trainers %>
 </div>

@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  get 'search', to: 'trainers#search'
   get 'users/show'
   get 'district/show'
   root 'static_pages#home'
@@ -7,17 +6,13 @@ Rails.application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
 
-  resources :gyms, only:[:show, :index] do
+  resources :gyms, only: %i[show index] do
     resources :comments, only: %i[create edit update destroy], module: :gyms
   end
 
-  resources :categories, only:[:show, :index] do
-    resources :districts, only:[:show]
-  end
-
-  resources :trainers, only:[:index, :show] do
+  resources :trainers, only: %i[index show] do
     resources :comments, only: %i[create edit update destroy], module: :trainers
-    resources :likes, only: [:create, :destroy]
+    resources :likes, only: %i[create destroy]
   end
 
   devise_for :users

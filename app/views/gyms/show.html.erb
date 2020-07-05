@@ -16,13 +16,12 @@
       });
     </script>
     <% @gym.gym_categories.each do |gym|%>
-      <p><%= link_to gym.category.name, category_path(gym.category) %></p>
+      <p><%= gym.category.name %></p>
     <% end %>
   </div>
 
 
 
-<h1>Lava lamp multiple tabs</h1>
 <div class='tabs'>
   <div class='tab-buttons'>
     <span class='content1'>ホーム</span>
