@@ -4,6 +4,7 @@
             <div class="tra-top">
                 <div class="tra-left">
                     <%= image_tag(@trainer.image.url) %>
+                    <%= @trainer.sex %>
                 </div>
                 <% if current_user.already_liked?(@trainer) %>
                   <%= link_to trainer_like_path(@trainer), method: :delete, remote: :true do %>
@@ -42,10 +43,8 @@
                 <div class="tra-content">
                     <h4>自己紹介・活動内容</h4>
                     <p><%= @trainer.content %></p>
-                    <h4>経歴</h4>
-                    <p><%= @trainer.profile %></p>
                     <h4>料金システム</h4>
-                    <p><%= @trainer.fee %></p>
+                    <p><%= @trainer.price %></p>
                 </div>
             </div>
         </div>
@@ -78,7 +77,12 @@
   <% end %>
   <% if user_signed_in? %>
     <%= form_with(model: [@trainer, @comment], local: true) do |f| %>
-      <%= f.text_area :content, class: "form-control", rows: 5 %>
+    <div class="form-group row">
+      <%= f.label :title, 'タイトル' %>
+      <div class="col-sm-10">
+        <%= f.text_field :title, class: "form-control", rows: 5 %>
+      </div>
+    </div>
 
  <div class="form-group" id="star">
               <%= f.label :rate,'評価' %>
@@ -96,10 +100,20 @@
                             half: true,
                           });
                           </script>
-    
+        <div class="form-group row">
+          <%= f.label :content, '口コミ内容' %>
+          <div class="col-sm-10">
+         <%= f.text_area :content, class: "form-control", rows: 5 %>
+         </div>
+         </div>
+           <div class="form-group row">
+    <div class="col-sm-10">
       <%= button_tag type: "submit", class: "btn btn-success float-right mt-1" do %>
         <i class="far fa-comments"></i> コメントする
+        </div>
+        </div>
       <% end %>
     <% end %>
   <% end %>
+</div>
 </div>

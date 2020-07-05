@@ -5,7 +5,7 @@ ActiveAdmin.register Gym do
   #
   # Uncomment all parameters which should be permitted for assignment
   #
-    permit_params :name, :title, :content, :number, :address, :image, :district_id, gym_categories_attributes: [:category_id, :_destroy, :id],
+    permit_params :name, :title, :content, :number, :address, :price, :image, :district_id, gym_categories_attributes: [:category_id, :_destroy, :id],
                   gym_trainers_attributes: [:trainer_id, :_destroy, :id]
   #
   # or
@@ -23,6 +23,7 @@ ActiveAdmin.register Gym do
       f.input :content
       f.input :number
       f.input :address
+      f.input :price
       f.input :image, :as => :file
       f.input :district_id, label: 'エリア', as: :select, collection: District.all.map{|a| [a.name, a.id]}
       f.has_many :gym_categories, allow_destroy: true, heading: false,
@@ -33,7 +34,7 @@ ActiveAdmin.register Gym do
       f.has_many :gym_trainers, allow_destroy: true, heading: false,
                                   new_record: true do |t|
         t.input :trainer_id,
-                label: 'カテゴリー', as: :select, collection: Trainer.all.map{|a| [a.name, a.id]}
+                label: 'トレーナー', as: :select, collection: Trainer.all.map{|a| [a.name, a.id]}
       end
       f.actions
     end

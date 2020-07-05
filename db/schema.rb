@@ -50,9 +50,9 @@ ActiveRecord::Schema.define(version: 2020_06_28_032259) do
     t.float "rate", default: 0.0
     t.bigint "user_id"
     t.bigint "gym_id"
+    t.bigint "trainer_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "trainer_id"
     t.index ["gym_id"], name: "index_comments_on_gym_id"
     t.index ["trainer_id"], name: "index_comments_on_trainer_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
@@ -83,13 +83,14 @@ ActiveRecord::Schema.define(version: 2020_06_28_032259) do
   end
 
   create_table "gyms", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "name"
+    t.string "name", null: false
     t.string "title"
     t.text "content"
     t.string "number"
     t.string "address"
-    t.string "image"
+    t.integer "price"
     t.integer "district_id"
+    t.string "image"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -131,23 +132,24 @@ ActiveRecord::Schema.define(version: 2020_06_28_032259) do
   create_table "trainers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
     t.integer "age"
+    t.integer "sex"
     t.string "number"
     t.string "email", null: false
     t.string "title"
     t.text "content"
-    t.text "profile"
+    t.integer "price"
     t.string "image"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.text "fee"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
     t.integer "age", null: false
     t.string "email", default: "", null: false
-    t.string "encrypted_password", default: "", null: false
+    t.integer "sex", null: false
     t.string "image_name"
+    t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"

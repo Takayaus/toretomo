@@ -1,7 +1,11 @@
 class GymsController < ApplicationController
   def index
-    @gyms = Gym.all.order(created_at: :desc)
-  end
+    @q = Gym.ransack(params[:q])
+    @gyms = @q.result(distinct: true).includes(:district, :categories).page(params[:page]).per(7)
+      @districts = District.all
+      @categories = Category.all
+    end
+
 
   def show
     @gym = Gym.find(params[:id])

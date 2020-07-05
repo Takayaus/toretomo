@@ -1,0 +1,128 @@
+<div class="container">
+    <div class="user-profile">
+        <div class="user-img">
+            <%= image_tag(@user.image_name.url) %>
+        </div>
+        <div class="user-profile">
+            <h4><%= @user.name %></h4>
+            <p><%= @user.email %></p>
+        </div>
+    </div>
+<div class='tabs'>
+  <div class='user-tab-buttons'>
+    <span class='content1'>口コミ</span>
+    <span class='content2'>お気に入り</span>
+    <div id='user-lamp' class='content1'></div>
+  </div>
+  <div class='tab-content'>
+    
+    <div class='content1'>
+
+        <% @user.comments.each do |comment| %>
+        <div>
+            <div id="star-rate-<%= comment.id %>"></div>
+                <script>
+                    $('#star-rate-<%= comment.id %>').raty({
+                        size: 36,
+                        starOff: '<%= asset_path('star-off.png') %>',
+                        starOn : '<%= asset_path('star-on.png') %>',
+                        starHalf: '<%= asset_path('star-half.png') %>',
+                        half: true,
+                        readOnly: true,
+                        score: <%= comment.rate %>,
+                });
+                </script>  
+            <%= comment.content %>
+            </div>
+            <% if comment.gym_id.nil? %>
+                <%= link_to trainer_path(comment.trainer) do%>
+                    <%= comment.trainer.name %>
+                <%end%>
+            <%else%>
+                <%= link_to gym_path(comment.gym) do %>
+                    <%= comment.gym.name %>
+                <%end%>
+            <%end%>
+        <% end %>
+        <p><%= @user.comments.count %>件の口コミが表示されています。</p>
+    </div>
+    
+    <div class='content2'>
+
+<div class="tras-items">
+        <% @user.liked_trainers.each do |trainer|%>
+            <div class="tras-item">
+                <div class="tras-box">
+                    <div class="tras-top">
+                        <div class="tras-left">
+                            <a href="/trainers/<%= trainer.id %>"><%= image_tag (trainer.image.url) %></a>
+                        </div>
+                                                <p id="star-ave<%= trainer.id %>"></p>
+                                                <p>(口コミ<%= trainer.comments.count %>件)</p>
+                                                                <% if current_user.already_liked?(trainer) %>
+                                                                <%= link_to trainer_like_path(trainer, trainer), method: :delete, remote: :true do %>
+                                                                <i class="fa fa-heart" aria-hidden="true" style="color: red;">
+                                                                <%= trainer.likes.count %> 
+                                                                </i>
+                                                                <% end %>
+                                                                <% else %>
+                                                                <%= link_to trainer_likes_path(trainer, trainer), method: :post, remote: :true do %>
+                                                                    <i class="fa fa-heart" aria-hidden="true" style="color: #C0C0C0;">
+                                                                <%= trainer.likes.count %> 
+                                                                </i>
+                                                                <% end %>
+                                                                <% end %>
+    <script>
+    $('#star-ave<%= trainer.id %>').raty({
+    size: 36,
+    starOff:  '<%= asset_path('star-off.png') %>',
+    starOn : '<%= asset_path('star-on.png') %>',
+    starHalf: '<%= asset_path('star-half.png') %>',
+    half: true,
+    readOnly: true,
+    score: <%= trainer.comments.average(:rate).to_f.round(1) %>,
+      });
+    </script>
+                        <div class="tras-right">
+                            <h6><%= link_to trainer.name, trainer_path(trainer) %></h6>
+                            <% trainer.trainer_categories.each do |tra| %>
+                            <p><%= link_to tra.category.name, category_path(tra.category) %></p>
+                            <% end %>
+                        </div>
+                    </div>
+                    <div class="tras-middle">
+                        <p><%= trainer.title %></p>
+                    </div>
+                    <div class="tras-bottom">
+                   </div>
+                </div>
+            </div>
+        <% end %>
+    </div>
+
+
+    </div>
+
+  </div>
+</div>
+<div class='credit'>
+  
+</div>
+</div>
+
+<script>
+$('.tab-content>div').hide();
+$('.tab-content>div').first().slideDown();
+  $('.user-tab-buttons span').click(function(){
+    var thisclass=$(this).attr('class');
+    $('#user-lamp').removeClass().addClass('#user-lamp').addClass(thisclass);
+    $('.tab-content>div').each(function(){
+      if($(this).hasClass(thisclass)){
+        $(this).fadeIn(800);
+      }
+      else{
+        $(this).hide();
+      }
+    });
+  });
+</script>

@@ -30,10 +30,41 @@ body {
 }
 
 .container {
-  width: 100%;
-  max-width: 1090px;
+  padding-right: 15px;
+  padding-left: 15px;
   margin-right: auto;
   margin-left: auto;
+}
+
+.row {
+  margin-right: -15px;
+  margin-left: -15px;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.tra-heart {
+  float: left;
+}
+
+@media (min-width: 768px) {
+  .container {
+    width: 750px;
+  }
+}
+
+@media (min-width: 992px) {
+  .container {
+    width: 970px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .container {
+    width: 1170px;
+  }
 }
 
 .container-login {
@@ -50,11 +81,58 @@ body {
   @extend .alert-danger;
 }
 
+.text-center {
+  text-align: center;
+}
+
+.pagination {
+  justify-content: center;
+}
+
+/*ページネーション自体のデザイン*/
+.pagination > li > a {
+  border: none; /*枠線をなくす*/
+  color: #696969; /*文字の色を変える*/
+  margin: 0 7px;
+}
+
+/* 表示しているページ番号のデザイン */
+.pagination > .active > a {
+  background: #0080ff; /*背景の色を変える*/
+  border-radius: 50%; /*角を丸くする*/
+}
+
+/*ホバー時のデザイン*/
+.pagination > li > a:hover {
+  border-radius: 50%; /*角を丸くする*/
+}
+
 //gyms
 
 //index
+.gyms-contents {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 40px;
+}
+
+.gyms-side {
+  width: 20%;
+  border: 1px solid black;
+  padding: 10px;
+}
+
+.side-cate {
+  border-bottom: 1px solid black;
+}
+
+.side-cate a {
+  text-decoration: none;
+  list-style: none;
+}
+
 .gyms-items {
-  float: left;
+  width: 75%;
 }
 
 .gyms-item {
@@ -62,7 +140,7 @@ body {
   border-color: black;
   border-radius: 3px;
   width: 650px;
-  height: 280px;
+  height: 330px;
   margin-bottom: 50px;
 }
 
@@ -84,8 +162,8 @@ body {
 }
 
 .gyms-box {
-  padding: 20px 20px 0 20px;
-  height: 250px;
+  padding: 20px 20px 0;
+  height: 240px;
   overflow: hidden;
 }
 
@@ -98,12 +176,57 @@ body {
   height: 160px;
 }
 
+.gyms-star {
+  border-bottom: 1px solid black;
+}
+
+.gyms-star p {
+  display: inline-block;
+  font-size: 15px;
+  margin-right: 15px;
+}
+
 .gyms-right {
   width: 350px;
   height: 200px;
   float: right;
 }
 
+.gyms-right h6 {
+  border-top: 1px solid black;
+  padding-top: 10px;
+  font-weight: normal;
+}
+
+.gyms-content {
+  display: inline-block;
+  font-size: 15px;
+  margin: 3px 0;
+}
+
+.gyms-button {
+  text-align: center;
+}
+
+.gyms-button i {
+  margin: 0;
+}
+
+.btn-flat-simple {
+  position: relative;
+  display: inline-block;
+  font-weight: bold;
+  padding: 0.25em 0.5em;
+  text-decoration: none;
+  color: #28a745;
+  background: #ececec;
+  transition: 0.4s;
+}
+
+.btn-flat-simple:hover {
+  background: #28a745;
+  color: white;
+}
 .gyms-nav {
   text-align: center;
   margin: 20px 0;
@@ -132,9 +255,23 @@ body {
 }
 
 //show
-.gym-title {
-  margin: 30px 0;
-  padding: 20px;
+.gym-wrapper {
+  width: 100%;
+  height: 430px;
+  padding-top: 30px;
+}
+
+.gym-left {
+  float: left;
+}
+
+.gym-left img {
+  width: 500px;
+  height: 320px;
+}
+
+.gym-right {
+  float: right;
 }
 
 .gym-content {
@@ -233,48 +370,40 @@ body {
 
 //trainers
 
-.tras-items {
-  width: 100%;
-  height: auto;
-  overflow: hidden;
+.tras-side {
+  text-align: center;
+  padding: 30px 0;
 }
 
 .tras-item {
-  height: 400px;
-  width: 310px;
+  height: 410px;
+  width: 280px;
   border: 1px solid;
   border-color: rgb(0, 0, 0);
-  margin: 15px 20px 0 0;
-  float: left;
-}
-
-.tras-box {
-  padding: 15px;
-  width: 100%;
-  height: 100%;
+  margin: 0 10px 40px;
+  padding: 10px;
 }
 
 .tras-top {
-  height: 90px;
-  border-bottom: 1px solid red;
+  height: 110px;
+  border-bottom: 1px solid black;
 }
 
 .tras-left {
   float: left;
-  background-color: cadetblue;
 }
 .tras-left img {
   object-fit: cover;
-  width: 60px;
-  height: 60px;
+  width: 70px;
+  height: 70px;
   border-radius: 50%;
+  float: left;
 }
 
 .tras-right {
   float: right;
-  height: 70px;
-  width: 190px;
-  background-color: burlywood;
+  height: 100px;
+  width: 180px;
 }
 
 .tras-right a {
@@ -285,7 +414,7 @@ body {
 
 .tras-right p {
   display: inline-block;
-  font-size: 5px;
+  font-size: 3px;
   margin: 0;
 }
 
@@ -296,7 +425,7 @@ body {
 .tras-middle {
   padding: 5px 0;
   height: 130px;
-  border-bottom: 1px solid red;
+  border-bottom: 1px solid black;
 }
 
 .tras-bottom {
@@ -316,7 +445,7 @@ body {
   margin: 15px 0 0 15px;
   height: 200px;
   width: 100%;
-  border-bottom: 1px solid red;
+  border-bottom: 1px solid black;
 }
 
 .tra-left {
@@ -337,6 +466,10 @@ body {
 .tra-middle {
   width: 100%;
   margin: 15px;
+}
+
+.tras-like {
+  float: right;
 }
 
 .nav-tabs {
@@ -368,39 +501,34 @@ body {
   height: 500px;
 }
 
-.categories {
-  width: 100%;
-  height: 340px;
-}
-.categories ul {
-  display: flex;
-}
-.categories li {
-  list-style: none;
-  position: relative;
-}
+// .categories ul {
+//   display: flex;
+// }
+// .categories li {
+//   list-style: none;
+//   position: relative;
+// }
 
-.categories p {
-  color: white;
-  font-size: 18px;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  -ms-transform: translate(-50%, -50%);
-  -webkit-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
-  margin: 0;
-  padding: 0;
-}
+// .categories p {
+//   color: white;
+//   font-size: 18px;
+//   position: absolute;
+//   top: 50%;
+//   left: 50%;
+//   -ms-transform: translate(-50%, -50%);
+//   -webkit-transform: translate(-50%, -50%);
+//   transform: translate(-50%, -50%);
+//   margin: 0;
+//   padding: 0;
+// }
 
-.categories li img {
-  width: 200px;
-  height: 200px;
+.category img {
+  width: 190px;
+  height: 190px;
   object-fit: cover;
-  position: relative;
 }
 
-.categories li img:hover {
+.category img:hover {
   opacity: 0.5;
 }
 
@@ -414,22 +542,12 @@ body {
   float: right;
 }
 
-.new-gyms {
-  width: 100%;
-  height: 420px;
-}
-
-.new-gyms-wrapper {
-  width: 100%;
-  height: auto;
-}
-
 .new-gyms-item {
   display: inline-block;
   width: 480px;
   height: 120px;
   background-color: yellow;
-  margin: 0 0 20px 40px;
+  margin: 0 0 20px 0;
   position: relative;
   color: black;
 }
@@ -461,53 +579,64 @@ body {
   margin: 0;
 }
 
+.swiper-container {
+  width: 100%;
+  margin-right: auto;
+  margin-left: auto;
+}
 /* 全体のスタイル */
 .swiper-wrapper {
   width: 100%;
-  height: 250px;
+  height: 100%;
   margin-bottom: 80px;
 }
 /* 全スライド共通スタイル */
 .swiper-slide {
   color: #ffffff;
   width: 100%;
-  height: 240px;
-  // text-align: center;
-  border: 1px solid black;
-  // line-height: 250px;
+  height: 100%;
 }
 
 .slide-item {
-  width: 100%;
-  height: 240px;
+  width: 230px;
+  height: 330px;
+  border: 1px solid black;
+  padding: 10px;
 }
 
 .slide-top {
   height: 110px;
+  width: 100%;
   border-bottom: 1px solid grey;
 }
 .slide-left {
   float: left;
-  margin: 10px;
 }
 
 .slide-left img {
-  height: 70px;
-  width: 70px;
+  height: 60px;
+  width: 60px;
   border-radius: 50%;
 }
 
 .slide-right {
   float: right;
-  text-decoration: none;
   background-color: greenyellow;
-  width: 100px;
-  margin-top: 8px;
+  width: 120px;
+}
+
+.slide-right a {
+  text-decoration: none;
+  cursor: pointer;
+  color: black;
+}
+
+.slide-right a:hover {
+  opacity: 0.5;
 }
 
 .slide-right p {
-  font-size: 7px;
-  text-decoration: none;
+  font-size: 3px;
   display: inline-block;
   margin: 0;
 }
@@ -518,4 +647,65 @@ body {
 
 .star-ave p {
   float: left;
+}
+
+//user
+
+.user-profile {
+}
+
+.user-img {
+  text-align: center;
+  margin: 30px 0;
+}
+.user-img img {
+  border-radius: 50%;
+  object-fit: cover;
+  height: 250px;
+  width: 250px;
+}
+
+.user-profile {
+  text-align: center;
+}
+
+.user-tab-buttons span {
+  font: 400 14px "open sans", sans-serif;
+  color: #333;
+  background: #eee;
+  cursor: pointer;
+  border-bottom: 2px solid #ddd;
+  display: block;
+  width: 50%;
+  float: left;
+  text-align: center;
+  height: 40px;
+  line-height: 40px;
+}
+#user-lamp {
+  width: 50%;
+  height: 2px;
+  background: rgb(255, 0, 0);
+  display: block;
+  position: absolute;
+  top: 40px;
+  transition: all 0.3s ease-in;
+  -o-transition: all 0.3s ease-in;
+  -webkit-transition: all 0.3s ease-in;
+  -moz-transition: all 0.3s ease-in;
+}
+#user-lamp.content2 {
+  left: 50%;
+  transition: all 0.3s ease-in;
+  -o-transition: all 0.3s ease-in;
+  -webkit-transition: all 0.3s ease-in;
+  -moz-transition: all 0.3s ease-in;
+}
+
+#user-lamp.content1 {
+  left: 0;
+  transition: all 0.3s ease-in;
+  -o-transition: all 0.3s ease-in;
+  -webkit-transition: all 0.3s ease-in;
+  -moz-transition: all 0.3s ease-in;
 }
