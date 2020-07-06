@@ -14,11 +14,15 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.3.3/css/swiper.min.css">
         <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
         <script src="https://kit.fontawesome.com/183144ea57.js" crossorigin="anonymous"></script>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
   </head>
 
   <body>
+  <div id="wrapper">
       <%= render 'layouts/header' %>
       <%= render 'layouts/flash' %>
     <%= yield %>
+    <%= render 'layouts/footer' %>
+    </div>
   </body>
 </html>
