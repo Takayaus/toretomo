@@ -1,4 +1,5 @@
 <div class="container">
+
   <div class="gym-wrapper">
     <div class="gym-right">
       <h3><%= @gym.name %></h3>
@@ -81,9 +82,9 @@
                           </script>
                 </div>                                                    
               </div>
-              <br />
             <% end %>
-          <%end%>
+          <% end %>
+
             <% if user_signed_in? %>
               <%= form_with(model: [@gym, @comment], local: true, remote: true) do |f| %>
               <%= f.text_area :content, class: "form-control", rows: 5 %>
@@ -109,22 +110,22 @@
               <% end %>
             <% end %>
       </div>
-</div>
+    </div>
+
     <div class='content4'>
     </div>
       
   </div>
 
-    <div class='credit'>
-      
-    </div>
+  <div class='credit'>
+  </div>
 
+</div>
 </div>
 
 
 
-
-<script type="text/javascript">
+<script>
 $('.tab-content>div').hide();
 $('.tab-content>div').first().slideDown();
   $('.tab-buttons span').click(function(){
