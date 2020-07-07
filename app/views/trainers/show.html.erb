@@ -42,7 +42,8 @@
         </div> <!--tra-right-->
       </div><!--tra-top-->
       <div class="tra-content">
-        
+        <% text = @trainer.content %>
+        <%= markdown(text).html_safe %>
       </div>
     </div> <!--row-->
 

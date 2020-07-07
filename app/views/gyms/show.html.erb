@@ -40,7 +40,8 @@
     
     <div class='content1'>
       <div class="gym-content">
-          <%= @gym.content %>
+        <% text = @gym.content %>
+        <%= markdown(text).html_safe %>
       </div>
     </div>
     
