@@ -6,7 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?
-
+User.create!(name: 'テストユーザー', age: 22, email: 'test@test.com', sex: 0,)
 Category.create!(name: 'スポーツジム')
 Category.create!(name: 'ヨガ')
 Category.create!(name: 'スイミング')

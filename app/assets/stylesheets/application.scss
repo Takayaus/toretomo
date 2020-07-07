@@ -89,22 +89,19 @@ body {
   justify-content: center;
 }
 
-/*ページネーション自体のデザイン*/
 .pagination > li > a {
-  border: none; /*枠線をなくす*/
-  color: #696969; /*文字の色を変える*/
+  border: none;
+  color: #696969;
   margin: 0 7px;
 }
 
-/* 表示しているページ番号のデザイン */
 .pagination > .active > a {
-  background: #0080ff; /*背景の色を変える*/
-  border-radius: 50%; /*角を丸くする*/
+  background: #0080ff;
+  border-radius: 50%;
 }
 
-/*ホバー時のデザイン*/
 .pagination > li > a:hover {
-  border-radius: 50%; /*角を丸くする*/
+  border-radius: 50%;
 }
 
 //gyms
@@ -280,23 +277,27 @@ body {
 }
 
 //item_image
-
-.items-content {
-  width: 100%;
+.contain {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.contain::after {
+  content: "";
+  display: block;
+  width: 280px;
+  height: 280px;
+  margin: 15px;
 }
 
 .items-item {
-  display: inline-block;
+  padding: 15px;
 }
 
 .items-item img {
   object-fit: cover;
-  width: 250px;
-  height: 250px;
-}
-
-.items-item li {
-  list-style: none;
+  width: 280px;
+  height: 280px;
 }
 
 //gyms
@@ -897,4 +898,28 @@ footer {
   .main-content .box {
     margin: 5px 0;
   }
+}
+
+//comment
+
+.comment- {
+  margin-top: 30px;
+  position: relative;
+}
+.comment-icon img {
+  height: 110px;
+  width: 110px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.comment-content h5 {
+  margin: 8px 0;
+}
+
+.comment-li {
+  margin-left: 15px;
+}
+.comment-li p {
+  display: inline-block;
 }
