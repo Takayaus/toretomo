@@ -1,5 +1,5 @@
 class CommentsController < ApplicationController
-  prepend_before_action :set_commentable, only: %i[create edit update]  
+  prepend_before_action :set_commentable, only: %i[create]  
   # before_action :set_comment, only: %i[edit update destroy]  
   def create
 
@@ -15,7 +15,22 @@ class CommentsController < ApplicationController
 
   end
 
-  
+  def edit
+    @comment = Comment.find(params[:id])
+  end
+
+  def update
+    @comment = Comment.find(params[:id])
+    @comment.update(comment_params)
+      flash[:success] = 'コメントの編集しました。'
+      if @comment.gym_id.nil?
+        redirect_to trainer_path(@comment.trainer_id)
+      elsif @comment.trainer_id.nil?
+        redirect_to gym_path(@comment.gym_id)
+      else
+        redirect_to user_path(@comment.user_id)
+      end
+  end
 
   def destroy
     @comment = Comment.find(params[:id])

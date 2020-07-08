@@ -60,28 +60,28 @@
     </div>
     
     <div class='content3'>
-          <% if @comments.present? %>
-            <% @comments.each do |comment| %>
-              <div class="row comment-">
-                <div class="col-md-2 comment-icon">
-                  <%= image_tag(comment.user.image_name.url) unless comment.user.blank?%>
-                  <h6><%= comment.user.name unless comment.user.blank? %></h6>
-                </div>
-                <div class="col-md-10 comment-content">
-                  <div id="star-rate-<%= comment.id %>">評価　</div>
-                  <h5><%= comment.title %></h5>
-                  <p><%= comment.content %></p>
-                </div>
-                  <% if user_signed_in? && comment.user == current_user %>
-                    <div class="comment-li">
-                      <p><%= link_to '削除', gym_comment_path(@gym, comment), method: :delete %></p>
-                      <p>/</p>
-                      <p><%= link_to '編集', edit_gym_comment_path(@gym, comment) %></p>
-                    </div>
-                  <% end %>
-                  <div class="new-gyms-time">
-                    <p><%= comment.created_at %></p>
-                  </div>
+      <% if @comments.present? %>
+        <% @comments.each do |comment| %>
+          <div class="row comment-">
+            <div class="col-md-2 comment-icon">
+              <%= image_tag(comment.user.image_name.url) unless comment.user.blank?%>
+              <h6><%= comment.user.name unless comment.user.blank? %></h6>
+            </div>
+            <div class="col-md-10 comment-content">
+              <div id="star-rate-<%= comment.id %>">評価　</div>
+              <h5><%= comment.title %></h5>
+              <p><%= comment.content %></p>
+            </div>
+            <% if user_signed_in? && comment.user == current_user %>
+              <div class="comment-li">
+                <p><%= link_to '削除', gym_comment_path(@gym, comment), method: :delete %></p>
+                <p>/</p>
+                <p><%= link_to '編集', edit_gym_comment_path(@gym, comment) %></p>
+              </div>
+            <% end %>
+            <div class="new-gyms-time">
+              <p><%= comment.created_at %></p>
+            </div>
                           <script>
                             $('#star-rate-<%= comment.id %>').raty({
                               size: 36,
@@ -93,9 +93,9 @@
                               score: <%= comment.rate %>,
                               });
                           </script>
-              </div>
-            <% end %>
-          <% end %>
+          </div><!--row-comment---->
+        <% end %>
+      <% end %>
 
             <% if user_signed_in? %>
               <%= form_with(model: [@gym, @comment], local: true, remote: true) do |f| %>
@@ -108,6 +108,7 @@
                 <%= f.label :content, "内容" %>
                 <%= f.text_area :content, class: "form-control", rows: 5 %>
               </div>
+
               <div class="form-group" id="star">
                 <%= f.label :rate,'評価' %>
                 <%= f.hidden_field :rate, id: :comment_star %>
@@ -129,20 +130,17 @@
               <% end %>
               <% end %>
             <% end %>
-      </div>
-    </div>
+    </div><!--content3-->
 
     <div class='content4'>
     </div>
       
-  </div>
-
+  </div><!--tab-content-->
+</div><!--tabs-->
   <div class='credit'>
   </div>
 
-</div>
-</div>
-
+</div><!--container-->
 
 
 <script>

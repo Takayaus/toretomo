@@ -381,7 +381,7 @@ body {
 }
 
 .tras-item {
-  height: 410px;
+  height: 340px;
   width: 280px;
   border: 1px solid;
   border-color: rgb(0, 0, 0);
@@ -429,12 +429,17 @@ body {
 
 .tras-middle {
   padding: 5px 0;
-  height: 130px;
+  min-height: 110px;
   border-bottom: 1px solid black;
 }
 
 .tras-bottom {
-  height: 130px;
+  height: 80px;
+  font-size: 13px;
+}
+
+.tras-bottom p {
+  margin-top: 4px;
 }
 
 //trainer/show
@@ -598,28 +603,28 @@ body {
   margin-right: auto;
   margin-left: auto;
 }
-/* 全体のスタイル */
+
 .swiper-wrapper {
   width: 100%;
   height: 100%;
   margin-bottom: 80px;
 }
-/* 全スライド共通スタイル */
+
 .swiper-slide {
-  color: #ffffff;
+  color: black;
   width: 100%;
   height: 100%;
 }
 
 .slide-item {
+  height: 340px;
   width: 230px;
-  height: 330px;
   border: 1px solid black;
   padding: 10px;
 }
 
 .slide-top {
-  height: 110px;
+  height: 100px;
   width: 100%;
   border-bottom: 1px solid grey;
 }
@@ -628,14 +633,14 @@ body {
 }
 
 .slide-left img {
-  height: 60px;
-  width: 60px;
+  height: 70px;
+  width: 70px;
   border-radius: 50%;
+  object-fit: cover;
 }
 
 .slide-right {
   float: right;
-  background-color: greenyellow;
   width: 120px;
 }
 
@@ -935,4 +940,20 @@ footer {
 }
 .comment-li p {
   display: inline-block;
+}
+
+.comment-info {
+  height: 180px;
+}
+.gym-img {
+  height: 140px;
+  width: 200px;
+  object-fit: cover;
+}
+
+.trainer-img {
+  border-radius: 50%;
+  object-fit: cover;
+  height: 140px;
+  width: 140px;
 }

@@ -54,7 +54,22 @@
                                 <p><%= trainer.title %></p>
                             </div>
                             <div class="tras-bottom">
-                        </div>
+                                 <% trainer.comments.reverse.first(1).each do |comment| %>
+                                    <div id="star-rate-<%= comment.id %>"></div>
+                                    <p><%= comment.title %></p>
+                                        <script>
+                                            $('#star-rate-<%= comment.id %>').raty({
+                                            size: 30,
+                                            starOff:  '<%= asset_path('star-off.png') %>',
+                                            starOn : '<%= asset_path('star-on.png') %>',
+                                            starHalf: '<%= asset_path('star-half.png') %>',
+                                            half: true,
+                                            readOnly: true,
+                                            score: <%= comment.rate %>,
+                                            });
+                                        </script>
+                                 <% end %>
+                            </div>
                         <div class="tras-like">
                                 <% if current_user.already_liked?(trainer) %>
                                     <%= link_to trainer_like_path(trainer, trainer), method: :delete, remote: :true do %>
