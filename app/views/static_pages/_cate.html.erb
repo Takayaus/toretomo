@@ -1,45 +1,35 @@
       <div class="cate">
         <div class="col-lg-2 col-md-4 col-sm-12">
           <div class="category text-center">
-            <a href="#">
-              <%= image_tag "spots_gym.jpeg" %>
-            </a>
+            <%= link_to image_tag("spots_gym.jpeg"), gyms_path(q: {categories_id_in: "1" }) %>
           </div>
         </div>
       </div>
       <div class="cate">
         <div class="col-lg-2 col-md-4 col-sm-12">
           <div class="category text-center">
-            <a href="#">
-              <%= image_tag "yoga.jpg" %>
-            </a>
+            <%= link_to image_tag("yoga.jpg"), gyms_path(q: {categories_id_in: "2" }) %>
           </div>
         </div>
       </div>
       <div class="cate">
         <div class="col-lg-2 col-md-4 col-sm-12">
           <div class="category text-center">
-            <a href="#">
-              <%= image_tag "swimming.jpg" %>
-            </a>
+            <%= link_to image_tag("swimming.jpg"), gyms_path(q: {categories_id_in: "3" }) %>
           </div>
         </div>
       </div>
       <div class="cate">
         <div class="col-lg-2 col-md-4 col-sm-12">
           <div class="category text-center">
-            <a href="#">
-              <%= image_tag "golf.jpeg" %>
-            </a>
+            <%= link_to image_tag("golf.jpeg"), gyms_path(q: {categories_id_in: "4" }) %>
           </div>
         </div>
       </div>
       <div class="cate">
         <div class="col-lg-2 col-md-4 col-sm-12">
           <div class="category text-center">
-            <a href="#">
-              <%= image_tag "kakutougi.jpg" %>
-            </a>
+            <%= link_to image_tag("kakutougi.jpg"), gyms_path(q: {categories_id_in: "5" }) %>
           </div>
         </div>
       </div>
