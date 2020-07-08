@@ -86,11 +86,10 @@
                               score: <%= comment.rate %>,
                               });
                           </script>
-
               </div>
             <% end %>
           <% end %>
-
+            <%= paginate @comments %>
             <% if user_signed_in? %>
 
               <%= form_with(model: [@trainer, @comment], local: true, remote: true) do |f| %>

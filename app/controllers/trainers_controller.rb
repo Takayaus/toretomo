@@ -9,7 +9,7 @@ class TrainersController < ApplicationController
 
   def show
     @trainer = Trainer.find(params[:id])
-    @comments = @trainer.comments
+    @comments = @trainer.comments.all.page(params[:page]).per(4)
     @comment = @trainer.comments.build
     @like = Like.new
   end
