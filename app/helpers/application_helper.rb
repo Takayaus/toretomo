@@ -44,4 +44,45 @@ module ApplicationHelper
         markdown = Redcarpet::Markdown.new(html_render, options)
         markdown.render(text)
     end
+
+    def sex(sex)
+        if sex == "man"
+            return  "男性"
+        else
+            return "女性"
+        end
+    end
+
+    def age(age)
+        case
+        when age >= 10
+            return "10代前半"
+        when age >= 16
+            return "10代後半"
+        when age >= 20
+            return "20代前半"
+        when age >= 26
+            return "20代後半"
+        when age >= 30
+            return "30代前半"
+        when age >= 36
+            return "30代後半"
+        when age >= 40
+            return "40代前半"
+        when age >= 46
+            return "40代後半"
+        when age >= 50
+            return "50代前半"
+        when age >= 56
+            return "50代後半"
+        when age >= 60
+            return "60代前半"
+        when age >= 66
+            return "60代後半"
+        when age >= 70
+            return "70代前半"
+        when age > 76
+            return "70代以上"
+    end
+end
 end

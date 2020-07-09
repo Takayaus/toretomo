@@ -108,6 +108,27 @@ body {
   border-radius: 50%;
 }
 
+//home
+.home-top {
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.4), rgba(7, 7, 7, 0.3)),
+    url("a.jpg");
+  background-size: cover;
+  background-position: center;
+  height: 80vh;
+  width: 100%;
+  object-fit: cover;
+  position: relative;
+}
+.home-form {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  margin: 0;
+  padding: 0;
+}
 //gyms
 
 //index
@@ -383,8 +404,7 @@ body {
 .tras-item {
   height: 340px;
   width: 280px;
-  border: 1px solid;
-  border-color: rgb(0, 0, 0);
+  border: 1px solid black;
   margin: 0 10px 40px;
   padding: 10px;
 }
@@ -513,41 +533,99 @@ body {
   border-top-left-radius: 0;
 }
 
-//home
-
-.home-top img {
-  width: 100%;
-  height: 500px;
+.category {
+  position: relative;
+  margin: 10px;
 }
 
-// .categories ul {
-//   display: flex;
-// }
-// .categories li {
-//   list-style: none;
-//   position: relative;
-// }
-
-// .categories p {
-//   color: white;
-//   font-size: 18px;
-//   position: absolute;
-//   top: 50%;
-//   left: 50%;
-//   -ms-transform: translate(-50%, -50%);
-//   -webkit-transform: translate(-50%, -50%);
-//   transform: translate(-50%, -50%);
-//   margin: 0;
-//   padding: 0;
-// }
-
-.category img {
-  width: 190px;
+.cate-img1 {
+  background: linear-gradient(
+      to top,
+      rgba(0, 0, 0, 0.4),
+      rgba(7, 7, 7, 0.3),
+      rgba(82, 82, 82, 0) 97%,
+      rgba(84, 84, 84, 0)
+    ),
+    url("spots_gym.jpeg");
+  background-size: cover;
+  background-position: center;
   height: 190px;
+  width: 190px;
+  object-fit: cover;
+}
+.cate-img2 {
+  background: linear-gradient(
+      to top,
+      rgba(0, 0, 0, 0.4),
+      rgba(7, 7, 7, 0.3),
+      rgba(82, 82, 82, 0) 97%,
+      rgba(84, 84, 84, 0)
+    ),
+    url("yoga.jpg");
+  background-size: cover;
+  background-position: center;
+  height: 190px;
+  width: 190px;
+  object-fit: cover;
+}
+.cate-img3 {
+  background: linear-gradient(
+      to top,
+      rgba(0, 0, 0, 0.4),
+      rgba(7, 7, 7, 0.3),
+      rgba(82, 82, 82, 0) 97%,
+      rgba(84, 84, 84, 0)
+    ),
+    url("swimming.jpg");
+  background-size: cover;
+  background-position: center;
+  height: 190px;
+  width: 190px;
+  object-fit: cover;
+}
+.cate-img4 {
+  background: linear-gradient(
+      to top,
+      rgba(0, 0, 0, 0.4),
+      rgba(7, 7, 7, 0.3),
+      rgba(82, 82, 82, 0) 97%,
+      rgba(84, 84, 84, 0)
+    ),
+    url("golf.jpeg");
+  background-size: cover;
+  background-position: center;
+  height: 190px;
+  width: 190px;
+  object-fit: cover;
+}
+.cate-img5 {
+  background: linear-gradient(
+      to top,
+      rgba(0, 0, 0, 0.4),
+      rgba(7, 7, 7, 0.3),
+      rgba(82, 82, 82, 0) 97%,
+      rgba(84, 84, 84, 0)
+    ),
+    url("kakutougi.jpg");
+  background-size: cover;
+  background-position: center;
+  height: 190px;
+  width: 190px;
   object-fit: cover;
 }
 
-.category img:hover {
+.cate-p {
+  top: 80%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  color: white;
+}
+.category:hover {
   opacity: 0.5;
 }
 
@@ -565,10 +643,10 @@ body {
   display: inline-block;
   width: 480px;
   height: 120px;
-  background-color: yellow;
   margin: 0 0 20px 0;
   position: relative;
   color: black;
+  border: 0.5px solid #c6c6c6;
 }
 
 .new-gyms-item:hover {
@@ -612,8 +690,6 @@ body {
 
 .swiper-slide {
   color: black;
-  width: 100%;
-  height: 100%;
 }
 
 .slide-item {
@@ -642,6 +718,7 @@ body {
 .slide-right {
   float: right;
   width: 120px;
+  height: 100px;
 }
 
 .slide-right a {
@@ -663,11 +740,36 @@ body {
 .slide-right h6 {
   margin: 0;
 }
+.slide-middle {
+  padding: 5px 0;
+  min-height: 110px;
+  border-bottom: 1px solid black;
+}
 
+.slide-middle p {
+  font-size: 14px;
+}
+.slide-bottom {
+  margin-top: 5px;
+  height: 100px;
+  font-size: 13px;
+  position: relative;
+}
 .star-ave p {
   float: left;
 }
 
+.profile {
+  height: 20px;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  font-size: 12px;
+  margin: 0;
+}
+.profile p {
+  display: inline-block;
+}
 //user
 
 .user-profile {

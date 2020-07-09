@@ -82,22 +82,22 @@
             <div class="new-gyms-time">
               <p><%= comment.created_at %></p>
             </div>
-                          <script>
-                            $('#star-rate-<%= comment.id %>').raty({
-                              size: 36,
-                              starOff:  '<%= asset_path('star-off.png') %>',
-                              starOn : '<%= asset_path('star-on.png') %>',
-                              starHalf: '<%= asset_path('star-half.png') %>',
-                              half: true,
-                              readOnly: true,
-                              score: <%= comment.rate %>,
-                              });
-                          </script>
+              <script>
+                $('#star-rate-<%= comment.id %>').raty({
+                size: 36,
+                starOff:  '<%= asset_path('star-off.png') %>',
+                starOn : '<%= asset_path('star-on.png') %>',
+                starHalf: '<%= asset_path('star-half.png') %>',
+                half: true,
+                readOnly: true,
+                score: <%= comment.rate %>,
+                });
+              </script>
             
           </div><!--row-comment---->
         <% end %>
       <% end %>
-<%= paginate @comments %>
+      <%= paginate @comments %>
             <% if user_signed_in? %>
               <%= form_with(model: [@gym, @comment], local: true, remote: true) do |f| %>
               <div class="form-group">

@@ -1,5 +1,5 @@
-<div class="home-top">
-  <img src="https://picsum.photos/900/400">
+<div class="home-top"></div>
+<div class="home-form">
   <%= search_form_for(@q, url:gyms_path) do |f| %>
     <%= f.collection_select :district_id_eq, @districts, :id, :name, include_blank: true %>
     <%= f.collection_select :categories_id_in, @categories, :id, :name, include_blank: true %>
@@ -36,7 +36,7 @@
     <h2 class="heading">評価の高いトレーナー</h2>
     <div class="swiper-wrapper">
       <% @trainers.each do |trainer| %>
-        <div class="swiper-slide ">
+        <div class="swiper-slide">
           <div class="slide-item">
             <div class="slide-top">
               <div class="slide-left">
@@ -61,6 +61,30 @@
                   <p><%= tra.category.name %></p>
                   <% end %>
               </div>
+            </div>
+            <div class="slide-middle">
+              <p><%= trainer.title %></p>
+            </div>
+            <div class="slide-bottom">
+              <% trainer.comments.reverse.first(1).each do |comment| %>
+                <div id="star-rate-<%= comment.id %>"></div>
+                <p>　<%= comment.title %></p>
+                  <script>
+                    $('#star-rate-<%= comment.id %>').raty({
+                    size: 30,
+                    starOff:  '<%= asset_path('star-off.png') %>',
+                    starOn : '<%= asset_path('star-on.png') %>',
+                    starHalf: '<%= asset_path('star-half.png') %>',
+                    half: true,
+                    readOnly: true,
+                    score: <%= comment.rate %>,
+                    });
+                  </script>
+                <div class="profile">
+                  <p> (<%= sex(comment.user.sex) %></p>
+                  <p><%= age(comment.user.age) %>)</p>
+                </div>
+                <% end %>
             </div>
           </div>
         </div>
@@ -88,7 +112,6 @@ var mySwiper = new Swiper('.swiper-container', {
     }
   },
   centeredSlides : true,
-  spaceBetween: 10,
   loop: true,
 	navigation: {
 		nextEl: '.swiper-button-next',
