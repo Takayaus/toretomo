@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
 
     before_action :authenticate_user!
     before_action :configure_permitted_parameters, if: :devise_controller?
-before_action :set_search
+    before_action :set_search
 
     def set_search
       @q = Gym.ransack(params[:q])

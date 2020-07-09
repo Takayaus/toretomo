@@ -49,31 +49,46 @@
                                         <p><%= tra.category.name %></p>
                                     <% end %>
                                 </div>
-                            </div>
+                            </div><!--tras-top-->
                             <div class="tras-middle">
                                 <p><%= trainer.title %></p>
                             </div>
                             <div class="tras-bottom">
-                        </div>
-                        <div class="tras-like">
+                                 <% trainer.comments.reverse.first(1).each do |comment| %>
+                                    <div id="star-rate-<%= comment.id %>"></div>
+                                    <p><%= comment.title %></p>
+                                        <script>
+                                            $('#star-rate-<%= comment.id %>').raty({
+                                            size: 30,
+                                            starOff:  '<%= asset_path('star-off.png') %>',
+                                            starOn : '<%= asset_path('star-on.png') %>',
+                                            starHalf: '<%= asset_path('star-half.png') %>',
+                                            half: true,
+                                            readOnly: true,
+                                            score: <%= comment.rate %>,
+                                            });
+                                        </script>
+                                 <% end %>
+                            </div>
+                            <div class="tras-like">
                                 <% if current_user.already_liked?(trainer) %>
                                     <%= link_to trainer_like_path(trainer, trainer), method: :delete, remote: :true do %>
-                                    <i class="fa fa-heart" aria-hidden="true" style="color: red;">
-                                        <%= trainer.likes.count %> 
-                                    </i>
+                                        <i class="fa fa-heart" aria-hidden="true" style="color: red;">
+                                            <%= trainer.likes.count %> 
+                                        </i>
                                     <% end %>
                                 <% else %>
                                     <%= link_to trainer_likes_path(trainer, trainer), method: :post, remote: :true do %>
-                                    <i class="fa fa-heart" aria-hidden="true" style="color: #C0C0C0;">
-                                        <%= trainer.likes.count %> 
-                                    </i>
+                                        <i class="fa fa-heart" aria-hidden="true" style="color: #C0C0C0;">
+                                            <%= trainer.likes.count %> 
+                                        </i>
                                     <% end %>
                                 <% end %>
-                        </div>
-                        </div>
+                            </div>
+                        </div><!--tras-item-->
                     </div>
-                </div>
+                </div><!--trainer-->
             <% end %>
-        </div>
-        <%= paginate @trainers %>
-</div>
+        </div><!--row-->
+    <%= paginate @trainers %>
+</div><!--container-->

@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  get 'users/show'
   get 'district/show'
   root 'static_pages#home'
 
@@ -16,7 +15,11 @@ Rails.application.routes.draw do
   end
 
   devise_for :users
-  resources :users, only: [:show]
+  resources :users, only: [:show] do
+    resources :comments, only: %i[create edit update destroy], module: :users
+  end
+
+    resources :comments, only: %i[create edit update destroy]
   devise_scope :user do
   get '/users/sign_out' => 'devise/sessions#destroy'
   end

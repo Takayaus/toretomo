@@ -7,6 +7,8 @@ ja:
       item_image: "画像"
       category: "カテゴリー"
       trainer: "パーソナルトレーナー"
+      gym: "ジム"
+      district: "エリア"
     attributes:
       user:
         name: "名前"

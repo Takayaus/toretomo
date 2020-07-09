@@ -1,5 +1,5 @@
-<div class="home-top">
-  <img src="https://picsum.photos/900/400">
+<div class="home-top"></div>
+<div class="home-form">
   <%= search_form_for(@q, url:gyms_path) do |f| %>
     <%= f.collection_select :district_id_eq, @districts, :id, :name, include_blank: true %>
     <%= f.collection_select :categories_id_in, @categories, :id, :name, include_blank: true %>
@@ -36,31 +36,55 @@
     <h2 class="heading">評価の高いトレーナー</h2>
     <div class="swiper-wrapper">
       <% @trainers.each do |trainer| %>
-        <div class="swiper-slide ">
+        <div class="swiper-slide">
           <div class="slide-item">
             <div class="slide-top">
-                <div class="slide-left">
-                  <a href="/trainers/<%= trainer.id %>"><%= image_tag (trainer.image.url) %></a>
+              <div class="slide-left">
+                <a href="/trainers/<%= trainer.id %>"><%= image_tag (trainer.image.url) %></a>
+              </div>
+              <div class="slide-right">
+                <h6><%= link_to trainer.name, trainer_path(trainer) %></h6>
+                   <p id="star-ave<%= trainer.id %>"></p>
+                      <script>
+                      $('#star-ave<%= trainer.id %>').raty({
+                      size: 36,
+                      starOff:  '<%= asset_path('star-off.png') %>',
+                      starOn : '<%= asset_path('star-on.png') %>',
+                      starHalf: '<%= asset_path('star-half.png') %>',
+                      half: true,
+                      readOnly: true,
+                      score: <%= trainer.comments.average(:rate).to_f.round(1) %>,
+                        });
+                      </script>
+                  <p>(<%= trainer.comments.count %>)</p>
+                  <% trainer.trainer_categories.each do |tra| %>
+                  <p><%= tra.category.name %></p>
+                  <% end %>
+              </div>
+            </div>
+            <div class="slide-middle">
+              <p><%= trainer.title %></p>
+            </div>
+            <div class="slide-bottom">
+              <% trainer.comments.reverse.first(1).each do |comment| %>
+                <div id="star-rate-<%= comment.id %>"></div>
+                <p>　<%= comment.title %></p>
+                  <script>
+                    $('#star-rate-<%= comment.id %>').raty({
+                    size: 30,
+                    starOff:  '<%= asset_path('star-off.png') %>',
+                    starOn : '<%= asset_path('star-on.png') %>',
+                    starHalf: '<%= asset_path('star-half.png') %>',
+                    half: true,
+                    readOnly: true,
+                    score: <%= comment.rate %>,
+                    });
+                  </script>
+                <div class="profile">
+                  <p> (<%= sex(comment.user.sex) %></p>
+                  <p><%= age(comment.user.age) %>)</p>
                 </div>
-                <div class="slide-right">
-                  <h6><%= link_to trainer.name, trainer_path(trainer) %></h6>
-                     <p id="star-ave<%= trainer.id %>"></p>
-                        <script>
-                        $('#star-ave<%= trainer.id %>').raty({
-                        size: 36,
-                        starOff:  '<%= asset_path('star-off.png') %>',
-                        starOn : '<%= asset_path('star-on.png') %>',
-                        starHalf: '<%= asset_path('star-half.png') %>',
-                        half: true,
-                        readOnly: true,
-                        score: <%= trainer.comments.average(:rate).to_f.round(1) %>,
-                          });
-                        </script>
-                    <p>(<%= trainer.comments.count %>)</p>
-                    <% trainer.trainer_categories.each do |tra| %>
-                    <p><%= tra.category.name %></p>
-                    <% end %>
-                </div>
+                <% end %>
             </div>
           </div>
         </div>
@@ -74,24 +98,20 @@
 var mySwiper = new Swiper('.swiper-container', {
   slidesPerView: 1.5,
     breakpoints: {
-    // 768px以上の場合
     400: {
       slidesPerView: 1.5,
     },
     768: {
       slidesPerView: 2.5,
     },
-    // 980px以上の場合
     980: {
       slidesPerView: 3.5,
     },
-    // 1200px以上の場合
     1200: {
       slidesPerView: 4.5,
     }
   },
   centeredSlides : true,
-  spaceBetween: 10,
   loop: true,
 	navigation: {
 		nextEl: '.swiper-button-next',
@@ -114,4 +134,3 @@ var mySwiper = new Swiper('.swiper-container', {
 	}
 });
 </script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.3.3/js/swiper.min.js">

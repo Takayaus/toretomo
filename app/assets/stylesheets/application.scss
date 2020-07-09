@@ -45,6 +45,10 @@ body {
   text-align: center;
 }
 
+.inline-block {
+  display: inline-block;
+}
+
 .tra-heart {
   float: left;
 }
@@ -89,24 +93,42 @@ body {
   justify-content: center;
 }
 
-/*ページネーション自体のデザイン*/
 .pagination > li > a {
-  border: none; /*枠線をなくす*/
-  color: #696969; /*文字の色を変える*/
+  border: none;
+  color: #696969;
   margin: 0 7px;
 }
 
-/* 表示しているページ番号のデザイン */
 .pagination > .active > a {
-  background: #0080ff; /*背景の色を変える*/
-  border-radius: 50%; /*角を丸くする*/
+  background: #0080ff;
+  border-radius: 50%;
 }
 
-/*ホバー時のデザイン*/
 .pagination > li > a:hover {
-  border-radius: 50%; /*角を丸くする*/
+  border-radius: 50%;
 }
 
+//home
+.home-top {
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.4), rgba(7, 7, 7, 0.3)),
+    url("a.jpg");
+  background-size: cover;
+  background-position: center;
+  height: 80vh;
+  width: 100%;
+  object-fit: cover;
+  position: relative;
+}
+.home-form {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  margin: 0;
+  padding: 0;
+}
 //gyms
 
 //index
@@ -280,23 +302,27 @@ body {
 }
 
 //item_image
-
-.items-content {
-  width: 100%;
+.contain {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.contain::after {
+  content: "";
+  display: block;
+  width: 280px;
+  height: 280px;
+  margin: 15px;
 }
 
 .items-item {
-  display: inline-block;
+  padding: 15px;
 }
 
 .items-item img {
   object-fit: cover;
-  width: 250px;
-  height: 250px;
-}
-
-.items-item li {
-  list-style: none;
+  width: 280px;
+  height: 280px;
 }
 
 //gyms
@@ -376,10 +402,9 @@ body {
 }
 
 .tras-item {
-  height: 410px;
+  height: 340px;
   width: 280px;
-  border: 1px solid;
-  border-color: rgb(0, 0, 0);
+  border: 1px solid black;
   margin: 0 10px 40px;
   padding: 10px;
 }
@@ -424,52 +449,66 @@ body {
 
 .tras-middle {
   padding: 5px 0;
-  height: 130px;
+  min-height: 110px;
   border-bottom: 1px solid black;
 }
 
 .tras-bottom {
-  height: 130px;
+  height: 80px;
+  font-size: 13px;
 }
+
+.tras-bottom p {
+  margin-top: 4px;
+}
+
+//trainer/show
 
 .tra-wrapper {
-  width: 100%;
+  max-width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
 }
-
-.tra-profile {
-  width: 800px;
-  height: 100%;
-}
-
 .tra-top {
-  margin: 15px 0 0 15px;
-  height: 200px;
+  height: 100%;
   width: 100%;
-  border-bottom: 1px solid black;
+  border-bottom: 9px solid #e7e7e7;
+  padding: 20px 0;
 }
 
 .tra-left {
   float: left;
 }
 .tra-left img {
-  height: 120px;
-  width: 120px;
+  height: 150px;
+  width: 150px;
   border-radius: 50%;
+  object-fit: cover;
 }
 
 .tra-right {
   float: right;
-  height: 200px;
-  width: 650px;
 }
 
-.tra-middle {
+.tra-like {
+  display: inline-block;
+  font-size: 16px;
+  margin-left: 15px;
+}
+
+.tra-content {
   width: 100%;
-  margin: 15px;
+  min-height: 300px;
+  border-bottom: 9px solid #e7e7e7;
+  padding: 20px;
+}
+.tra-comment {
+  width: 100%;
+  height: 600px;
 }
 
-.tras-like {
-  float: right;
+.tra-rate p {
+  display: inline-block;
 }
 
 .nav-tabs {
@@ -494,41 +533,99 @@ body {
   border-top-left-radius: 0;
 }
 
-//home
-
-.home-top img {
-  width: 100%;
-  height: 500px;
+.category {
+  position: relative;
+  margin: 10px;
 }
 
-// .categories ul {
-//   display: flex;
-// }
-// .categories li {
-//   list-style: none;
-//   position: relative;
-// }
-
-// .categories p {
-//   color: white;
-//   font-size: 18px;
-//   position: absolute;
-//   top: 50%;
-//   left: 50%;
-//   -ms-transform: translate(-50%, -50%);
-//   -webkit-transform: translate(-50%, -50%);
-//   transform: translate(-50%, -50%);
-//   margin: 0;
-//   padding: 0;
-// }
-
-.category img {
-  width: 190px;
+.cate-img1 {
+  background: linear-gradient(
+      to top,
+      rgba(0, 0, 0, 0.4),
+      rgba(7, 7, 7, 0.3),
+      rgba(82, 82, 82, 0) 97%,
+      rgba(84, 84, 84, 0)
+    ),
+    url("spots_gym.jpeg");
+  background-size: cover;
+  background-position: center;
   height: 190px;
+  width: 190px;
+  object-fit: cover;
+}
+.cate-img2 {
+  background: linear-gradient(
+      to top,
+      rgba(0, 0, 0, 0.4),
+      rgba(7, 7, 7, 0.3),
+      rgba(82, 82, 82, 0) 97%,
+      rgba(84, 84, 84, 0)
+    ),
+    url("yoga.jpg");
+  background-size: cover;
+  background-position: center;
+  height: 190px;
+  width: 190px;
+  object-fit: cover;
+}
+.cate-img3 {
+  background: linear-gradient(
+      to top,
+      rgba(0, 0, 0, 0.4),
+      rgba(7, 7, 7, 0.3),
+      rgba(82, 82, 82, 0) 97%,
+      rgba(84, 84, 84, 0)
+    ),
+    url("swimming.jpg");
+  background-size: cover;
+  background-position: center;
+  height: 190px;
+  width: 190px;
+  object-fit: cover;
+}
+.cate-img4 {
+  background: linear-gradient(
+      to top,
+      rgba(0, 0, 0, 0.4),
+      rgba(7, 7, 7, 0.3),
+      rgba(82, 82, 82, 0) 97%,
+      rgba(84, 84, 84, 0)
+    ),
+    url("golf.jpeg");
+  background-size: cover;
+  background-position: center;
+  height: 190px;
+  width: 190px;
+  object-fit: cover;
+}
+.cate-img5 {
+  background: linear-gradient(
+      to top,
+      rgba(0, 0, 0, 0.4),
+      rgba(7, 7, 7, 0.3),
+      rgba(82, 82, 82, 0) 97%,
+      rgba(84, 84, 84, 0)
+    ),
+    url("kakutougi.jpg");
+  background-size: cover;
+  background-position: center;
+  height: 190px;
+  width: 190px;
   object-fit: cover;
 }
 
-.category img:hover {
+.cate-p {
+  top: 80%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  color: white;
+}
+.category:hover {
   opacity: 0.5;
 }
 
@@ -546,10 +643,10 @@ body {
   display: inline-block;
   width: 480px;
   height: 120px;
-  background-color: yellow;
   margin: 0 0 20px 0;
   position: relative;
   color: black;
+  border: 0.5px solid #c6c6c6;
 }
 
 .new-gyms-item:hover {
@@ -584,28 +681,26 @@ body {
   margin-right: auto;
   margin-left: auto;
 }
-/* 全体のスタイル */
+
 .swiper-wrapper {
   width: 100%;
   height: 100%;
   margin-bottom: 80px;
 }
-/* 全スライド共通スタイル */
+
 .swiper-slide {
-  color: #ffffff;
-  width: 100%;
-  height: 100%;
+  color: black;
 }
 
 .slide-item {
+  height: 340px;
   width: 230px;
-  height: 330px;
   border: 1px solid black;
   padding: 10px;
 }
 
 .slide-top {
-  height: 110px;
+  height: 100px;
   width: 100%;
   border-bottom: 1px solid grey;
 }
@@ -614,15 +709,16 @@ body {
 }
 
 .slide-left img {
-  height: 60px;
-  width: 60px;
+  height: 70px;
+  width: 70px;
   border-radius: 50%;
+  object-fit: cover;
 }
 
 .slide-right {
   float: right;
-  background-color: greenyellow;
   width: 120px;
+  height: 100px;
 }
 
 .slide-right a {
@@ -644,11 +740,36 @@ body {
 .slide-right h6 {
   margin: 0;
 }
+.slide-middle {
+  padding: 5px 0;
+  min-height: 110px;
+  border-bottom: 1px solid black;
+}
 
+.slide-middle p {
+  font-size: 14px;
+}
+.slide-bottom {
+  margin-top: 5px;
+  height: 100px;
+  font-size: 13px;
+  position: relative;
+}
 .star-ave p {
   float: left;
 }
 
+.profile {
+  height: 20px;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  font-size: 12px;
+  margin: 0;
+}
+.profile p {
+  display: inline-block;
+}
 //user
 
 .user-profile {
@@ -708,4 +829,233 @@ body {
   -o-transition: all 0.3s ease-in;
   -webkit-transition: all 0.3s ease-in;
   -moz-transition: all 0.3s ease-in;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body,
+#wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+footer {
+  margin-top: auto;
+  background-color: black;
+  color: #d9d9d9;
+  margin-top: 50px;
+}
+
+.main-content {
+  display: flex;
+}
+
+.main-content .box {
+  flex-basis: 50%;
+  padding: 10px 20px;
+}
+
+.box h2 {
+  font-size: 1.125rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.box .content {
+  margin: 20px 0 0 0;
+  position: relative;
+}
+
+.box .content:before {
+  position: absolute;
+  content: "";
+  top: -10px;
+  height: 2px;
+  width: 100%;
+  background: #1a1a1a;
+}
+
+.box .content:after {
+  position: absolute;
+  content: "";
+  height: 2px;
+  width: 15%;
+  background: #f12020;
+  top: -10px;
+}
+
+.left .content p {
+  text-align: justify;
+}
+.left .content .social {
+  margin: 20px 0 0 0;
+}
+
+.left .content .social a {
+  padding: 0 2px;
+  color: #d9d9d9;
+}
+
+.left .content .social a span {
+  height: 40px;
+  width: 40px;
+  background: #1a1a1a;
+  line-height: 40px;
+  text-align: center;
+  font-size: 18px;
+  border-radius: 5px;
+  transition: 0.3s;
+}
+
+.left .content .social a span:hover {
+  background: #f12020;
+}
+
+.center .content .fas {
+  font-size: 1.4375rem;
+  background: #1a1a1a;
+  height: 45px;
+  width: 45px;
+  line-height: 45px;
+  text-align: center;
+  border-radius: 50%;
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+.center .content .fas:hover {
+  background: #f12020;
+}
+
+.center .content .text {
+  font-size: 1.0625rem;
+  font-weight: 500;
+  padding-left: 10px;
+}
+
+.center .content .phone {
+  margin: 10px 0;
+}
+.right form .text {
+  font-size: 1.0625rem;
+  margin-bottom: 2px;
+  color: #d9d9d9;
+}
+
+.right form .msg {
+  margin-top: 10px;
+}
+
+.right form input,
+.right form textarea {
+  width: 100%;
+  font-size: 1.0625rem;
+  background: #151515;
+  color: #d9d9d9;
+  padding-left: 10px;
+  border: 1px solid #222222;
+}
+
+.right form input:focus,
+.right form textarea:focus {
+  outline-color: #3498db;
+}
+
+.right form input {
+  height: 35px;
+}
+
+.right form .btnn {
+  margin-top: 10px;
+}
+.right form .btnn button {
+  height: 40px;
+  width: 100%;
+  border: none;
+  outline: none;
+  background: #f12020;
+  font-size: 1.0625rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.right form .btnn button:hover {
+  background: #d9d9d9;
+}
+
+.bottom center {
+  padding: 5px;
+  font-size: 0.9375rem;
+  background: #151515;
+}
+
+.bottom center span {
+  color: #656565;
+}
+
+.bottom center a {
+  color: #f12020;
+  text-decoration: none;
+}
+
+.bottom center a:hover {
+  text-decoration: underline;
+}
+
+@media screen and (max-width: 980px) {
+  footer {
+    position: relative;
+    bottom: 0px;
+  }
+  .main-content {
+    flex-wrap: wrap;
+    flex-direction: column;
+  }
+  .main-content .box {
+    margin: 5px 0;
+  }
+}
+
+//comment
+
+.comment- {
+  margin-top: 30px;
+  position: relative;
+}
+.comment-icon img {
+  height: 110px;
+  width: 110px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.comment-content h5 {
+  margin: 8px 0;
+}
+
+.comment-li {
+  margin-left: 15px;
+}
+.comment-li p {
+  display: inline-block;
+}
+
+.comment-info {
+  height: 180px;
+}
+.gym-img {
+  height: 140px;
+  width: 200px;
+  object-fit: cover;
+}
+
+.trainer-img {
+  border-radius: 50%;
+  object-fit: cover;
+  height: 140px;
+  width: 140px;
 }
