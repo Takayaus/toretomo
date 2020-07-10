@@ -3,8 +3,6 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :timeoutable
-  validates :name, presence: true
-  validates :age, presence: true
   mount_uploader :image_name, ImageUploader
 
   has_many :comments, dependent: :destroy

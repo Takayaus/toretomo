@@ -1,4 +1,4 @@
 class GymTrainer < ApplicationRecord
-  belongs_to :gym
-  belongs_to :trainer
+  belongs_to :gym, optional: true
+  belongs_to :trainer, optional: true
 end
