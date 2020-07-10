@@ -1,9 +1,10 @@
 Rails.application.routes.draw do
-  get 'district/show'
   root 'static_pages#home'
 
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
+
+  resources :contacts, only:%i[create]
 
   resources :gyms, only: %i[show index] do
     resources :comments, only: %i[create edit update destroy], module: :gyms

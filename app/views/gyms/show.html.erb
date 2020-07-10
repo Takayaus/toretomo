@@ -1,29 +1,31 @@
 <div class="container">
 
   <div class="gym-wrapper">
-    <div class="gym-right">
-      <h3><%= @gym.name %></h3>
-      <p id="star-ave">評価　</p>
-      <p>(口コミ数<%= @gym.comments.count %>)</p>
-      <script>
-      $('#star-ave').raty({
-      size: 36,
-      starOff:  '<%= asset_path('star-off.png') %>',
-      starOn : '<%= asset_path('star-on.png') %>',
-      starHalf: '<%= asset_path('star-half.png') %>',
-      half: true,
-      readOnly: true,
-      score: <%= @gym.comments.average(:rate).to_f.round(1) %>,
-        });
-      </script>
-      <p><%= @gym.title %></p>
-      <i class="fa fa-phone" aria-hidden="true" style="color: #0080ff;" ></i> <%=@gym.number%>
-      <% @gym.gym_categories.each do |gym|%>
-        <p><%= gym.category.name %></p>
-      <% end %>
-    </div>
-    <div class="gym-left">
-      <%= image_tag(@gym.image.url) %>
+    <div class="row">
+      <div class="col-md-6 col-xs-12 gym-right">
+        <h3><%= @gym.name %></h3>
+        <p id="star-ave">評価　</p>
+        <p>(口コミ数<%= @gym.comments.count %>)</p>
+        <script>
+        $('#star-ave').raty({
+        size: 36,
+        starOff:  '<%= asset_path('star-off.png') %>',
+        starOn : '<%= asset_path('star-on.png') %>',
+        starHalf: '<%= asset_path('star-half.png') %>',
+        half: true,
+        readOnly: true,
+        score: <%= @gym.comments.average(:rate).to_f.round(1) %>,
+          });
+        </script>
+        <p><%= @gym.title %></p>
+        <i class="fa fa-phone" aria-hidden="true" style="color: #0080ff;" ></i> <%=@gym.number%>
+        <% @gym.gym_categories.each do |gym|%>
+          <p><%= gym.category.name %></p>
+        <% end %>
+      </div>
+      <div class="col-md-6 col-xs-12 gym-left">
+        <%= image_tag(@gym.image.url) %>
+      </div>
     </div>
   </div>
 
