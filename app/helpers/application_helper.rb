@@ -54,34 +54,34 @@ module ApplicationHelper
     end
 
     def age(age)
-        case
-        when age >= 10
+        case age
+        when 10..14
             return "10代前半"
-        when age >= 16
+        when 15..19
             return "10代後半"
-        when age >= 20
+        when 20..24
             return "20代前半"
-        when age >= 26
+        when 25..29
             return "20代後半"
-        when age >= 30
+        when 30..34
             return "30代前半"
-        when age >= 36
+        when 35..39
             return "30代後半"
-        when age >= 40
+        when 40..44
             return "40代前半"
-        when age >= 46
+        when 45..49
             return "40代後半"
-        when age >= 50
+        when 50..54
             return "50代前半"
-        when age >= 56
+        when 55..59
             return "50代後半"
-        when age >= 60
+        when 60..64
             return "60代前半"
-        when age >= 66
+        when 65..69
             return "60代後半"
-        when age >= 70
+        when 70..74
             return "70代前半"
-        when age > 76
+        when 75..79
             return "70代以上"
     end
 end
