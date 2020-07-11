@@ -77,6 +77,10 @@ body {
   padding: 2rem;
 }
 
+.alert {
+  margin: 0;
+}
+
 .alert-notice {
   @extend .alert-info;
 }
