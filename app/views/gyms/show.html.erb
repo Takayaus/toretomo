@@ -22,7 +22,7 @@
         <p><%= @gym.title %></p>
         <% if @gym.number? %>
           <i class="fa fa-phone" aria-hidden="true" style="color: #0080ff;" ></i>
-          <%= @gym.number %>
+          <%= @gym.number %></br>
         <%end%>
         <% @gym.gym_categories.each do |gym|%>
           <p class="inline-block"><%= gym.category.name %></p>
