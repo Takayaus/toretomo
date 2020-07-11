@@ -4,8 +4,10 @@
     <div class="row">
       <div class="col-md-6 col-xs-12 gym-right">
         <h3><%= @gym.name %></h3>
-        <p id="star-ave">評価　</p>
-        <p>(口コミ数<%= @gym.comments.count %>)</p>
+        <div class="gym-rate">
+          <p id="star-ave">評価　</p>
+          <p>(口コミ数<%= @gym.comments.count %>)</p>
+        </div>
         <script>
         $('#star-ave').raty({
         size: 36,
@@ -18,9 +20,12 @@
           });
         </script>
         <p><%= @gym.title %></p>
-        <i class="fa fa-phone" aria-hidden="true" style="color: #0080ff;" ></i> <%=@gym.number%>
+        <% if @gym.number? %>
+          <i class="fa fa-phone" aria-hidden="true" style="color: #0080ff;" ></i>
+          <%= @gym.number %>
+        <%end%>
         <% @gym.gym_categories.each do |gym|%>
-          <p><%= gym.category.name %></p>
+          <p class="inline-block"><%= gym.category.name %></p>
         <% end %>
       </div>
       <div class="col-md-6 col-xs-12 gym-left">

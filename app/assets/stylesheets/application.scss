@@ -303,7 +303,10 @@ body {
   padding: 25px;
   width: 100%;
 }
-
+.gym-rate p {
+  display: inline-block;
+  padding-right: 6px;
+}
 //item_image
 .contain {
   display: flex;
