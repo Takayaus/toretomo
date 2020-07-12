@@ -290,11 +290,6 @@ body {
   float: left;
 }
 
-.gym-left img {
-  width: 470px;
-  height: 320px;
-}
-
 .gym-right {
   float: right;
 }
@@ -645,17 +640,11 @@ body {
   float: right;
 }
 
-.new-gyms-item {
-  display: inline-block;
-  width: 480px;
-  height: 120px;
-  margin: 0 0 20px 0;
-  position: relative;
-  color: black;
-  border: 0.5px solid #c6c6c6;
+.new-gym {
+  border: 1px solid #f8f9fa;
+  padding: 10px;
 }
-
-.new-gyms-item:hover {
+.new-gym:hover {
   opacity: 0.6;
   cursor: pointer;
 }
@@ -672,6 +661,7 @@ body {
 .new-gyms-title {
   margin: 10px 0 0 20px;
   display: inline-block;
+  color: black;
 }
 
 .new-gyms-time p {
@@ -679,7 +669,7 @@ body {
   right: 0;
   bottom: 0;
   font-size: 12px;
-  margin: 0;
+  margin: 0 8px 8px 0;
 }
 
 .swiper-container {

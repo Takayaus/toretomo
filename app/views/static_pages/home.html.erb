@@ -3,7 +3,7 @@
   <%= search_form_for(@q, url:gyms_path) do |f| %>
     <%= f.collection_select :district_id_eq, @districts, :id, :name, include_blank: true %>
     <%= f.collection_select :categories_id_in, @categories, :id, :name, include_blank: true %>
-    <%= f.search_field :name_or_title_or_content_or_address_or_categories_name_cont %>
+    <%= f.search_field :name_or_title_or_content_or_address_or_categories_name_cont, placeholder: "24時間, 初心者歓迎など" %>
     <%= f.submit "検索" %>
   <% end %>
 </div>
@@ -15,18 +15,19 @@
     <h2 class="heading">新しくできたジム</h2>
     <div class="row justify-content-center">
       <% @gyms.each do |gym| %>
-        <div class="gym">
-          <div class="col-md-6 col-sm-12">
-            <a href="/gyms/<%= gym.id %>" class="new-gyms-item"> 
+        <div class="new-gym col-lg-6">
+            <a href="/gyms/<%= gym.id %>"> 
               <div class="new-gyms-left">
                 <%= image_tag(gym.image.url) %>
               </div>
-              <h5 class="new-gyms-title"><%= gym.name %></h5>
+              <div class="new-gyms-title">
+                <h5><%= gym.name %></h5>
+                <p><%= gym.title %></p>
+              </div>
               <div class="new-gyms-time">
                 <p><%= time_ago_in_words(gym.created_at) %>前に掲載</p>
               </div>
             </a>
-          </div>
         </div>
       <% end %>
     </div>
