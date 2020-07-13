@@ -44,19 +44,39 @@
                                         score: <%= trainer.comments.average(:rate).to_f.round(1) %>,
                                         });
                                         </script>
-                                    <p>(口コミ<%= trainer.comments.count %>件)</p>
-                                    <% trainer.trainer_categories.each do |tra| %>
-                                        <p><%= tra.category.name %></p>
-                                    <% end %>
+                                    <p>(<%= trainer.comments.count %>件)</p>
+                                    <ul>
+                                        <% trainer.trainer_categories.each do |tra| %>
+                                            <li><%= tra.category.name %></li>
+                                        <% end %>
+                                    </ul>
                                 </div>
                             </div><!--tras-top-->
                             <div class="tras-middle">
-                                <p><%= trainer.title %></p>
+                                <% if trainer.title.length > 40 %>
+                                    <p class="read"><%= trainer.title %></p>
+                                <% else %>
+                                    <p><%= trainer.title %></p>
+                                <% end %>
+                                <script>
+                                $(function () {
+                                    $('.read').readmore({
+                                    speed: 100,
+                                    collapsedHeight: 45,
+                                    moreLink: '<a href="#">続きを読む</a>',//続きを読むボタンタグ
+                                    lessLink: '<a href="#">閉じる</a>'//閉じるボタンタグ
+                                    });
+                                });
+                                </script>
                             </div>
                             <div class="tras-bottom">
-                                 <% trainer.comments.reverse.first(1).each do |comment| %>
+                                <% trainer.comments.reverse.first(1).each do |comment| %>
                                     <div id="star-rate-<%= comment.id %>"></div>
-                                    <p><%= comment.title %></p>
+                                    <% if comment.content.length > 40 %>
+                                        <p class="read"><%= comment.content %></p>
+                                    <% else %>
+                                        <p><%= comment.content %></p>
+                                    <% end %>
                                         <script>
                                             $('#star-rate-<%= comment.id %>').raty({
                                             size: 30,
@@ -68,23 +88,28 @@
                                             score: <%= comment.rate %>,
                                             });
                                         </script>
-                                 <% end %>
-                            </div>
-                            <div class="tras-like">
-                                <% if current_user.already_liked?(trainer) %>
-                                    <%= link_to trainer_like_path(trainer, trainer), method: :delete, remote: :true do %>
-                                        <i class="fa fa-heart" aria-hidden="true" style="color: red;">
-                                            <%= trainer.likes.count %> 
-                                        </i>
-                                    <% end %>
-                                <% else %>
-                                    <%= link_to trainer_likes_path(trainer, trainer), method: :post, remote: :true do %>
-                                        <i class="fa fa-heart" aria-hidden="true" style="color: #C0C0C0;">
-                                            <%= trainer.likes.count %> 
-                                        </i>
-                                    <% end %>
+                                    <div class="profile">
+                                        <p> (<%= sex(comment.user.sex) %></p>
+                                        <p><%= age(comment.user.age) %>)</p>
+                                        <p><%= comment.created_at.strftime("%Y-%m-%d") %></p>
+                                    </div>
                                 <% end %>
-                            </div>
+                                <div class="tras-like">
+                                    <% if current_user.already_liked?(trainer) %>
+                                        <%= link_to trainer_like_path(trainer, trainer), method: :delete, remote: :true do %>
+                                            <i class="fa fa-heart" aria-hidden="true" style="color: red;">
+                                                <%= trainer.likes.count %> 
+                                            </i>
+                                        <% end %>
+                                    <% else %>
+                                        <%= link_to trainer_likes_path(trainer, trainer), method: :post, remote: :true do %>
+                                            <i class="fa fa-heart" aria-hidden="true" style="color: #C0C0C0;">
+                                                <%= trainer.likes.count %> 
+                                            </i>
+                                        <% end %>
+                                    <% end %>
+                                </div>
+                            </div><!--tras-bottom-->
                         </div><!--tras-item-->
                     </div>
                 </div><!--trainer-->

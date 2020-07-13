@@ -46,7 +46,7 @@
         <%= markdown(text).html_safe %>
       </div>
     </div> <!--row-->
-
+      <a class="tog btn btn-light">コメントを見る</a>
         <div class="tra-comment">
           <h5 class="text-center">利用者の声</h5>
           <% if @comments.present? %>
@@ -126,6 +126,16 @@
               <% end %>
             <% end %>
         </div> <!--tra-comment-->
-
   </div> <!-- tra-wrapper-->
 </div> <!--container-->
+
+<script>
+$(function(){
+$(".tra-comment").hide();
+});
+$(function(){
+$(".tog").on("click", function() {
+$(this).next().slideToggle();
+});
+});
+</script>

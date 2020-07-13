@@ -16,18 +16,20 @@
     <div class="row justify-content-center">
       <% @gyms.each do |gym| %>
         <div class="new-gym col-lg-6">
-            <a href="/gyms/<%= gym.id %>"> 
-              <div class="new-gyms-left">
-                <%= image_tag(gym.image.url) %>
-              </div>
-              <div class="new-gyms-title">
-                <h5><%= gym.name %></h5>
-                <p><%= gym.title %></p>
-              </div>
-              <div class="new-gyms-time">
-                <p><%= time_ago_in_words(gym.created_at) %>前に掲載</p>
-              </div>
+          <div class="new-gyms-left">
+            <a href="/gyms/<%= gym.id %>">
+              <%= image_tag(gym.image.url) %>
+          </div>
+          <div clsss="new-gyms-right">
+            <div class="new-gyms-title">
+              <h6><%= gym.name %></h6>
+              <p><%= gym.title %></p>
+            </div>
+            <div class="new-gyms-time">
+              <p><%= time_ago_in_words(gym.created_at) %>前に掲載</p>
+            </div>
             </a>
+          </div>
         </div>
       <% end %>
     </div>
@@ -64,12 +66,30 @@
               </div>
             </div>
             <div class="slide-middle">
-              <p><%= trainer.title %></p>
+              <% if trainer.title.length > 40 %>
+                <p class="read"><%= trainer.title %></p>
+              <% else %>
+                <p><%= trainer.title %></p>
+              <% end %>
+              <script>
+                $(function () {
+                  $('.read').readmore({
+                  speed: 100,
+                  collapsedHeight: 45,
+                  moreLink: '<a href="#">続きを読む</a>',//続きを読むボタンタグ
+                  lessLink: '<a href="#">閉じる</a>'//閉じるボタンタグ
+                  });
+                });
+              </script>
             </div>
             <div class="slide-bottom">
               <% trainer.comments.reverse.first(1).each do |comment| %>
                 <div id="star-rate-<%= comment.id %>"></div>
-                <p>　<%= comment.title %></p>
+                  <% if comment.content.length > 40 %>
+                    <p class="read"><%= comment.content %></p>
+                  <% else %>
+                    <p><%= comment.content %></p>
+                  <% end %>
                   <script>
                     $('#star-rate-<%= comment.id %>').raty({
                     size: 30,
@@ -84,8 +104,24 @@
                 <div class="profile">
                   <p> (<%= sex(comment.user.sex) %></p>
                   <p><%= age(comment.user.age) %>)</p>
+                  <p><%= comment.created_at.strftime("%Y-%m-%d") %></p>
                 </div>
+              <% end %>
+              <div class="tras-like">
+                <% if current_user.already_liked?(trainer) %>
+                  <%= link_to trainer_like_path(trainer, trainer), method: :delete, remote: :true do %>
+                    <i class="fa fa-heart" aria-hidden="true" style="color: red;">
+                      <%= trainer.likes.count %> 
+                    </i>
+                  <% end %>
+                <% else %>
+                  <%= link_to trainer_likes_path(trainer, trainer), method: :post, remote: :true do %>
+                    <i class="fa fa-heart" aria-hidden="true" style="color: #C0C0C0;">
+                      <%= trainer.likes.count %> 
+                    </i>
+                  <% end %>
                 <% end %>
+              </div>
             </div>
           </div>
         </div>
@@ -96,20 +132,14 @@
 </div>
 <script>
 var mySwiper = new Swiper('.swiper-container', {
-  slidesPerView: 1.5,
+  slidesPerView: 3,
     breakpoints: {
-    400: {
-      slidesPerView: 1.5,
-    },
-    768: {
-      slidesPerView: 2.5,
-    },
-    980: {
-      slidesPerView: 3.5,
-    },
-    1200: {
-      slidesPerView: 4.5,
-    }
+    // 400: {
+    //   slidesPerView: 1.5,
+    // },
+    // 980: {
+    //   slidesPerView: 3.5,
+    // }
   },
   centeredSlides : true,
   loop: true,
@@ -118,14 +148,10 @@ var mySwiper = new Swiper('.swiper-container', {
 		prevEl: '.swiper-button-prev'
 	},
 	autoplay: {
-		delay: 3000,
+		delay: 10000,
 		stopOnLastSlide: false,
 		disableOnInteraction: false,
 		reverseDirection: false
-	},
-	navigation: {
-		nextEl: '.swiper-button-next',
-		prevEl: '.swiper-button-prev'
 	},
 	pagination: {
 		el: '.swiper-pagination',

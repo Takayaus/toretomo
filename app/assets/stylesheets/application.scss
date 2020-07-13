@@ -53,23 +53,30 @@ body {
   float: left;
 }
 
-@media (min-width: 768px) {
-  .container {
-    width: 750px;
-  }
+.profile {
+  margin-top: 10px;
+}
+.profile p {
+  display: inline-block;
 }
 
-@media (min-width: 992px) {
-  .container {
-    width: 970px;
-  }
-}
+// @media (min-width: 768px) {
+//   .container {
+//     width: 750px;
+//   }
+// }
 
-@media (min-width: 1200px) {
-  .container {
-    width: 1170px;
-  }
-}
+// @media (min-width: 992px) {
+//   .container {
+//     width: 970px;
+//   }
+// }
+
+// @media (min-width: 1200px) {
+//   .container {
+//     width: 1170px;
+//   }
+// }
 
 .container-login {
   @extend .container-fluid;
@@ -402,34 +409,43 @@ body {
   padding: 30px 0;
 }
 
+// .tras-item {
+//   height: 340px;
+//   width: 280px;
+//   border: 1px solid black;
+//   margin: 0 10px 40px;
+//   padding: 10px;
+// }
+
 .tras-item {
-  height: 340px;
-  width: 280px;
+  min-height: 380px;
+  width: 350px;
   border: 1px solid black;
-  margin: 0 10px 40px;
+  margin-top: 5px;
   padding: 10px;
+  position: relative;
 }
 
 .tras-top {
   height: 110px;
   border-bottom: 1px solid black;
+  display: flex;
+  justify-content: flex-start;
 }
 
 .tras-left {
-  float: left;
+  width: 25%;
 }
 .tras-left img {
   object-fit: cover;
   width: 70px;
   height: 70px;
   border-radius: 50%;
-  float: left;
 }
 
 .tras-right {
-  float: right;
   height: 100px;
-  width: 180px;
+  width: 75%;
 }
 
 .tras-right a {
@@ -440,8 +456,15 @@ body {
 
 .tras-right p {
   display: inline-block;
-  font-size: 3px;
   margin: 0;
+}
+
+.tras-right ul {
+  padding: 0;
+}
+.tras-right ul li {
+  list-style: none;
+  display: inline-block;
 }
 
 .tras-right a:hover {
@@ -450,19 +473,29 @@ body {
 
 .tras-middle {
   padding: 5px 0;
-  min-height: 110px;
+  min-height: 100px;
   border-bottom: 1px solid black;
 }
 
 .tras-bottom {
-  height: 80px;
-  font-size: 13px;
+  min-height: 80px;
 }
 
 .tras-bottom p {
-  margin-top: 4px;
+  margin: 4px 0;
 }
 
+.read {
+  overflow-y: hidden;
+}
+
+.tras-like {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  margin: 0;
+  margin: 0 5px 5px 0;
+}
 //trainer/show
 
 .tra-wrapper {
@@ -643,6 +676,8 @@ body {
 .new-gym {
   border: 1px solid #f8f9fa;
   padding: 10px;
+  display: flex;
+  justify-content: flex-start;
 }
 .new-gym:hover {
   opacity: 0.6;
@@ -650,14 +685,17 @@ body {
 }
 
 .new-gyms-left {
-  float: left;
+  width: 30%;
 }
 
 .new-gyms-left img {
   width: 150px;
-  height: 120px;
+  height: 100px;
 }
 
+.new-gyms-right {
+  width: 70%;
+}
 .new-gyms-title {
   margin: 10px 0 0 20px;
   display: inline-block;
@@ -689,19 +727,22 @@ body {
 }
 
 .slide-item {
-  height: 340px;
-  width: 230px;
+  min-height: 380px;
+  width: 350px;
   border: 1px solid black;
   padding: 10px;
+  position: relative;
 }
 
 .slide-top {
-  height: 100px;
+  height: 110px;
   width: 100%;
   border-bottom: 1px solid grey;
+  display: flex;
+  justify-content: flex-start;
 }
 .slide-left {
-  float: left;
+  width: 25%;
 }
 
 .slide-left img {
@@ -712,8 +753,7 @@ body {
 }
 
 .slide-right {
-  float: right;
-  width: 120px;
+  width: 70%;
   height: 100px;
 }
 
@@ -728,14 +768,10 @@ body {
 }
 
 .slide-right p {
-  font-size: 3px;
   display: inline-block;
   margin: 0;
 }
 
-.slide-right h6 {
-  margin: 0;
-}
 .slide-middle {
   padding: 5px 0;
   min-height: 110px;
@@ -743,29 +779,20 @@ body {
 }
 
 .slide-middle p {
-  font-size: 14px;
+  margin: 0;
 }
 .slide-bottom {
   margin-top: 5px;
-  height: 100px;
-  font-size: 13px;
-  position: relative;
+  min-height: 100px;
+}
+
+.slide-bottom p {
+  margin: 0;
 }
 .star-ave p {
   float: left;
 }
 
-.profile {
-  height: 20px;
-  position: absolute;
-  right: 0;
-  bottom: 0;
-  font-size: 12px;
-  margin: 0;
-}
-.profile p {
-  display: inline-block;
-}
 //user
 
 .user-profile {
@@ -825,6 +852,46 @@ body {
   -o-transition: all 0.3s ease-in;
   -webkit-transition: all 0.3s ease-in;
   -moz-transition: all 0.3s ease-in;
+}
+
+//comment
+
+.comment- {
+  margin-top: 30px;
+  position: relative;
+}
+.comment-icon img {
+  height: 110px;
+  width: 110px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.comment-content h5 {
+  margin: 8px 0;
+}
+
+.comment-li {
+  margin-left: 15px;
+}
+.comment-li p {
+  display: inline-block;
+}
+
+.comment-info {
+  height: 180px;
+}
+.gym-img {
+  height: 140px;
+  width: 200px;
+  object-fit: cover;
+}
+
+.trainer-img {
+  border-radius: 50%;
+  object-fit: cover;
+  height: 140px;
+  width: 140px;
 }
 
 * {
@@ -1013,44 +1080,4 @@ footer {
   .main-content .box {
     margin: 5px 0;
   }
-}
-
-//comment
-
-.comment- {
-  margin-top: 30px;
-  position: relative;
-}
-.comment-icon img {
-  height: 110px;
-  width: 110px;
-  object-fit: cover;
-  border-radius: 50%;
-}
-
-.comment-content h5 {
-  margin: 8px 0;
-}
-
-.comment-li {
-  margin-left: 15px;
-}
-.comment-li p {
-  display: inline-block;
-}
-
-.comment-info {
-  height: 180px;
-}
-.gym-img {
-  height: 140px;
-  width: 200px;
-  object-fit: cover;
-}
-
-.trainer-img {
-  border-radius: 50%;
-  object-fit: cover;
-  height: 140px;
-  width: 140px;
 }
