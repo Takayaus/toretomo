@@ -60,7 +60,7 @@
                         </script>
                     <p>(<%= trainer.comments.count %>)</p>
                     <% trainer.trainer_categories.each do |tra| %>
-                    <p><%= tra.category.name %></p>
+                    <p><%= tra.category.name unless tra.categpry.name.nil?%></p>
                     <% end %>
                 </div>
               </div><!--slide-top-->
