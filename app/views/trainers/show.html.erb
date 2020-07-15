@@ -46,60 +46,77 @@
         <%= markdown(text).html_safe %>
       </div>
     </div> <!--row-->
-    <div class="swiper-">
-      <div class="swiper-container">
-      <h2 class="heading">利用できるジム</h2>
-        <div class="swiper-wrapper">
-            <% @trainer.gym_trainers.each do |trainer|%>
-            <div class="swiper-slide">
-                <div class="gyms-item">
-                    <div class="gyms-title">
-                        <h5><%= link_to trainer.gym.name, gym_path(trainer.gym) %> </h5>
-                    </div>
-                    <div class=gyms-box>
-                        <div class="gyms-left">
-                            <a href="/gyms/<%= trainer.gym.id %>"><%= image_tag (trainer.gym.image.url) %></a>
-                        </div>
-                        <div class="gyms-right">
-                            <div class="gyms-star">
-                                <p id="star-ave<%= trainer.gym.id %>">評価</p>
-                                <p>(口コミ数<%= trainer.gym.comments.count %>)</p>
-                            </div>
-                                <script>
-                                $('#star-ave<%= trainer.gym.id %>').raty({
-                                size: 36,
-                                starOff:  '<%= asset_path('star-off.png') %>',
-                                starOn : '<%= asset_path('star-on.png') %>',
-                                starHalf: '<%= asset_path('star-half.png') %>',
-                                half: true,
-                                readOnly: true,
-                                score: <%= trainer.gym.comments.average(:rate).to_f.round(1) %>,
-                                });
-                                </script>
-                            <% trainer.gym.gym_categories.each do |g| %>
-                                <%= link_to g.category.name, gyms_path(q: {categories_id_in: g.category_id }), {class: "gyms-content"} %>
-                            <%end%>
-                            <p class="gyms-content"><%= trainer.gym.address %></p></br>
-                            <p class="gyms-content">月会費：<%= trainer.gym.price %></p>
-                            <h6><%= trainer.gym.title %></h6>
-                            
-                        </div>
-                    </div>
-                    <div class="gyms-button">
-                        <i class="fa fa-phone" aria-hidden="true" style="color: #0080ff;" ></i> <%= trainer.gym.number %>
-                        <a href="#" class="btn-flat-simple">
-                        <i class="fa fa-caret-right"></i> HPで詳しく見る
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <% end %>
-        </div><!--swiper-wrapper-->
-      </div><!--swiper-container-->
-      <div class="swiper-button-prev"></div>
-      <div class="swiper-button-next"></div>
-    </div><!--swiper-->
 
+    <% if @trainer.gym_trainers.empty? %>
+      <h5>登録されていません</h5>
+    <%else%>
+      <div class="swiper-">
+        <div class="swiper-container">
+        <h2 class="heading">利用できるジム</h2>
+          <div class="swiper-wrapper">
+              <% @trainer.gym_trainers.each do |trainer|%>
+              <div class="swiper-slide">
+                  <div class="gyms-item">
+                      <div class="gyms-title">
+                          <h5><%= link_to trainer.gym.name, gym_path(trainer.gym) %> </h5>
+                      </div>
+                      <div class=gyms-box>
+                          <div class="gyms-left">
+                              <a href="/gyms/<%= trainer.gym.id %>"><%= image_tag (trainer.gym.image.url) %></a>
+                          </div>
+                          <div class="gyms-right">
+                              <div class="gyms-star">
+                                  <p id="star-ave<%= trainer.gym.id %>">評価</p>
+                                  <p>(口コミ数<%= trainer.gym.comments.count %>)</p>
+                              </div>
+                                  <script>
+                                  $('#star-ave<%= trainer.gym.id %>').raty({
+                                  size: 36,
+                                  starOff:  '<%= asset_path('star-off.png') %>',
+                                  starOn : '<%= asset_path('star-on.png') %>',
+                                  starHalf: '<%= asset_path('star-half.png') %>',
+                                  half: true,
+                                  readOnly: true,
+                                  score: <%= trainer.gym.comments.average(:rate).to_f.round(1) %>,
+                                  });
+                                  </script>
+                              <% trainer.gym.gym_categories.each do |g| %>
+                                  <%= link_to g.category.name, gyms_path(q: {categories_id_in: g.category_id }), {class: "gyms-content"} %>
+                              <%end%>
+                              <p class="gyms-content"><%= trainer.gym.address %></p></br>
+                              <p class="gyms-content">月会費：<%= trainer.gym.price %></p>
+                                <% if trainer.gym.title.length > 40 %>
+                                    <p class="read"><%= trainer.gym.title %></p>
+                                <% else %>
+                                    <p><%= trainer.gym.title %></p>
+                                <% end %>
+                                <script>
+                                $(function () {
+                                    $('.read').readmore({
+                                    speed: 100,
+                                    collapsedHeight: 45,
+                                    moreLink: '<a href="#">続きを読む</a>',
+                                    lessLink: '<a href="#">閉じる</a>'
+                                    });
+                                });
+                                </script> 
+                          </div>
+                      </div>
+                      <div class="gyms-button">
+                          <i class="fa fa-phone" aria-hidden="true" style="color: #0080ff;" ></i> <%= trainer.gym.number %>
+                          <a href="#" class="btn-flat-simple">
+                          <i class="fa fa-caret-right"></i> HPで詳しく見る
+                          </a>
+                      </div>
+                  </div>
+              </div>
+              <% end %>
+          </div><!--swiper-wrapper-->
+        </div><!--swiper-container-->
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+      </div><!--swiper-->
+    <% end %>
 
 
         <a class="tog btn btn-light">コメントを見る</a>
@@ -129,7 +146,7 @@
                   <% end %>
 
                   <div class="new-gyms-time">
-                    <p><%= comment.created_at %></p>
+                    <p><%= comment.created_at.strftime("%Y-%m-%d") %></p>
                   </div>
                           <script>
                             $('#star-rate-<%= comment.id %>').raty({

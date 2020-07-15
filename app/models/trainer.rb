@@ -1,4 +1,5 @@
 class Trainer < ApplicationRecord
+    validates :title, length: { maximum: 180 }
     mount_uploader :image, ImageUploader
 
     has_many :trainer_categories

@@ -35,119 +35,217 @@
   </div>
 
 
-<div class='tabs'>
-  <div class='tab-buttons'>
-    <span class='content1'>ホーム</span>
-    <span class='content2'>写真</span>
-    <span class='content3'>口コミ</span>
-    <span class='content4'>地図</span>
-    <div id='lamp' class='content1'></div>
-  </div>
-  <div class='tab-content'>
-    
-    <div class='content1'>
-      <div class="gym-content">
-        <% text = @gym.content %>
-        <%= markdown(text).html_safe %>
-      </div>
+  <div class='tabs'>
+    <div class='tab-buttons'>
+      <span class='content1'>ホーム</span>
+      <span class='content2'>写真</span>
+      <span class='content3'>口コミ</span>
+      <span class='content4'>地図</span>
+      <div id='lamp' class='content1'></div>
     </div>
-    
-    <div class='content2'>
-      <div class="contain">
-        <% @gym.item_images.each do |item_image| %>
-            <div class="items-item">
-              <div class="real">
-                <%= link_to item_image.image.url, 'data-lightbox': item_image.image do %>
-                  <%= image_tag item_image.image.url  if item_image.image? %>
-                <%end%>
-              </div>
-            </div>
-        <%end%>
+    <div class='tab-content'>
+      
+      <div class='content1'>
+        <div class="gym-content">
+          <% text = @gym.content %>
+          <%= markdown(text).html_safe %>
+        </div>
       </div>
-    </div>
-    
-    <div class='content3'>
-      <% if @comments.present? %>
-        <% @comments.each do |comment| %>
-          <div class="row comment-">
-            <div class="col-md-2 comment-icon">
-              <%= image_tag(comment.user.image_name.url) unless comment.user.blank?%>
-              <h6><%= comment.user.name unless comment.user.blank? %></h6>
-            </div>
-            <div class="col-md-10 comment-content">
-              <div id="star-rate-<%= comment.id %>">評価　</div>
-              <h5><%= comment.title %></h5>
-              <p><%= comment.content %></p>
-            </div>
-            <% if user_signed_in? && comment.user == current_user %>
-              <div class="comment-li">
-                <p><%= link_to '削除', gym_comment_path(@gym, comment), method: :delete %></p>
-                <p>/</p>
-                <p><%= link_to '編集', edit_gym_comment_path(@gym, comment) %></p>
+      
+      <div class='content2'>
+        <div class="contain">
+          <% @gym.item_images.each do |item_image| %>
+              <div class="items-item">
+                <div class="real">
+                  <%= link_to item_image.image.url, 'data-lightbox': item_image.image do %>
+                    <%= image_tag item_image.image.url  if item_image.image? %>
+                  <%end%>
+                </div>
               </div>
-            <% end %>
-            <div class="new-gyms-time">
-              <p><%= comment.created_at %></p>
-            </div>
-              <script>
-                $('#star-rate-<%= comment.id %>').raty({
-                size: 36,
-                starOff:  '<%= asset_path('star-off.png') %>',
-                starOn : '<%= asset_path('star-on.png') %>',
-                starHalf: '<%= asset_path('star-half.png') %>',
-                half: true,
-                readOnly: true,
-                score: <%= comment.rate %>,
-                });
-              </script>
-            
-          </div><!--row-comment---->
-        <% end %>
-      <% end %>
-      <%= paginate @comments %>
-            <% if user_signed_in? %>
-              <%= form_with(model: [@gym, @comment], local: true, remote: true) do |f| %>
-              <div class="form-group">
-                <%= f.label :title, "タイトル" %>
-                <%= f.text_area :title, class: "form-control", rows: 1 %>
+          <%end%>
+        </div>
+      </div>
+      
+      <div class='content3'>
+        <% if @comments.present? %>
+          <% @comments.each do |comment| %>
+            <div class="row comment-">
+              <div class="col-md-2 comment-icon">
+                <%= image_tag(comment.user.image_name.url) unless comment.user.blank?%>
+                <h6><%= comment.user.name unless comment.user.blank? %></h6>
               </div>
-
-              <div class="form-group">
-                <%= f.label :content, "内容" %>
-                <%= f.text_area :content, class: "form-control", rows: 5 %>
+              <div class="col-md-10 comment-content">
+                <div id="star-rate-<%= comment.id %>">評価　</div>
+                <h5><%= comment.title %></h5>
+                <p><%= comment.content %></p>
               </div>
-
-              <div class="form-group" id="star">
-                <%= f.label :rate,'評価' %>
-                <%= f.hidden_field :rate, id: :comment_star %>
+              <% if user_signed_in? && comment.user == current_user %>
+                <div class="comment-li">
+                  <p><%= link_to '削除', gym_comment_path(@gym, comment), method: :delete %></p>
+                  <p>/</p>
+                  <p><%= link_to '編集', edit_gym_comment_path(@gym, comment) %></p>
+                </div>
+              <% end %>
+              <div class="new-gyms-time">
+                <p><%= comment.created_at.strftime("%Y-%m-%d") %></p>
               </div>
-
-              <script>
-                $('#star').raty({
-                  size     : 36,
+                <script>
+                  $('#star-rate-<%= comment.id %>').raty({
+                  size: 36,
                   starOff:  '<%= asset_path('star-off.png') %>',
                   starOn : '<%= asset_path('star-on.png') %>',
                   starHalf: '<%= asset_path('star-half.png') %>',
-                  scoreName: 'comment[rate]',
                   half: true,
+                  readOnly: true,
+                  score: <%= comment.rate %>,
                   });
-              </script>
+                </script>
+              
+            </div><!--row-comment---->
+          <% end %>
+        <% end %>
+        <%= paginate @comments %>
+              <% if user_signed_in? %>
+                <%= form_with(model: [@gym, @comment], local: true, remote: true) do |f| %>
+                <div class="form-group">
+                  <%= f.label :title, "タイトル" %>
+                  <%= f.text_area :title, class: "form-control", rows: 1 %>
+                </div>
 
-              <%= button_tag type: "submit", class: "btn btn-success float-right mt-1" do %>
-                <i class="far fa-comments"></i> コメントする
+                <div class="form-group">
+                  <%= f.label :content, "内容" %>
+                  <%= f.text_area :content, class: "form-control", rows: 5 %>
+                </div>
+
+                <div class="form-group" id="star">
+                  <%= f.label :rate,'評価' %>
+                  <%= f.hidden_field :rate, id: :comment_star %>
+                </div>
+
+                <script>
+                  $('#star').raty({
+                    size     : 36,
+                    starOff:  '<%= asset_path('star-off.png') %>',
+                    starOn : '<%= asset_path('star-on.png') %>',
+                    starHalf: '<%= asset_path('star-half.png') %>',
+                    scoreName: 'comment[rate]',
+                    half: true,
+                    });
+                </script>
+
+                <%= button_tag type: "submit", class: "btn btn-success float-right mt-1" do %>
+                  <i class="far fa-comments"></i> コメントする
+                <% end %>
+                <% end %>
               <% end %>
-              <% end %>
-            <% end %>
-    </div><!--content3-->
+      </div><!--content3-->
 
-    <div class='content4'>
-    </div>
-      
-  </div><!--tab-content-->
-</div><!--tabs-->
-  <div class='credit'>
-  </div>
-
+      <div class='content4'>
+      </div>
+        
+    </div><!--tab-content-->
+  </div><!--tabs-->
+  <% if @gym.gym_trainers.empty? %>
+    <h5>登録されていません</h5>
+  <%else%>
+    <div class="swiper-">
+      <div class="swiper-container">
+        <h2 class="heading">利用可能なトレーナー</h2>
+        <div class="swiper-wrapper">
+          <% @gym.gym_trainers.each do |gym| %>
+            <div class="swiper-slide">
+              <div class="slide-item">
+                <div class="slide-top">
+                  <div class="slide-left">
+                    <a href="/trainers/<%= gym.trainer.id %>"><%= image_tag (gym.trainer.image.url) %></a>
+                  </div>
+                  <div class="slide-right">
+                    <h6><%= link_to gym.trainer.name, trainer_path(gym.trainer) %></h6>
+                      <p id="star-ave<%= gym.trainer.id %>"></p>
+                          <script>
+                          $('#star-ave<%= gym.trainer.id %>').raty({
+                          size: 36,
+                          starOff:  '<%= asset_path('star-off.png') %>',
+                          starOn : '<%= asset_path('star-on.png') %>',
+                          starHalf: '<%= asset_path('star-half.png') %>',
+                          half: true,
+                          readOnly: true,
+                          score: <%= gym.trainer.comments.average(:rate).to_f.round(1) %>,
+                            });
+                          </script>
+                      <p>(<%= gym.trainer.comments.count %>)</p>
+                      <% gym.trainer.trainer_categories.each do |tra| %>
+                      <p><%= tra.category.name unless tra.category.nil? %></p>
+                      <% end %>
+                  </div>
+                </div><!--slide-top-->
+                <div class="slide-middle">
+                  <% if gym.trainer.title.length > 40 %>
+                    <p class="read"><%= gym.trainer.title %></p>
+                  <% else %>
+                    <p><%= gym.trainer.title %></p>
+                  <% end %>
+                  <script>
+                    $(function () {
+                      $('.read').readmore({
+                      speed: 100,
+                      collapsedHeight: 45,
+                      moreLink: '<a href="#">続きを読む</a>',
+                      lessLink: '<a href="#">閉じる</a>'
+                      });
+                    });
+                  </script>
+                </div>
+                <div class="slide-bottom">
+                  <% gym.trainer.comments.reverse.first(1).each do |comment| %>
+                    <div id="star-rate-<%= comment.id %>"></div>
+                      <% if comment.content.length > 40 %>
+                        <p class="read"><%= comment.content %></p>
+                      <% else %>
+                        <p><%= comment.content %></p>
+                      <% end %>
+                      <script>
+                        $('#star-rate-<%= comment.id %>').raty({
+                        size: 30,
+                        starOff:  '<%= asset_path('star-off.png') %>',
+                        starOn : '<%= asset_path('star-on.png') %>',
+                        starHalf: '<%= asset_path('star-half.png') %>',
+                        half: true,
+                        readOnly: true,
+                        score: <%= comment.rate %>,
+                        });
+                      </script>
+                    <div class="profile">
+                      <p> (<%= sex(comment.user.sex) %></p>
+                      <p><%= age(comment.user.age) %>)</p>
+                      <p><%= comment.created_at.strftime("%Y-%m-%d") %></p>
+                    </div>
+                  <% end %>
+                  <div class="tras-like">
+                    <% if current_user.already_liked?(gym.trainer) %>
+                      <%= link_to trainer_like_path(gym.trainer, gym.trainer), method: :delete, remote: :true do %>
+                        <i class="fa fa-heart" aria-hidden="true" style="color: red;">
+                          <%= gym.trainer.likes.count %> 
+                        </i>
+                      <% end %>
+                    <% else %>
+                      <%= link_to trainer_likes_path(gym.trainer, gym.trainer), method: :post, remote: :true do %>
+                        <i class="fa fa-heart" aria-hidden="true" style="color: #C0C0C0;">
+                          <%= gym.trainer.likes.count %> 
+                        </i>
+                      <% end %>
+                    <% end %>
+                  </div>
+                </div><!--slide-bottom-->
+              </div><!--slide-item-->
+            </div><!--swiper-slide-->
+          <% end %>
+        </div><!--swiper-wrapper-->
+      </div><!--swiper-container-->
+      <div class="swiper-button-prev"></div>
+      <div class="swiper-button-next"></div>
+    </div><!--swiper-->
+  <% end %>
 </div><!--container-->
 
 

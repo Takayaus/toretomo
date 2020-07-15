@@ -9,7 +9,7 @@ class GymsController < ApplicationController
 
   def show
     @gym = Gym.find(params[:id])
-    @comments = @gym.comments.all.page(params[:page]).per(4)
+    @comments = @gym.comments.all.page(params[:page]).per(4).order('updated_at DESC')
     @comment = @gym.comments.build
   end
 end

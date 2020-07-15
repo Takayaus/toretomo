@@ -9,7 +9,7 @@ class TrainersController < ApplicationController
 
   def show
     @trainer = Trainer.find(params[:id])
-    @comments = @trainer.comments.all.page(params[:page]).per(3)
+    @comments = @trainer.comments.all.page(params[:page]).per(3).order('updated_at DESC')
     @comment = @trainer.comments.build
     @like = Like.new
   end

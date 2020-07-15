@@ -1,5 +1,6 @@
 class Gym < ApplicationRecord
     validates :district_id, presence: true
+    validates :title, length: { maximum: 180 }
     has_many :item_images, dependent: :destroy
     mount_uploader :image, ImageUploader
     

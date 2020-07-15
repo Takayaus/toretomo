@@ -190,7 +190,8 @@ body {
   border: 0.5px solid black;
   border-radius: 3px;
   width: 650px;
-  height: 330px;
+  min-height: 330px;
+  margin-bottom: 40px;
 }
 
 .gyms-title {
@@ -212,8 +213,7 @@ body {
 
 .gyms-box {
   padding: 20px 20px 0;
-  height: 240px;
-  overflow: hidden;
+  min-height: 240px;
 }
 
 .gyms-left {
@@ -237,14 +237,8 @@ body {
 
 .gyms-right {
   width: 350px;
-  height: 200px;
-  float: right;
-}
-
-.gyms-right h6 {
-  border-top: 1px solid black;
-  padding-top: 10px;
-  font-weight: normal;
+  min-height: 200px;
+  margin: 0 0 0 auto;
 }
 
 .gyms-content {

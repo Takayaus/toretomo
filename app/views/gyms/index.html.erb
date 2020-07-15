@@ -49,8 +49,21 @@
                             <%end%>
                             <p class="gyms-content"><%= gym.address %></p></br>
                             <p class="gyms-content">月会費：<%= gym.price %></p>
-                            <h6><%= gym.title %></h6>
-                            
+                                <% if gym.title.length > 40 %>
+                                    <p class="read"><%= gym.title %></p>
+                                <% else %>
+                                    <p><%= gym.title %></p>
+                                <% end %>
+                                <script>
+                                $(function () {
+                                    $('.read').readmore({
+                                    speed: 100,
+                                    collapsedHeight: 45,
+                                    moreLink: '<a href="#">続きを読む</a>',
+                                    lessLink: '<a href="#">閉じる</a>'
+                                    });
+                                });
+                                </script>                            
                         </div>
                     </div>
                     <div class="gyms-button">
