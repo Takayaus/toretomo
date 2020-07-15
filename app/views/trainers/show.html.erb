@@ -112,6 +112,7 @@
               </div>
               <% end %>
           </div><!--swiper-wrapper-->
+          <div class="swiper-pagination"></div>
         </div><!--swiper-container-->
         <div class="swiper-button-prev"></div>
         <div class="swiper-button-next"></div>
@@ -220,12 +221,15 @@ var mySwiper = new Swiper('.swiper-container', {
     prevEl: '.swiper-button-prev',
   },
   centeredSlides : true,
-  loop: true,
 	autoplay: {
 		delay: 10000,
 		stopOnLastSlide: false,
 		disableOnInteraction: false,
     reverseDirection: false
+  },
+  pagination: {
+		el: '.swiper-pagination',
+		type: 'fraction',
 	}
 });
 </script>
