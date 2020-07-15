@@ -146,11 +146,11 @@
     </div><!--tab-content-->
   </div><!--tabs-->
   <% if @gym.gym_trainers.empty? %>
-    <h5>登録されていません</h5>
-  <%else%>
+    <h5>トレーナーの登録がありません</h5>
+  <% else %>
     <div class="swiper-">
       <div class="swiper-container">
-        <h2 class="heading">利用可能なトレーナー</h2>
+        <h2 class="heading">施設利用可能なトレーナー</h2>
         <div class="swiper-wrapper">
           <% @gym.gym_trainers.each do |gym| %>
             <div class="swiper-slide">
@@ -175,7 +175,7 @@
                           </script>
                       <p>(<%= gym.trainer.comments.count %>)</p>
                       <% gym.trainer.trainer_categories.each do |tra| %>
-                      <p><%= tra.category.name unless tra.category.nil? %></p>
+                        <p><%= tra.category.name unless tra.category.nil? %></p>
                       <% end %>
                   </div>
                 </div><!--slide-top-->
@@ -264,4 +264,33 @@ $('.tab-content>div').first().slideDown();
       }
     });
   });
+</script>
+<script>
+var mySwiper = new Swiper('.swiper-container', {
+  slidesPerView: 3,
+    navigation: {
+    nextEl: '.swiper-button-next',
+    prevEl: '.swiper-button-prev',
+  },
+  //   breakpoints: {
+  //   400: {
+  //     slidesPerView: 1,
+  //   },
+  //   750: {
+  //     slidesPerView: 1.9,
+  //   },
+  //   995: {
+  //     slidesPerView: 3,
+  //   }
+  // },
+  centeredSlides : true,
+  loop: true,
+	autoplay: {
+		delay: 10000,
+		stopOnLastSlide: false,
+		disableOnInteraction: false,
+    reverseDirection: false,
+    centeredSlides : true
+	}
+});
 </script>

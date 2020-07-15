@@ -3,7 +3,7 @@
   <%= search_form_for(@q, url:gyms_path) do |f| %>
     <%= f.collection_select :district_id_eq, @districts, :id, :name, include_blank: true %>
     <%= f.collection_select :categories_id_in, @categories, :id, :name, include_blank: true %>
-    <%= f.search_field :name_or_title_or_content_or_address_or_categories_name_cont, placeholder: "24時間, 初心者歓迎など" %>
+    <%= f.search_field :name_or_title_or_content_or_address_or_categories_name_cont %>
     <%= f.submit "検索" %>
   <% end %>
 </div>
