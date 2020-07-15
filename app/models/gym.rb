@@ -1,4 +1,5 @@
 class Gym < ApplicationRecord
+    validates :district_id, presence: true
     has_many :item_images, dependent: :destroy
     mount_uploader :image, ImageUploader
     

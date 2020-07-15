@@ -45,7 +45,7 @@
                                 });
                                 </script>
                             <% gym.gym_categories.each do |g| %>
-                                <p class="gyms-content"><%= g.category.name %></p>
+                                <%= link_to g.category.name, gyms_path(q: {categories_id_in: g.category_id }), {class: "gyms-content"} %>
                             <%end%>
                             <p class="gyms-content"><%= gym.address %></p></br>
                             <p class="gyms-content">月会費：<%= gym.price %></p>

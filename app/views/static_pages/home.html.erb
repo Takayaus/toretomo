@@ -16,147 +16,159 @@
     <div class="row justify-content-center">
       <% @gyms.each do |gym| %>
         <div class="new-gym col-lg-6">
+        <a href="/gyms/<%= gym.id %>"></a>
           <div class="new-gyms-left">
-            <a href="/gyms/<%= gym.id %>">
               <%= image_tag(gym.image.url) %>
           </div>
           <div clsss="new-gyms-right">
             <div class="new-gyms-title">
+              <p class="district-name"><%= gym.district.name unless gym.district.nil?%></p>
+              <p><%= time_ago_in_words(gym.created_at) %>前に掲載！</p>
               <h6><%= gym.name %></h6>
-              <p><%= gym.title %></p>
             </div>
-            <div class="new-gyms-time">
+            <%
+=begin%>
+ <div class="new-gyms-time">
               <p><%= time_ago_in_words(gym.created_at) %>前に掲載</p>
-            </div>
+            </div> 
+<%
+=end%>
             </a>
           </div>
         </div>
       <% end %>
     </div>
-  <a href="/gyms" class="cate-tag">ジム一覧へ</a>
 
-  <div class="swiper-container">
-    <h2 class="heading">評価の高いトレーナー</h2>
-    <div class="swiper-wrapper">
-      <% @trainers.each do |trainer| %>
-        <div class="swiper-slide">
-          <div class="slide-item">
-            <div class="slide-top">
-              <div class="slide-left">
-                <a href="/trainers/<%= trainer.id %>"><%= image_tag (trainer.image.url) %></a>
+    <div style="text-align: right;"><a href="/gyms">ジム一覧へ</a></div>
+
+  <div class="swiper-">
+    <div class="swiper-container">
+      <h2 class="heading">評価の高いトレーナー</h2>
+      <div class="swiper-wrapper">
+        <% @trainers.each do |trainer| %>
+          <div class="swiper-slide">
+            <div class="slide-item">
+              <div class="slide-top">
+                <div class="slide-left">
+                  <a href="/trainers/<%= trainer.id %>"><%= image_tag (trainer.image.url) %></a>
+                </div>
+                <div class="slide-right">
+                  <h6><%= link_to trainer.name, trainer_path(trainer) %></h6>
+                    <p id="star-ave<%= trainer.id %>"></p>
+                        <script>
+                        $('#star-ave<%= trainer.id %>').raty({
+                        size: 36,
+                        starOff:  '<%= asset_path('star-off.png') %>',
+                        starOn : '<%= asset_path('star-on.png') %>',
+                        starHalf: '<%= asset_path('star-half.png') %>',
+                        half: true,
+                        readOnly: true,
+                        score: <%= trainer.comments.average(:rate).to_f.round(1) %>,
+                          });
+                        </script>
+                    <p>(<%= trainer.comments.count %>)</p>
+                    <% trainer.trainer_categories.each do |tra| %>
+                    <p><%= tra.category.name %></p>
+                    <% end %>
+                </div>
+              </div><!--slide-top-->
+              <div class="slide-middle">
+                <% if trainer.title.length > 40 %>
+                  <p class="read"><%= trainer.title %></p>
+                <% else %>
+                  <p><%= trainer.title %></p>
+                <% end %>
+                <script>
+                  $(function () {
+                    $('.read').readmore({
+                    speed: 100,
+                    collapsedHeight: 45,
+                    moreLink: '<a href="#">続きを読む</a>',
+                    lessLink: '<a href="#">閉じる</a>'
+                    });
+                  });
+                </script>
               </div>
-              <div class="slide-right">
-                <h6><%= link_to trainer.name, trainer_path(trainer) %></h6>
-                   <p id="star-ave<%= trainer.id %>"></p>
-                      <script>
-                      $('#star-ave<%= trainer.id %>').raty({
-                      size: 36,
+              <div class="slide-bottom">
+                <% trainer.comments.reverse.first(1).each do |comment| %>
+                  <div id="star-rate-<%= comment.id %>"></div>
+                    <% if comment.content.length > 40 %>
+                      <p class="read"><%= comment.content %></p>
+                    <% else %>
+                      <p><%= comment.content %></p>
+                    <% end %>
+                    <script>
+                      $('#star-rate-<%= comment.id %>').raty({
+                      size: 30,
                       starOff:  '<%= asset_path('star-off.png') %>',
                       starOn : '<%= asset_path('star-on.png') %>',
                       starHalf: '<%= asset_path('star-half.png') %>',
                       half: true,
                       readOnly: true,
-                      score: <%= trainer.comments.average(:rate).to_f.round(1) %>,
-                        });
-                      </script>
-                  <p>(<%= trainer.comments.count %>)</p>
-                  <% trainer.trainer_categories.each do |tra| %>
-                  <p><%= tra.category.name %></p>
-                  <% end %>
-              </div>
-            </div>
-            <div class="slide-middle">
-              <% if trainer.title.length > 40 %>
-                <p class="read"><%= trainer.title %></p>
-              <% else %>
-                <p><%= trainer.title %></p>
-              <% end %>
-              <script>
-                $(function () {
-                  $('.read').readmore({
-                  speed: 100,
-                  collapsedHeight: 45,
-                  moreLink: '<a href="#">続きを読む</a>',//続きを読むボタンタグ
-                  lessLink: '<a href="#">閉じる</a>'//閉じるボタンタグ
-                  });
-                });
-              </script>
-            </div>
-            <div class="slide-bottom">
-              <% trainer.comments.reverse.first(1).each do |comment| %>
-                <div id="star-rate-<%= comment.id %>"></div>
-                  <% if comment.content.length > 40 %>
-                    <p class="read"><%= comment.content %></p>
-                  <% else %>
-                    <p><%= comment.content %></p>
-                  <% end %>
-                  <script>
-                    $('#star-rate-<%= comment.id %>').raty({
-                    size: 30,
-                    starOff:  '<%= asset_path('star-off.png') %>',
-                    starOn : '<%= asset_path('star-on.png') %>',
-                    starHalf: '<%= asset_path('star-half.png') %>',
-                    half: true,
-                    readOnly: true,
-                    score: <%= comment.rate %>,
-                    });
-                  </script>
-                <div class="profile">
-                  <p> (<%= sex(comment.user.sex) %></p>
-                  <p><%= age(comment.user.age) %>)</p>
-                  <p><%= comment.created_at.strftime("%Y-%m-%d") %></p>
-                </div>
-              <% end %>
-              <div class="tras-like">
-                <% if current_user.already_liked?(trainer) %>
-                  <%= link_to trainer_like_path(trainer, trainer), method: :delete, remote: :true do %>
-                    <i class="fa fa-heart" aria-hidden="true" style="color: red;">
-                      <%= trainer.likes.count %> 
-                    </i>
-                  <% end %>
-                <% else %>
-                  <%= link_to trainer_likes_path(trainer, trainer), method: :post, remote: :true do %>
-                    <i class="fa fa-heart" aria-hidden="true" style="color: #C0C0C0;">
-                      <%= trainer.likes.count %> 
-                    </i>
-                  <% end %>
+                      score: <%= comment.rate %>,
+                      });
+                    </script>
+                  <div class="profile">
+                    <p> (<%= sex(comment.user.sex) %></p>
+                    <p><%= age(comment.user.age) %>)</p>
+                    <p><%= comment.created_at.strftime("%Y-%m-%d") %></p>
+                  </div>
                 <% end %>
-              </div>
-            </div>
-          </div>
-        </div>
-      <% end %>
-    </div>
-	</div>
-  
+                <div class="tras-like">
+                  <% if current_user.already_liked?(trainer) %>
+                    <%= link_to trainer_like_path(trainer, trainer), method: :delete, remote: :true do %>
+                      <i class="fa fa-heart" aria-hidden="true" style="color: red;">
+                        <%= trainer.likes.count %> 
+                      </i>
+                    <% end %>
+                  <% else %>
+                    <%= link_to trainer_likes_path(trainer, trainer), method: :post, remote: :true do %>
+                      <i class="fa fa-heart" aria-hidden="true" style="color: #C0C0C0;">
+                        <%= trainer.likes.count %> 
+                      </i>
+                    <% end %>
+                  <% end %>
+                </div>
+              </div><!--slide-bottom-->
+            </div><!--slide-item-->
+          </div><!--swiper-slide-->
+        <% end %>
+      </div><!--swiper-wrapper-->
+	  </div><!--swiper-container-->
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-button-next"></div>
+  </div><!--swiper-->
+  <div style="text-align: right;"><a href="/trainers">トレーナー一覧へ</a></div>
 </div>
+
+
+
 <script>
 var mySwiper = new Swiper('.swiper-container', {
   slidesPerView: 3,
-    breakpoints: {
-    // 400: {
-    //   slidesPerView: 1.5,
-    // },
-    // 980: {
-    //   slidesPerView: 3.5,
-    // }
+    navigation: {
+    nextEl: '.swiper-button-next',
+    prevEl: '.swiper-button-prev',
   },
+  //   breakpoints: {
+  //   400: {
+  //     slidesPerView: 1,
+  //   },
+  //   750: {
+  //     slidesPerView: 1.9,
+  //   },
+  //   995: {
+  //     slidesPerView: 3,
+  //   }
+  // },
   centeredSlides : true,
   loop: true,
-	navigation: {
-		nextEl: '.swiper-button-next',
-		prevEl: '.swiper-button-prev'
-	},
 	autoplay: {
 		delay: 10000,
 		stopOnLastSlide: false,
 		disableOnInteraction: false,
-		reverseDirection: false
-	},
-	pagination: {
-		el: '.swiper-pagination',
-		type: 'bullets',
-		clickable: true
+    reverseDirection: false,
+    centeredSlides : true
 	}
 });
 </script>

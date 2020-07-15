@@ -24,8 +24,8 @@
           <i class="fa fa-phone" aria-hidden="true" style="color: #0080ff;" ></i>
           <%= @gym.number %></br>
         <%end%>
-        <% @gym.gym_categories.each do |gym|%>
-          <p class="inline-block"><%= gym.category.name %></p>
+        <% @gym.gym_categories.each do |g|%>
+          <%= link_to g.category.name, gyms_path(q: {categories_id_in: g.category_id }), {class: "gyms-content"} %>
         <% end %>
       </div>
       <div class="col-md-6 col-xs-12 gym-left">
