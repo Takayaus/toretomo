@@ -47,7 +47,7 @@
                                     <p>(<%= trainer.comments.count %>件)</p>
                                     <ul>
                                         <% trainer.trainer_categories.each do |tra| %>
-                                            <li><%= link_to tra.category.name, trainers_path(q: {categories_id_in: tra.category_id })%></li>
+                                            <li><%= link_to tra.category.name, trainers_path(q: {categories_id_in: tra.category_id }) unless tra.category.nil? %></li>
                                         <% end %>
                                     </ul>
                                 </div>
