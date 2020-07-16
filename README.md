@@ -2,9 +2,9 @@
 
 ログインなしで使えない機能
 
-・ジム、トレーナーへのコメントの作成、編集、削除
+・ジム、トレーナーへのコメントの作成、編集、削除</br>
 ・トレーナーへのいいねの追加、削除
 
-Admin
-email: admin@example.com
-password: adminuser
+Admin</br>
+email: admin@example.com</br>
+password: adminuser</br>
