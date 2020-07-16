@@ -5,11 +5,11 @@ class Gym < ApplicationRecord
     mount_uploader :image, ImageUploader
     
     has_many :gym_categories
-    has_many :categories, through: :gym_categories, source: :category
+    has_many :categories, through: :gym_categories, source: :category, dependent: :destroy
     accepts_nested_attributes_for :gym_categories, allow_destroy: true
 
     has_many :gym_trainers
-    has_many :trainers, through: :gym_trainers
+    has_many :trainers, through: :gym_trainers, dependent: :destroy
     accepts_nested_attributes_for :gym_trainers, allow_destroy: true
 
     belongs_to :district, optional: true

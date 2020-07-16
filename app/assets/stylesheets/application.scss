@@ -458,12 +458,12 @@ body {
   width: 75%;
 }
 
-.tras-right h6 a {
+.tras-right h6 {
   color: black;
 }
 .tras-right a {
-  text-decoration: none;
   cursor: pointer;
+  color: black;
 }
 
 .tras-right p {
@@ -474,7 +474,8 @@ body {
 .tras-right ul {
   padding: 0;
 }
-.tras-right ul li {
+
+.tras-cate {
   list-style: none;
   display: inline-block;
 }
@@ -795,7 +796,6 @@ body {
 }
 
 .slide-right a {
-  text-decoration: none;
   cursor: pointer;
   color: black;
 }
