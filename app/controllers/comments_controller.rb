@@ -1,5 +1,6 @@
 class CommentsController < ApplicationController
-  prepend_before_action :set_commentable, only: %i[create]  
+  prepend_before_action :set_commentable, only: %i[create]
+  before_action :authenticate_user, only: %i[create edit update destroy]
   # before_action :set_comment, only: %i[edit update destroy]  
   def create
 

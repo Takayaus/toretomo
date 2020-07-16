@@ -107,18 +107,24 @@
                   </div>
                 <% end %>
                 <div class="tras-like">
-                  <% if current_user.already_liked?(trainer) %>
-                    <%= link_to trainer_like_path(trainer, trainer), method: :delete, remote: :true do %>
-                      <i class="fa fa-heart" aria-hidden="true" style="color: red;">
-                        <%= trainer.likes.count %> 
-                      </i>
+                  <% if user_signed_in? %>
+                    <% if current_user.already_liked?(trainer) %>
+                      <%= link_to trainer_like_path(trainer, trainer), method: :delete, remote: :true do %>
+                        <i class="fa fa-heart" aria-hidden="true" style="color: red;">
+                          <%= trainer.likes.count %> 
+                        </i>
+                      <% end %>
+                    <% else %>
+                      <%= link_to trainer_likes_path(trainer, trainer), method: :post, remote: :true do %>
+                        <i class="fa fa-heart" aria-hidden="true" style="color: #C0C0C0;">
+                          <%= trainer.likes.count %> 
+                        </i>
+                      <% end %>
                     <% end %>
                   <% else %>
-                    <%= link_to trainer_likes_path(trainer, trainer), method: :post, remote: :true do %>
-                      <i class="fa fa-heart" aria-hidden="true" style="color: #C0C0C0;">
-                        <%= trainer.likes.count %> 
-                      </i>
-                    <% end %>
+                    <i class="fa fa-heart" aria-hidden="true" style="color: red;">
+                      <%= trainer.likes.count %>
+                    </i>
                   <% end %>
                 </div>
               </div><!--slide-bottom-->

@@ -15,4 +15,10 @@ class User < ApplicationRecord
   def already_liked?(trainer)
     self.likes.exists?(trainer_id: trainer.id)
   end
+
+  def self.guest
+    find_or_create_by!(email: 'guest@example.com') do |user|
+      user.password = SecureRandom.urlsafe_base64
+    end
+  end
 end
