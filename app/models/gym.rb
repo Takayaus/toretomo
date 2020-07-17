@@ -1,6 +1,10 @@
 class Gym < ApplicationRecord
     validates :district_id, presence: true
     validates :title, length: { maximum: 180 }
+    
+    geocoded_by :address
+    after_validation :geocode, if: :address_changed?
+
     has_many :item_images, dependent: :destroy
     mount_uploader :image, ImageUploader
     

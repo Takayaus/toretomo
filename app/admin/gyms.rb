@@ -5,7 +5,7 @@ ActiveAdmin.register Gym do
   #
   # Uncomment all parameters which should be permitted for assignment
   #
-    permit_params :name, :title, :content, :number, :address, :price, :image, :district_id, gym_categories_attributes: [:category_id, :_destroy, :id],
+    permit_params :name, :title, :content, :number, :address, :price, :image, :district_id, :latitude, :longitude, gym_categories_attributes: [:category_id, :_destroy, :id],
                   gym_trainers_attributes: [:trainer_id, :_destroy, :id]
   #
   # or
