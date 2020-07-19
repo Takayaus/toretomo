@@ -173,7 +173,6 @@
             <% end %>
           <% end %>
             <%= paginate @comments %>
-            <% if user_signed_in? %>
 
               <%= form_with(model: [@trainer, @comment], local: true, remote: true) do |f| %>
               <div class="form-group">
@@ -207,7 +206,6 @@
               <% end %>
 
               <% end %>
-            <% end %>
         </div> <!--tra-comment-->
         </div><!-- tra-wrapper-->
 </div> <!--container-->
