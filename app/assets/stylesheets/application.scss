@@ -139,17 +139,69 @@ body {
 }
 
 //home
-.home-top {
-  background: linear-gradient(135deg, rgba(0, 0, 0, 0.4), rgba(7, 7, 7, 0.3)),
-    url("a.jpg");
-  background-size: cover;
+// .home-top {
+//   background: linear-gradient(135deg, rgba(0, 0, 0, 0.4), rgba(7, 7, 7, 0.3));
+//   background-size: cover;
+//   height: 80vh;
+//   width: 100%;
+//   position: relative;
+//   overflow: hidden;
+// }
+
+.top {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+#home-top {
+  position: relative;
+  height: 70vh;
+  width: 100%;
+}
+#home-top img {
   background-position: center;
-  height: 80vh;
+  height: 70vh;
   width: 100%;
   object-fit: cover;
-  position: relative;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 8;
+  opacity: 0;
 }
-.home-form {
+#home-top img.active {
+  z-index: 10;
+  opacity: 1;
+}
+#home-top img.last-active {
+  z-index: 9;
+}
+.home-gra {
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.4), rgba(7, 7, 7, 0.3));
+  background-size: cover;
+  height: 70vh;
+  width: 100%;
+  position: absolute;
+  z-index: 15;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  margin: 0;
+  padding: 0;
+  color: white;
+}
+.home-gra h2 {
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+}
+
+.home-box {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -158,6 +210,56 @@ body {
   transform: translate(-50%, -50%);
   margin: 0;
   padding: 0;
+  z-index: 20;
+  color: white;
+}
+.home-form {
+  background-color: rgba(255, 255, 255, 0.769);
+  max-width: 550px;
+  margin: auto;
+  padding: 1rem 2rem 2rem;
+  color: black;
+}
+.home-form h2 {
+}
+.home-form p {
+  font-size: 1em;
+}
+
+.home-fbox {
+  outline: 0; /*クリック時の青い枠線消す*/
+  height: 40px; /*検索ボックスの高さ*/
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0 10px; /*テキスト位置調整*/
+  border-radius: 2px 0 0 2px; /*検索ボックスの角を丸める*/
+  background: #eee; /*検索ボックスの背景カラー*/
+}
+.home-fbtn {
+  width: 100%; /*検索ボタンの横幅*/
+  height: 40px; /*検索ボタンの縦幅*/
+  border-radius: 0 2px 2px 0; /*検索ボタンの角を丸める*/
+  background: #7fbfff; /*検索ボタンの背景カラー*/
+  border: none; /*検索ボタンの枠線を消す*/
+  color: #fff; /*検索ボタンのテキストカラー*/
+  font-weight: bold; /*検索ボタンのテキスト太字*/
+  font-size: 16px; /*検索ボタンのフォントサイズ*/
+  margin-top: 10px;
+}
+.home-fbtn:hover {
+  color: #666; /*検索ボタンマウスオーバー時のフォントカラー*/
+}
+.tra-img {
+  margin: 50px 0;
+}
+.tra-img {
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.4), rgba(7, 7, 7, 0.3)),
+    url("tra-img.jpg");
+  background-size: cover;
+  background-position: center;
+  height: 70vh;
+  width: 100%;
+  object-fit: cover;
 }
 //gyms
 

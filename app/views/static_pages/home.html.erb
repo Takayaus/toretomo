@@ -1,11 +1,53 @@
-<div class="home-top"></div>
-<div class="home-form">
-  <%= search_form_for(@q, url:gyms_path) do |f| %>
-    <%= f.collection_select :district_id_eq, @districts, :id, :name, include_blank: true %>
-    <%= f.collection_select :categories_id_in, @categories, :id, :name, include_blank: true %>
-    <%= f.search_field :name_or_title_or_content_or_address_or_categories_name_cont %>
-    <%= f.submit "検索" %>
-  <% end %>
+<div class="top">
+  <div id="home-top">
+    <%= image_tag("home1.jpg", class: "active") %>
+    <%= image_tag("home2.jpg") %>
+    <%= image_tag("home3.jpg") %>
+    <%= image_tag("home5.jpg") %>
+  </div>
+  <script type="text/javascript">
+    function slideSwitch() {
+      var $active = $('#home-top img.active');
+
+      if ( $active.length == 0 ) $active = $('#home-top img:last');
+
+      var $next =  $active.next().length ? $active.next()
+          : $('#home-top img:first');
+
+      $active.addClass('last-active');
+
+      $next.css({opacity: 0.0})
+          .addClass('active')
+          .animate({opacity: 1.0}, 1000, function() {
+              $active.removeClass('active last-active');
+          });
+    }
+
+    $(function() {
+      setInterval( "slideSwitch()", 5000 );
+    });
+  </script>
+  <div class="home-gra"></div>
+  <div class="home-box">
+  <h2>あなたの街で理想のパーソナルトレーナーが見つかる</h2>
+  <div class="home-form">
+    <%= search_form_for(@q, url:gyms_path) do |f| %>
+      <%
+=begin%>
+ <%
+  =begin%>
+  <%= f.collection_select :district_id_eq, @districts, :id, :name, include_blank: true %>
+      <%= f.collection_select :categories_id_in, @categories, :id, :name, include_blank: true %> 
+  <%
+  =end%> 
+<%
+=end%>
+      <p>自分の住んでいる地域から理想のジムを探すことができ、それぞれのジムで活躍しているトレーナーを探せます。</p>
+      <%= f.text_field :name_or_title_or_content_or_address_or_categories_name_cont, class: "home-fbox" %>
+      <%= f.submit "検索", class: "home-fbtn" %>
+    <% end %>
+    </div>
+  </div>
 </div>
 <div class="container">
     <h2 class="heading">人気のカテゴリー</h2>
@@ -32,7 +74,12 @@
     </div>
 
     <div style="text-align: right;"><a href="/gyms">ジム一覧へ</a></div>
+</div>
 
+<div class="tra-img">
+</div>
+
+<div class="container">
   <div class="swiper-">
     <div class="swiper-container">
       <h2 class="heading">評価の高いトレーナー</h2>
@@ -138,7 +185,6 @@
   </div><!--swiper-->
   <div style="text-align: right;"><a href="/trainers">トレーナー一覧へ</a></div>
 </div>
-
 
 <script>
 var mySwiper = new Swiper('.swiper-container', {
