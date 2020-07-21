@@ -706,7 +706,7 @@ body {
   }
   .category {
     position: relative;
-    margin: 5px;
+    margin: 2px;
     width: 45%;
   }
 }
@@ -760,46 +760,81 @@ body {
 .cate-tag {
   text-align: right;
 }
+@media screen and(max-width: 420px) {
+  .new-gym {
+    display: none !important;
+  }
+  .card {
+    display: flex !important;
+    margin-bottom: 15px;
+    position: relative;
+  }
+  .card-body {
+    padding-top: 0;
+  }
+  .card:hover {
+    opacity: 0.6;
+    cursor: pointer;
+  }
+  .new-gyms-time {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    font-size: 12px;
+    margin: 8px 8px 8px 0;
+  }
+  .district-name {
+    color: #ffffff;
+    font-size: 12px;
+    padding: 0 6px;
+    line-height: 150%;
+    background: #de5065;
+    margin-top: 3px;
+    max-width: 50px;
+  }
+}
 
+.card {
+  display: none;
+}
+.new-gyms {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
 .new-gym {
   border: 1px solid #f8f9fa;
   padding: 10px;
-  display: flex;
-  justify-content: flex-start;
   position: relative;
+  height: 120px;
+  width: 500px;
+  display: flex;
+  align-items: flex-start;
 }
 
+.new-gym-left img {
+  height: 100px;
+  width: 120px;
+  margin-right: 10px;
+}
 .new-gym:hover {
   opacity: 0.6;
   cursor: pointer;
 }
-
-.new-gyms-left {
-  width: 30%;
-}
-
-.new-gyms-left img {
-  width: 150px;
-  height: 100px;
-}
-
-.new-gyms-right {
-  width: 70%;
-  overflow: hidden;
-}
-.new-gyms-title {
+.new-gym-right {
   color: black;
 }
-.new-gyms-title p {
+.new-gym-right p {
   display: inline-block;
-  font-size: 13px;
 }
+
 .district-name {
   color: #ffffff;
   font-size: 12px;
   padding: 0 6px;
   line-height: 150%;
   background: #de5065;
+  margin-top: 3px;
 }
 .new-gyms-time p {
   position: absolute;
