@@ -105,7 +105,6 @@
           <% end %>
         <% end %>
         <%= paginate @comments %>
-              <% if user_signed_in? %>
                 <%= form_with(model: [@gym, @comment], local: true, remote: true) do |f| %>
                 <div class="form-group">
                   <%= f.label :title, "タイトル" %>
@@ -136,11 +135,39 @@
                 <%= button_tag type: "submit", class: "btn btn-success float-right mt-1" do %>
                   <i class="far fa-comments"></i> コメントする
                 <% end %>
-                <% end %>
               <% end %>
       </div><!--content3-->
 
       <div class='content4'>
+        <% if @gym.address.empty? %>
+          <h4>位置情報はまだ登録されていません。</h4>
+        <% else %>
+          <h4>位置情報</h4>
+          <div id='map'></div>
+        <% end %>
+        <script>
+        function initMap(){
+          let m = {lat: <%= @gym.latitude %>, lng: <%= @gym.longitude %>};
+          let map = new google.maps.Map(document.getElementById('map'), {
+            center: m,
+          zoom: 16
+          });
+              var transitLayer = new google.maps.TransitLayer();
+            transitLayer.setMap(map);
+
+            var contentString = '住所：<%= @gym.address %>';
+            var infowindow = new google.maps.InfoWindow({
+              content: contentString
+            });
+
+            var marker = new google.maps.Marker({
+              position: m,
+              map: map,
+              title: contentString
+            });
+        }
+        </script>
+        <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAP_API'] %>&callback=initMap" async defer></script>
       </div>
         
     </div><!--tab-content-->
