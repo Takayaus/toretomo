@@ -1,9 +1,10 @@
+<div class="back"></div>
 <div class="top">
   <div id="home-top">
     <%= image_tag("home1.jpg", class: "active") %>
     <%= image_tag("home2.jpg") %>
     <%= image_tag("home3.jpg") %>
-    <%= image_tag("home5.jpg") %>
+    <%= image_tag("home4.jpg") %>
   </div>
   <script type="text/javascript">
     function slideSwitch() {
@@ -27,18 +28,20 @@
       setInterval( "slideSwitch()", 5000 );
     });
   </script>
+
   <div class="home-gra"></div>
   <div class="home-box">
-  <h2>あなたの街で理想のパーソナルトレーナーが見つかる</h2>
-  <div class="home-form">
-    <%= search_form_for(@q, url:gyms_path) do |f| %>
-      <p>自分の住んでいる地域から理想のジムを探すことができ、それぞれのジムで活躍しているトレーナーを探せます。</p>
-      <%= f.text_field :name_or_title_or_content_or_address_or_categories_name_cont, class: "home-fbox" %>
-      <%= f.submit "検索", class: "home-fbtn" %>
-    <% end %>
-    </div>
+    <h2>あなたの街で理想のパーソナルトレーナーが見つかる</h2>
   </div>
-</div>
+    <div class="home-form">
+      <%= search_form_for(@q, url:gyms_path) do |f| %>
+        <p>自分の住んでいる地域から理想のジムを探すことができ、それぞれのジムで活躍しているトレーナーを探せます。</p>
+        <%= f.text_field :name_or_title_or_content_or_address_or_categories_name_cont, class: "home-fbox" %>
+        <%= f.submit "検索", class: "home-fbtn" %>
+      <% end %>
+    </div>
+
+</div><!--top-->
 <div class="container">
   <h2 class="heading">人気のカテゴリー</h2>
   <div class="row justify-content-center">
