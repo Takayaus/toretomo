@@ -2,6 +2,7 @@
     <div class="trainer">
         <div class="col-lg-4 col-md-6 col-xs-12">
             <div class="tras-item">
+                <a class="link" href="/trainers/<%= trainer.id %>"></a>
                 <div class="tras-top">
                     <div class="tras-left">
                         <a href="/trainers/<%= trainer.id %>"><%= image_tag (trainer.image.url) %></a>
@@ -37,8 +38,8 @@
                         $('.read').readmore({
                         speed: 100,
                         collapsedHeight: 45,
-                        moreLink: '<a href="#">続きを読む</a>',//続きを読むボタンタグ
-                        lessLink: '<a href="#">閉じる</a>'//閉じるボタンタグ
+                        moreLink: '<a href="#">続きを読む</a>',
+                        lessLink: '<a href="#">閉じる</a>'
                         });
                     });
                     </script>
@@ -69,25 +70,25 @@
                         </div>
                     <% end %>
                     <div class="tras-like">
-                    <% if user_signed_in? %>
-                        <% if current_user.already_liked?(trainer) %>
-                            <%= link_to trainer_like_path(trainer, trainer), method: :delete, remote: :true do %>
-                                <i class="fa fa-heart" aria-hidden="true" style="color: red;">
-                                    <%= trainer.likes.count %> 
-                                </i>
+                        <% if user_signed_in? %>
+                            <% if current_user.already_liked?(trainer) %>
+                                <%= link_to trainer_like_path(trainer, trainer), method: :delete, remote: :true do %>
+                                    <i class="fa fa-heart" aria-hidden="true" style="color: red;">
+                                        <%= trainer.likes.count %> 
+                                    </i>
+                                <% end %>
+                            <% else %>
+                                <%= link_to trainer_likes_path(trainer, trainer), method: :post, remote: :true do %>
+                                    <i class="fa fa-heart" aria-hidden="true" style="color: #C0C0C0;">
+                                        <%= trainer.likes.count %> 
+                                    </i>
+                                <% end %>
                             <% end %>
                         <% else %>
-                            <%= link_to trainer_likes_path(trainer, trainer), method: :post, remote: :true do %>
-                                <i class="fa fa-heart" aria-hidden="true" style="color: #C0C0C0;">
-                                    <%= trainer.likes.count %> 
-                                </i>
-                            <% end %>
+                            <i class="fa fa-heart" aria-hidden="true" style="color: red;">
+                                <%= trainer.likes.count %>
+                            </i>
                         <% end %>
-                    <% else %>
-                        <i class="fa fa-heart" aria-hidden="true" style="color: red;">
-                            <%= trainer.likes.count %>
-                        </i>
-                    <% end %>
                     </div>
                 </div><!--tras-bottom-->
             </div><!--tras-item-->
