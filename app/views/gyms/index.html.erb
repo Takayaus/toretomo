@@ -1,7 +1,8 @@
 <div class="container">
+    <button type="button" class="btn btn-primary gyms-ran" style="text-align:center; ">Primary</button>
     <div class="gyms-contents">
         <aside class="gyms-side">
-            <div class="gyms-form-group">
+            <div class="gyms-ransack">
                 <%= search_form_for @q do |f| %>
                     <div class="form-group">
                         <i class="fas fa-sort"></i>
@@ -49,3 +50,11 @@
         </div>
     </div>
 </div>
+
+<script>
+$(function(){
+$(".gyms-ran").on("click", function() {
+$('.gyms-side').slideToggle();
+});
+});
+</script>

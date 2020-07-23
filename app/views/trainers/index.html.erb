@@ -1,6 +1,6 @@
 <div class="container">
     <aside class="tras-side">
-    <button type="button" class="btn btn-primary bbb" style="text-align:center;">Primary</button>
+    <button type="button" class="btn btn-primary tras-ran" style="text-align:center; ">Primary</button>
         <div class="tras-ransack">
             <%= search_form_for @q do |f| %>
                 <div class="form-group">
@@ -46,7 +46,7 @@ $(function(){
 $(".tras-ransack").hide();
 });
 $(function(){
-$(".bbb").on("click", function() {
+$(".tras-ran").on("click", function() {
 $(this).next().slideToggle();
 });
 });
