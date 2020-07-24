@@ -8,7 +8,7 @@
                         <a href="/trainers/<%= trainer.id %>"><%= image_tag (trainer.image.url) %></a>
                     </div>
                     <div class="tras-right">
-                        <h6><%= link_to trainer.name, trainer_path(trainer) %></h6>
+                        <h6><%= trainer.name %></h6>
                         <p id="star-ave<%= trainer.id %>"></p>
                         <script>
                             $('#star-ave<%= trainer.id %>').raty({

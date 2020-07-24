@@ -1,8 +1,0 @@
-<% @gyms.each do |gym|%>
-    <div class="gyms-item">
-        <div class="gyms-title">
-            <h5><%= truncate(gym.name, omission: '..', length: 40) %> </h5>
-        </div>
-        <a class="link" href="/gyms/<%= gym.id %>"></a>
-    </div>
-<% end %>

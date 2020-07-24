@@ -62,11 +62,11 @@
             <p class="district-name"><%= gym.district.name unless gym.district.nil?%></p>
             <div class="gyms-card-body">
                 <div class="gyms-star">
-                    <p id="star_ave<%= gym.id %>">評価</p>
+                    <p id="star_ave<%= gym.id %>">評価 </p>
                     <p>(口コミ数<%= gym.comments.count %>)</p>
                 </div>
                     <script>
-                        $('#star-ave<%= gym.id %>').raty({
+                        $('#star_ave<%= gym.id %>').raty({
                         size: 36,
                         starOff:  '<%= asset_path('star-off.png') %>',
                         starOn : '<%= asset_path('star-on.png') %>',
@@ -79,9 +79,11 @@
                 <h5 class="gyms-card-title"><%= truncate(gym.name, omission: '..', length: 20) %></h5>
                 <p class="gyms-card-text"><%= truncate(gym.title, omission: '..', length: 70) %></p>
                   <ul class="list-group list-group-flush">
-                    <li class="list-group-item">                <% gym.gym_categories.each do |g| %>
-                    <%= link_to g.category.name, gyms_path(q: {categories_id_in: g.category_id }), {class: "gyms-content"} %>
-                <% end %></li>
+                    <li class="list-group-item">
+                        <% gym.gym_categories.each do |g| %>
+                            <%= link_to g.category.name, gyms_path(q: {categories_id_in: g.category_id }), {class: "gyms-content"} %>
+                        <% end %>
+                    </li>
                     <li class="list-group-item"><p class="gyms-content">月会費：<%= gym.price %></p></li>
                     <li class="list-group-item"><i class="fa fa-phone" aria-hidden="true" style="color: #0080ff;" ></i> <%=gym.number%></li>
                 </ul>

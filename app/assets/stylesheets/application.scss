@@ -119,6 +119,10 @@ body {
   text-indent: -999px;
   z-index: 10;
 }
+.list-group-item {
+  position: relative;
+  z-index: 20;
+}
 
 //home
 // .home-top {
@@ -418,6 +422,13 @@ body {
     border: 1px solid rgba(0, 0, 0, 0.125);
     border-radius: 0.25rem;
     margin-top: 15px;
+    box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.12), 0 2px 3px 0 rgba(0, 0, 0, 0.22);
+    transition: 0.3s;
+  }
+  .gyms-card:hover {
+    box-shadow: 0 15px 30px -5px rgba(0, 0, 0, 0.15), 0 0 5px rgba(0, 0, 0, 0.1);
+    transform: translateY(-4px);
+    opacity: 0.8;
   }
   .gyms-card-body {
     flex: 1 1 auto;
@@ -764,15 +775,11 @@ body {
 
 .tras-right {
   height: 100px;
-  width: 75%;
+  margin-left: 20px;
 }
 
-.tras-right h6 {
-  color: black;
-}
 .tras-right a {
   cursor: pointer;
-  color: black;
 }
 
 .tras-right p {
@@ -813,7 +820,8 @@ body {
 
 .tras-bottom a,
 .tras-middle a,
-.tras-cate {
+.tras-cate,
+.slide-middle a {
   position: relative;
   z-index: 20;
 }
@@ -875,6 +883,47 @@ body {
   display: inline-block;
 }
 
+.tras-card {
+  position: relative;
+  display: flex !important;
+  flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
+  background-color: #fff;
+  background-clip: border-box;
+  border: 1px solid rgba(0, 0, 0, 0.125);
+  border-radius: 0.25rem;
+  margin-top: 15px;
+  height: 526px;
+  box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.12), 0 2px 3px 0 rgba(0, 0, 0, 0.22);
+  transition: 0.3s;
+}
+.tras-card:hover {
+  box-shadow: 0 15px 30px -5px rgba(0, 0, 0, 0.15), 0 0 5px rgba(0, 0, 0, 0.1);
+  transform: translateY(-4px);
+  opacity: 0.8;
+}
+
+.tras-card-text {
+  height: 48px;
+}
+.tras-card-body {
+  flex: 1 1 auto;
+  min-height: 1px;
+  padding: 1.25rem;
+  padding-top: 0;
+  padding-bottom: 10px;
+}
+.tras-card-title {
+  margin-top: 8px;
+}
+.tras-list-group {
+  display: flex;
+  flex-direction: column;
+  padding-left: 0;
+  margin-bottom: 0;
+  height: 154px;
+}
 //nav
 
 .nav-tabs {
@@ -997,7 +1046,15 @@ body {
     display: flex !important;
     margin-bottom: 15px;
     position: relative;
+    box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.12), 0 2px 3px 0 rgba(0, 0, 0, 0.22);
+    transition: 0.3s;
   }
+  .card:hover {
+    box-shadow: 0 15px 30px -5px rgba(0, 0, 0, 0.15), 0 0 5px rgba(0, 0, 0, 0.1);
+    transform: translateY(-4px);
+    opacity: 0.8;
+  }
+
   .card-body {
     padding-top: 0;
     padding-bottom: 35px;
@@ -1012,15 +1069,6 @@ body {
     bottom: 0;
     font-size: 12px;
     margin: 8px 8px 8px 0;
-  }
-  .district-name {
-    color: #ffffff;
-    font-size: 12px;
-    padding: 0 6px;
-    line-height: 150%;
-    background: #de5065;
-    margin-top: 3px;
-    max-width: 50px;
   }
 }
 
@@ -1072,6 +1120,7 @@ body {
   line-height: 150%;
   background: #de5065;
   margin-top: 3px;
+  max-width: 50px;
 }
 .new-gyms-time p {
   position: absolute;
@@ -1104,6 +1153,13 @@ body {
   border: 1px solid black;
   padding: 10px;
   position: relative;
+  box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.12), 0 2px 3px 0 rgba(0, 0, 0, 0.22);
+  transition: 0.3s;
+}
+.slide-item:hover {
+  box-shadow: 0 15px 30px -5px rgba(0, 0, 0, 0.15), 0 0 5px rgba(0, 0, 0, 0.1);
+  transform: translateY(-4px);
+  opacity: 0.8;
 }
 
 .slide-top {
@@ -1131,7 +1187,6 @@ body {
 
 .slide-right a {
   cursor: pointer;
-  color: black;
 }
 
 .slide-right a:hover {

@@ -5,12 +5,13 @@
         <% @trainers.each do |trainer| %>
           <div class="swiper-slide">
             <div class="slide-item">
+            <a class="link" href="/trainers/<%= trainer.id %>"></a>
               <div class="slide-top">
                 <div class="slide-left">
                   <a href="/trainers/<%= trainer.id %>"><%= image_tag (trainer.image.url) %></a>
                 </div>
                 <div class="slide-right">
-                  <h6><%= link_to trainer.name, trainer_path(trainer) %></h6>
+                  <h6><%= trainer.name %></h6>
                     <p id="star-ave<%= trainer.id %>"></p>
                         <script>
                         $('#star-ave<%= trainer.id %>').raty({
