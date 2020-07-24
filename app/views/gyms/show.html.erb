@@ -145,6 +145,7 @@
           <h4>位置情報</h4>
           <div id='map'></div>
         <% end %>
+        <script src="https://maps.googleapis.com/maps/api/js?key=<%= Rails.application.credentials.google_map_api %>&callback=initMap" async defer></script>
         <script>
         function initMap(){
           let m = {lat: <%= @gym.latitude %>, lng: <%= @gym.longitude %>};
@@ -166,8 +167,10 @@
               title: contentString
             });
         }
+        window.onload = function () {
+    initMap();
+}
         </script>
-        <script src="https://maps.googleapis.com/maps/api/js?key=<%= Rails.application.credentials.google_map_api %>&callback=initMap" async defer></script>
       </div>
         
     </div><!--tab-content-->
