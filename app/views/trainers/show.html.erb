@@ -88,13 +88,13 @@
                         <h5 class="tras-card-title"><%= truncate(trainer.gym.name, omission: '..', length: 12) %></h5>
                         <p class="tras-card-text"><%= truncate(trainer.gym.title, omission: '..', length: 30) %></p>
                       <ul class="tras-list-group list-group-flush">
+                        <li class="list-group-item"><p class="gyms-content">月会費：<%= trainer.gym.price %></p></li>
+                        <li class="list-group-item"><i class="fa fa-phone" aria-hidden="true" style="color: #0080ff;" ></i> <%= trainer.gym.number %></li>
                         <li class="list-group-item">                
                           <% trainer.gym.gym_categories.each do |g| %>
                             <%= link_to g.category.name, gyms_path(q: {categories_id_in: g.category_id }), {class: "gyms-content"} %>
                           <% end %>
                         </li>
-                        <li class="list-group-item"><p class="gyms-content">月会費：<%= trainer.gym.price %></p></li>
-                        <li class="list-group-item"><i class="fa fa-phone" aria-hidden="true" style="color: #0080ff;" ></i> <%= trainer.gym.number %></li>
                       </ul>
                     </div>
               </div>
