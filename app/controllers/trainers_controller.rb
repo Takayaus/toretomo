@@ -1,7 +1,8 @@
 class TrainersController < ApplicationController
+
   def index
     @q = Trainer.ransack(params[:q])
-    @trainers = @q.result(distinct: true).includes(:districts, :categories, comments: :user).page(params[:page]).per(12)
+    @trainers = @q.result(distinct: true).includes(:districts, :categories, comments: :user).page(params[:page]).per(TRA_PAGE)
     @districts = District.all
     @categories = Category.all
   end

@@ -24,4 +24,5 @@ class Gym < ApplicationRecord
         query = '(SELECT COUNT(comments.gym_id) FROM comments where comments.gym_id = gyms.id GROUP BY comments.gym_id)'
         Arel.sql(query)
     end
+    
 end
