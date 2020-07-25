@@ -66,7 +66,7 @@
               <% @trainer.gym_trainers.each do |trainer|%>
               <div class="swiper-slide">
                 <div class="tras-card" style="width: 18rem;">
-                    <a class="link" href="/trainers/<%= trainer.gym.id %>"></a>
+                    <a class="link" href="/gyms/<%= trainer.gym.id %>"></a>
                     <%= image_tag(trainer.gym.image.url, size: '286x180') %>
                     <p class="district-name"><%= trainer.gym.district.name unless trainer.gym.district.nil?%></p>
                     <div class="tras-card-body">

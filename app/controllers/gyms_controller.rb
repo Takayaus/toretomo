@@ -8,8 +8,8 @@ class GymsController < ApplicationController
 
 
   def show
-    @gym = Gym.find(params[:id])
-    @comments = @gym.comments.all.page(params[:page]).per(4).order('updated_at DESC')
+    @gym = Gym.preload(:item_images, trainers: {trainer_categories: :category, comments: :user}, gym_categories: :category).find(params[:id])
+    @comments = @gym.comments.preload(:user).all.page(params[:page]).per(4).order('updated_at DESC')
     @comment = @gym.comments.build
   end
 end
