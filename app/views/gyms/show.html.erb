@@ -20,6 +20,8 @@
           });
         </script>
         <p><%= @gym.title %></p>
+        <p class="district-name"><%= @gym.district.name unless @gym.district.nil?%></p>
+        <p><%= @gym.address %></p>
         <% if @gym.number? %>
           <i class="fa fa-phone" aria-hidden="true" style="color: #0080ff;" ></i>
           <%= @gym.number %></br>
