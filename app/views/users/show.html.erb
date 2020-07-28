@@ -1,4 +1,5 @@
 <div class="container">
+
     <div class="user-profile">
         <div class="user-img">
             <%= image_tag(@user.image_name.url) %>
@@ -13,74 +14,30 @@
             <%= link_to "プロフィールを編集する", edit_user_registration_url(@user), class: 'btn btn-light'%>
         </div>
     </div>
+
     <div class='tabs'>
         <div class='user-tab-buttons'>
             <span class='content1'>口コミ</span>
             <span class='content2'>お気に入り</span>
             <div id='user-lamp' class='content1'></div>
         </div>
+
         <div class='tab-content'>
             
             <div class='content1'>
-                <% @comments.each do |comment| %>
-                <div class="row comment-">
-                    <div class="col-md-2 comment-icon">
-                        <%= image_tag(comment.user.image_name.url) unless comment.user.blank?%>
-                        <h6><%= comment.user.name unless comment.user.blank? %></h6>
-                    </div>
-                    <div class="col-md-6 comment-content">
-                        <div id="star-rate-<%= comment.id %>">評価　</div>
-                        <h5><%= comment.title %></h5>
-                        <p><%= comment.content %></p>
-                        <% if user_signed_in? && comment.user == current_user %>
-                        <div class="comment-li">
-                            <p><%= link_to '削除', user_comment_path(@user, comment), method: :delete %></p>
-                            <p>/</p>
-                            <p><%= link_to '編集', edit_user_comment_path(@user, comment) %></p>
-                        </div>
-                        <% end %>
-                    </div>
-                          <script>
-                            $('#star-rate-<%= comment.id %>').raty({
-                              size: 36,
-                              starOff:  '<%= asset_path('star-off.png') %>',
-                              starOn : '<%= asset_path('star-on.png') %>',
-                              starHalf: '<%= asset_path('star-half.png') %>',
-                              half: true,
-                              readOnly: true,
-                              score: <%= comment.rate %>,
-                              });
-                          </script>
-
-                    <div class="col-md-4 comment-info text-center">
-                        <% if comment.gym_id.nil? %>
-                            <%= link_to trainer_path(comment.trainer) do%>
-                                <%= image_tag(comment.trainer.image.url, {class: "trainer-img"})%>
-                                <p><%= comment.trainer.name %></p>
-                            <%end%>
-                        <%else%>
-                            <%= link_to gym_path(comment.gym) do %>
-                                <%= image_tag(comment.gym.image.url, {class: "gym-img"}) %>
-                                <p><%= comment.gym.name %></p>
-                            <%end%>
-                        <%end%>
-                        <div class="new-gyms-time">
-                        <p><%= comment.created_at.strftime("%Y-%m-%d") %></p>
-                    </div>
-                    </div>
-                    </div>
-                <% end %>
-                <p><%= @user.comments.count %>件の口コミが表示されています。</p>
+                <%= render 'comments' %>
                 <%= paginate @comments %>
             </div><!--content1-->
             
             <div class='content2'>
                 <div class="row justify-content-center">
                     <%= render 'trainers/trainers-index' %>
-                </div><!--row-->
+                </div>
                 <%= paginate @trainers %>
             </div><!--content2-->
+
         </div><!--tab-content-->
+        
     </div><!--tabs-->
 
     <div class='credit'>
