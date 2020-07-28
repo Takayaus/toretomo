@@ -1,5 +1,4 @@
 class Trainer < ApplicationRecord
-  
   validates :title, length: { maximum: 180 }
   mount_uploader :image, ImageUploader
 
@@ -20,8 +19,6 @@ class Trainer < ApplicationRecord
   has_many :likes
   has_many :liked_users, through: :likes, source: :user, dependent: :destroy
   enum sex: { 男性: 0, 女性: 1}
-
-
   def self.sort(selection)
     case selection
     when 'new'
