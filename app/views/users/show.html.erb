@@ -11,7 +11,9 @@
                 <p class="inline-block"><%= sex(@user.sex) %>：</p>
                 <p class="inline-block"><%= age(@user.age) %></p>
             </div>
-            <%= link_to "プロフィールを編集する", edit_user_registration_url(@user), class: 'btn btn-primary'%>
+            <% if @user == current_user %>
+                <%= link_to "プロフィールを編集する", edit_user_registration_url(@user), class: 'btn btn-primary'%>
+            <% end %>
         </div>
     </div>
 
