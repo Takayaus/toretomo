@@ -9,7 +9,7 @@ class TrainersController < ApplicationController
 
 
   def show
-    @trainer = Trainer.preload(:districts, trainer_categories: :category, gyms: {gym_categories: :category} ).find(params[:id])
+    @trainer = Trainer.preload(:districts, trainer_categories: :category, gyms: {gym_categories: :category}).find(params[:id])
     @comments = @trainer.comments.preload(:user).all.page(params[:page]).per(3).order('updated_at DESC')
     @comment = @trainer.comments.build
     @like = Like.new
