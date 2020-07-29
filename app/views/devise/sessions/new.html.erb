@@ -30,7 +30,7 @@
       <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
         <%= f.hidden_field :email, value: 'test@test.com' %>
         <%= f.hidden_field :password, value: 'password' %>
-        <%= f.submit 'テストログイン', class: 'btn btn-secondary btn-block' %>
+        <%= f.submit 'テストログイン', class: 'btn btn-success btn-block' %>
       <% end %>
     </div>
 

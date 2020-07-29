@@ -13,9 +13,9 @@
             <p><%= comment.content %></p>
             <% if user_signed_in? && comment.user == current_user %>
             <div class="comment-li">
-                <p><%= link_to '削除', user_comment_path(@user, comment), method: :delete %></p>
+                <p><%= link_to '削除', comment_path(comment), method: :delete %></p>
                 <p>/</p>
-                <p><%= link_to '編集', edit_user_comment_path(@user, comment) %></p>
+                <p><%= link_to '編集', edit_comment_path(comment) %></p>
             </div>
             <% end %>
         </div>
