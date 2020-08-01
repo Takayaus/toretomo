@@ -49,6 +49,6 @@ test:
 #
 production:
   <<: *default
-  database: portfolio1_production
-  username: portfolio1
-  password: <%= ENV['PORTFOLIO1_DATABASE_PASSWORD'] %>
+  database: toretomo_production
+  username: root
+  password: Takataka123@
