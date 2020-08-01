@@ -74,6 +74,16 @@ Rails.application.configure do
   #   authentication: :plain,
   #   enable_starttls_auto: true
   #   }
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    address:              'smtp.gmail.com',
+    port:                  587,
+    domain:               'example.com',
+    user_name:            'morit617@gmail.com',
+    password:             'odwotfpwcpdpyobj',
+    authentication:       'login',
+    enable_starttls_auto:  true
+  }
   config.action_mailer.perform_caching = false
 
   # Ignore bad email addresses and do not raise email delivery errors.
