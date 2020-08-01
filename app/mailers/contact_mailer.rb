@@ -4,7 +4,7 @@ class ContactMailer < ApplicationMailer
     @contact = contact
     mail(
       from: 'sample@example.com',
-      to:   Rails.application.credentials.mail,
+      to:   'morit617@gmail.com',
       subject: 'お問い合わせ通知'
     )
   end
