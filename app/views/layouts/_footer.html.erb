@@ -5,10 +5,7 @@
             <div class="content">
                 <p>こちらのサービスはポートフォリオです。</p>
                 <div class="social">
-                    <a href="#"><span class="fab fa-facebook-f"></span></a>
-                    <a href="#"><span class="fab fa-twitter"></span></a>
-                    <a href="#"><span class="fab fa-instagram"></span></a>
-                    <a href="#"><span class="fab fa-youtube"></span></a>
+                    <a href="https://github.com/Takayaus"><span class="fab fa-github"></span></a>
                 </div>
             </div>
         </div>
@@ -32,17 +29,17 @@
         <div class="right box">
             <h2>Contact us</h2>
             <div class="content">
-            <% @contact = Contact.new %>
+                <% @contact = Contact.new %>
                 <%= form_for @contact do |f| %>
-                    <div class="form-group">
-                        <%= f.label :email, '返信先メールアドレス' %>
-                        <%= f.text_field :email, class: 'form-control' %>
-                    </div>
-                    <div class="form-group">
-                        <%= f.label :message, 'お問い合わせ内容' %>
-                        <%= f.text_area :message, class: 'form-control' %>
-                    </div>
-                    <%= f.submit '送信', class: 'btnn'%>
+                <div class="form-group">
+                    <%= f.label :email, '返信先メールアドレス' %>
+                    <%= f.text_field :email, class: 'form-control' %>
+                </div>
+                <div class="form-group">
+                    <%= f.label :message, 'お問い合わせ内容' %>
+                    <%= f.text_area :message, class: 'form-control' %>
+                </div>
+                <%= f.submit '送信', class: 'btnn'%>
                 <% end %>
             </div>
         </div>
