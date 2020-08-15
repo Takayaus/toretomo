@@ -29,7 +29,7 @@
   <li>ページネーション(Kaminari)</li>
   <li>検索機能(Ransack)</li>
   <li>地図機能(Google MapとGeocoder)</li>
-  <li>お問い合わせフォーム(sendgrid)</li>
+  <li>お問い合わせフォーム(Action Mailer)</li>
 </ul>
 
 <h2>実装予定の機能</h2>
