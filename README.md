@@ -1,5 +1,6 @@
 <h2>URL</h2>
-<p>http://toretomo.work/</p>
+<p>Heroku https://toretomo.herokuapp.com/</p>
+<p>AWS http://toretomo.work/ (エラー処理　８月２４日時点)</p>
 <p>ログイン画面から【テストユーザー】としてゲストログインが可能です。</p>
 <p>本ポートフォリオは、タブレット・スマートフォンからもご覧いただけます。</p>
 
